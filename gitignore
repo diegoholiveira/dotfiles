@@ -1,0 +1,10 @@
+*.swp
+composer.phar
+*.komodoproject
+*.sublime-workspace
+*.sublime-project
+.DS_Store
+Thumbs.db
+.idea
+*.bak
+.vagrant
