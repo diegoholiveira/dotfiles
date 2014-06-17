@@ -1,8 +1,6 @@
 [user]
 	name = Diego Oliveira
 	email = contato@diegoholiveira.com
-[core]
-	excludesfile = /Users/diegoholiveira/.gitignore
 [color]
 	# turn on color
 	diff = auto
@@ -33,3 +31,5 @@
 	amend = commit --amend
 [push]
 	default = tracking
+[core]
+	excludesfile = /Users/diegoholiveira/.gitignore
