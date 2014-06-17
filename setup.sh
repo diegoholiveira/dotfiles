@@ -20,6 +20,9 @@ for file in $DOTFILES; do
     ln -s $DOTFILES_DIR/$file ~/".$file"
 done
 
+echo "Setting up git autocomplete"
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+
 echo "Setting up Sublime Text 3 preferences and packages"
 rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
 rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages
