@@ -19,7 +19,7 @@ if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
 fi
 
-export PS1="\[\e[32m\]\$(parse_git_branch_or_tag)\[\e[34m\]\h:\W \$ \[\e[m\]"
+export PS1="\[\e[32m\]\$(parse_git_branch_or_tag) \[\e[34m\]\h:\W \$ \[\e[m\]"
 
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="4;33"
