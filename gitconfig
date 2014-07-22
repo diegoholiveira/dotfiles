@@ -1,37 +1,37 @@
 [user]
-	name = Diego Oliveira
-	email = contato@diegoholiveira.com
+    name = Diego Oliveira
+    email = contato@diegoholiveira.com
 [color]
-	# turn on color
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
-	ui = auto
+    # turn on color
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = auto
 [color "branch"]
-	# good looking colors i copy/pasted from somewhere
-	current = green bold
-	local = green
-	remote = red bold
+    # good looking colors i copy/pasted from somewhere
+    current = green bold
+    local = green
+    remote = red bold
 [color "diff"]
-	# good looking colors i copy/pasted from somewhere
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+    # good looking colors i copy/pasted from somewhere
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
 [color "status"]
-	# good looking colors i copy/pasted from somewhere
-	added = green bold
-	changed = yellow bold
-	untracked = red
+    # good looking colors i copy/pasted from somewhere
+    added = green bold
+    changed = yellow bold
+    untracked = red
 [color "sh"]
-	branch = yellow
+    branch = yellow
 [alias]
-    log = log --stat
+    l = log --stat
     hist = log --pretty=format:\"%C(green)%h%Creset %C(black)%cr%Creset %s %C(auto)%d%Creset %C(blue)%an%Creset\"
-	tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	amend = commit --amend
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    amend = commit --amend
 [push]
-	default = tracking
+    default = tracking
 [core]
-	excludesfile = /Users/diegoholiveira/.gitignore
+    excludesfile = /Users/diegoholiveira/.gitignore
