@@ -27,6 +27,8 @@
 [color "sh"]
 	branch = yellow
 [alias]
+    log = log --stat
+    hist = log --pretty=format:\"%C(green)%h%Creset %C(black)%cr%Creset %s %C(auto)%d%Creset %C(blue)%an%Creset\"
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	amend = commit --amend
 [push]
