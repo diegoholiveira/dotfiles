@@ -26,3 +26,6 @@ export GREP_COLOR="4;33"
 export CLICOLOR="auto"
 
 alias sublime="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

@@ -1,6 +1,7 @@
 {
 	"installed_packages":
 	[
+		"Rust",
 		"Theme - Sodarized"
 	]
 }
