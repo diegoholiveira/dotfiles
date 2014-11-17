@@ -23,17 +23,20 @@ done
 echo "Setting up git autocomplete"
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash &> /dev/null
 
-echo "Setting up Sublime Text 3 preferences and packages"
-rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
-rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages
-ln -s $DOTFILES_DIR/st3/Packages ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
-ln -s $DOTFILES_DIR/st3/Installed\ Packages ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages
+if [[ "$OSTYPE" == darwin* ]]; then
 
-# Install the Solarized Light theme for iTerm2
-open "$DOTFILES_DIR/iterm2/Solarized Light.itermcolors"
+	echo "Setting up Sublime Text 3 preferences and packages"
+	rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
+	rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages
+	ln -s $DOTFILES_DIR/st3/Packages ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
+	ln -s $DOTFILES_DIR/st3/Installed\ Packages ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages
 
-echo "Setting up my macos preferences"
-source ~/dotfiles/osx_rc
+	# Install the Solarized Light theme for iTerm2
+	open "$DOTFILES_DIR/iterm2/Solarized Light.itermcolors"
+
+	echo "Setting up my macos preferences"
+	source ~/dotfiles/osx_rc
+fi
 
 echo "Loading Bash preferences"
 source ~/.bashrc

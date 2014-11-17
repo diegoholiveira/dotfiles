@@ -46,9 +46,9 @@ export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="4;33"
 export CLICOLOR="auto"
 
-alias sublime="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-
-source ~/dotfiles/osx_rc
+if [[ "$OSTYPE" == darwin* ]]; then
+	alias sublime="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+fi
 
 if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
