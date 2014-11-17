@@ -48,6 +48,8 @@ export CLICOLOR="auto"
 
 alias sublime="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
+source ~/dotfiles/osx_rc
+
 if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
 fi
