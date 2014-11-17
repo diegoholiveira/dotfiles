@@ -29,16 +29,18 @@ function __prompt_command() {
     # regular colors
     local Red="\[\033[0;31m\]"
     local Green="\[\033[0;32m\]"
+    local Blue="\[\033[0;34m\]";
+    local Purple="\[\033[0;35m\]"
 
-    PS1=""
+    PS1="$Blue\t$Color_Off"
 
     if [ $EXIT -eq 0 ]; then
-        PS1+="$Green[✔]$Color_Off ";
+        PS1+=" $Green[✔]$Color_Off";
     else
-        PS1+="$Red[✘]$Color_Off ";
+        PS1+=" $Red[✘]$Color_Off";
     fi
 
-    PS1+="$Green\$(parse_git_branch_or_tag)$Color_Off \h:\w \$: "
+    PS1+=" $Green\$(parse_git_branch_or_tag)$Color_Off \h:\w \$: "
 }
 
 export PROMPT_COMMAND=__prompt_command
