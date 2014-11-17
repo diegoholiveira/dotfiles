@@ -15,20 +15,44 @@ parse_git_branch_or_tag () {
     echo $OUT
 }
 
-if [ -f ~/.git-completion.bash ]; then
-    source ~/.git-completion.bash
-fi
+#
+# Source: http://stackoverflow.com/questions/16715103/bash-prompt-with-last-exit-code
+#
+function __prompt_command() {
+    # last status code
+    local EXIT="$?"
 
-export PS1="\[\e[32m\]\$(parse_git_branch_or_tag) \[\e[34m\]\h:\W \$ \[\e[m\]"
+    #
+    # ANSI color code
+    #
+    local Color_Off="\[\033[0m\]"
+    # regular colors
+    local Red="\[\033[0;31m\]"
+    local Green="\[\033[0;32m\]"
 
+    PS1=""
+
+    if [ $EXIT -eq 0 ]; then
+        PS1+="$Green[✔]$Color_Off ";
+    else
+        PS1+="$Red[✘]$Color_Off ";
+    fi
+
+    PS1+="$Green\$(parse_git_branch_or_tag)$Color_Off \h:\w \$: "
+}
+
+export PROMPT_COMMAND=__prompt_command
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="4;33"
 export CLICOLOR="auto"
 
 alias sublime="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+fi
+
 # Allows me to loads other configurations on my workstation at the office
 if [ -f ~/.bash_local ]; then
     source ~/.bash_local
 fi
-
