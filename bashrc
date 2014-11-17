@@ -27,5 +27,8 @@ export CLICOLOR="auto"
 
 alias sublime="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# Allows me to loads other configurations on my workstation at the office
+if [ -f ~/.bash_local ]; then
+    source ~/.bash_local
+fi
+
