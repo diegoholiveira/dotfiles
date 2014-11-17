@@ -2,6 +2,8 @@
 	"installed_packages":
 	[
 		"EditorConfig",
+		"ApplySyntax",
+		"Rust",
 		"Theme - Sodarized"
 	]
 }
