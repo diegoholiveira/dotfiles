@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------
 
 DOTFILES_DIR=~/dotfiles
-DOTFILES="bashrc bash_profile gitconfig gitignore"
+DOTFILES="bashrc bash_profile gitconfig gitignore vimrc gvimrc"
 
 echo "Installing dotfiles"
 for file in $DOTFILES; do
@@ -19,6 +19,9 @@ for file in $DOTFILES; do
     echo "    Creating symlink to .$file in home directory."
     ln -s $DOTFILES_DIR/$file ~/".$file"
 done
+
+# creating an alias to my vim files
+ln -s $DOTFILES_DIR/vim ~/.vim
 
 echo "Setting up git autocomplete"
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash &> /dev/null
@@ -40,3 +43,4 @@ fi
 
 echo "Loading Bash preferences"
 source ~/.bashrc
+
