@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------
 
 DOTFILES_DIR=~/dotfiles
-DOTFILES="bashrc bash_profile gitconfig gitignore"
+DOTFILES="bashrc bash_profile gitconfig gitignore vimrc gvimrc"
 
 echo "Installing dotfiles"
 for file in $DOTFILES; do
@@ -40,3 +40,4 @@ fi
 
 echo "Loading Bash preferences"
 source ~/.bashrc
+
