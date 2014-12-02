@@ -27,23 +27,12 @@
 [color "sh"]
     branch = yellow
 [alias]
-    co = checkout
-    ds = diff --staged
-    st = status -sb
-    ls = log --pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short
     hist = log --pretty=format:\"%C(green)%h%Creset %C(black)%cr%Creset %s %C(auto)%d%Creset %C(blue)%an%Creset\"
     tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
     amend = commit --amend -C HEAD
-    my-commits = log --author=\"Diego Oliveira\"
-    undo = reset --soft HEAD^
     latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
 [push]
     default = tracking
 [core]
-	excludesfile = /Users/diegoholiveira/.gitignore
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+	excludesfile = ~/.gitignore
+
