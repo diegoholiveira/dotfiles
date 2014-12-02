@@ -20,6 +20,9 @@ for file in $DOTFILES; do
     ln -s $DOTFILES_DIR/$file ~/".$file"
 done
 
+# creating an alias to my vim files
+ln -s $DOTFILES_DIR/vim ~/.vim
+
 echo "Setting up git autocomplete"
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash &> /dev/null
 
