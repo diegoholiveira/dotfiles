@@ -29,3 +29,6 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 " Turn on spellcheck for gitcommit
 autocmd FileType gitcommit setlocal spell
 
+" Disable auto install for go plugin
+let g:go_disable_autoinstall = 0
+
