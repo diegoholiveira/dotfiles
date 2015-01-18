@@ -1,5 +1,4 @@
 *.swp
-Vagrantfile
 composer.phar
 *.komodoproject
 *.sublime-workspace
