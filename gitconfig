@@ -31,8 +31,9 @@
     tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
     amend = commit --amend -C HEAD
     latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
+    undo = reset --soft HEAD~1
 [push]
     default = tracking
 [core]
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
 
