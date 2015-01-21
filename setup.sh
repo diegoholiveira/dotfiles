@@ -28,12 +28,6 @@ curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-com
 
 if [[ "$OSTYPE" == darwin* ]]; then
 
-	echo "Setting up Sublime Text 3 preferences and packages"
-	rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
-	rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages
-	ln -s $DOTFILES_DIR/st3/Packages ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
-	ln -s $DOTFILES_DIR/st3/Installed\ Packages ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages
-
 	# Install the Solarized Light theme for iTerm2
 	open "$DOTFILES_DIR/iterm2/Solarized Light.itermcolors"
 
@@ -41,6 +35,5 @@ if [[ "$OSTYPE" == darwin* ]]; then
 	source ~/dotfiles/osx_rc
 fi
 
-echo "Loading Bash preferences"
-source ~/.bashrc
+echo "Please, restart your terminal..."
 

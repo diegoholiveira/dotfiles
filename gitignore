@@ -8,3 +8,5 @@ Thumbs.db
 .idea
 *.bak
 .vagrant
+vim/.netrwhist
+
