@@ -48,15 +48,18 @@ export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="4;33"
 export CLICOLOR="auto"
 
-if [[ "$OSTYPE" == darwin* ]]; then
-	alias sublime="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-fi
-
+# load the git completion to allow git auto complete
 if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
 fi
 
-# Allows me to loads other configurations on my workstation at the office
-if [ -f ~/.bash_local ]; then
-    source ~/.bash_local
+# load local aliases
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
 fi
+
+# --------------------------------------------------------------------------
+# aliases usefull
+# --------------------------------------------------------------------------
+alias gvim="mvim --remote-silent || mvim"
+
