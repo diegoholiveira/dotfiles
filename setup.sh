@@ -2,6 +2,48 @@
 
 # ----------------------------------------------------------------------------
 #
+# Install Brew
+#
+# ----------------------------------------------------------------------------
+
+if [ ! -f /usr/local/bin/brew ]; then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+
+# ----------------------------------------------------------------------------
+#
+# Install MacVim
+#
+# ----------------------------------------------------------------------------
+if [ ! -f /usr/local/bin/mvim ]; then
+    brew install  macvim --env-std --override-system-vim —python
+fi
+
+
+# ----------------------------------------------------------------------------
+#
+# Install git and gitflow
+#
+# ----------------------------------------------------------------------------
+
+if [ ! -f /usr/local/bin/git ]; then
+    brew install git git-flow
+fi
+
+
+# ----------------------------------------------------------------------------
+#
+# Install vcprompt
+#
+# ----------------------------------------------------------------------------
+if [ ! -f /usr/local/bin/vcprompt ]; then
+    brew install vcprompt
+fi
+
+
+# ----------------------------------------------------------------------------
+#
 # Install my dotfiles (using symlinks)
 #
 # ----------------------------------------------------------------------------
@@ -29,23 +71,6 @@ if [ ! -f ~/.git-completion.bash ]; then
     echo ""
     echo "Setting up git autocomplete..."
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash &> /dev/null
-fi
-
-if [ ! -f /usr/local/bin/vcprompt ]; then
-    echo ""
-    echo "Installing vcprompt..."
-    echo ""
-    curl -s -O https://bitbucket.org/mitsuhiko/vcprompt/get/871f3fbc9c69.zip
-    unzip 871f3fbc9c69.zip
-    cd mitsuhiko-vcprompt-871f3fbc9c69
-    make
-    sudo cp vcprompt /usr/local/bin/vcprompt
-    sudo chmod +x /usr/local/bin/vcprompt
-
-    cd $DOTFILES
-
-    rm -rf 871f3fbc9c69.zip
-    rm -rf mitsuhiko-vcprompt-871f3fbc9c69
 fi
 
 echo ""
