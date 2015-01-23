@@ -71,7 +71,7 @@ while [ -n "$1" ]; do
         -d) diffmode=true; shift;;
         -?*) opts="$opts $1"; shift;;
         -) stdin=true; break;;
-        *) echo "*"; break;;
+        *) break;;
     esac
 done
 

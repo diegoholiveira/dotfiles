@@ -1,30 +1,16 @@
-parse_git_branch () {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
-}
+[ -z "$PS1" ] && return
 
-parse_git_tag () {
-    git describe --tags 2> /dev/null
-}
-
-parse_git_branch_or_tag () {
-    local OUT="$(parse_git_branch)"
-    if [ "$OUT" == "((no branch))" ];
-    then
-        OUT="($(parse_git_tag))";
-    fi
-    echo $OUT
-}
-
+# ----------------------------------------------------------------------------------------
 #
+# Functions
+#
+# ----------------------------------------------------------------------------------------
 # Source: http://stackoverflow.com/questions/16715103/bash-prompt-with-last-exit-code
-#
 function __prompt_command() {
     # last status code
     local EXIT="$?"
 
-    #
     # ANSI color code
-    #
     local Color_Off="\[\033[0m\]"
     # regular colors
     local Red="\[\033[0;31m\]"
@@ -32,7 +18,11 @@ function __prompt_command() {
     local Blue="\[\033[0;34m\]";
     local Purple="\[\033[0;35m\]"
 
-    PS1="$Blue\t$Color_Off"
+    GIT_INFO=`vcprompt -f "[%n:%b]"`
+
+    PS1="$Green\u$Color_Off at $Purple\h$Color_Off in $Blue\w$Color_Off $GIT_INFO\n"
+
+    PS1+="$Blue\t$Color_Off"
 
     if [ $EXIT -eq 0 ]; then
         PS1+=" $Green[✔]$Color_Off";
@@ -40,15 +30,29 @@ function __prompt_command() {
         PS1+=" $Red[✘]$Color_Off";
     fi
 
-    PS1+=" $Green\$(parse_git_branch_or_tag)$Color_Off \h:\w \$: "
+    PS1+=" \$: "
 }
 
+
+# ----------------------------------------------------------------------------------------
+#
+# Setup environment varibles
+#
+# ----------------------------------------------------------------------------------------
+export EDITOR=vim
+export GIT_EDITOR=vim
 export PROMPT_COMMAND=__prompt_command
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="4;33"
 export CLICOLOR="auto"
 export VIM_APP_DIR="/usr/local/Cellar/macvim/7.4-73_1"
 
+
+# ----------------------------------------------------------------------------------------
+#
+# External scripts
+#
+# ----------------------------------------------------------------------------------------
 # load the git completion to allow git auto complete
 if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
@@ -59,8 +63,11 @@ if [ -f ~/.aliases ]; then
     source ~/.aliases
 fi
 
-# --------------------------------------------------------------------------
-# aliases usefull
-# --------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------------
+#
+# Usefull aliases
+#
+# ----------------------------------------------------------------------------------------
 alias mvim="~/dotfiles/bin/mvim"
 

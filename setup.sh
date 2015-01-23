@@ -17,7 +17,7 @@ fi
 #
 # ----------------------------------------------------------------------------
 if [ ! -f /usr/local/bin/mvim ]; then
-    brew install  macvim --env-std --override-system-vim —python
+    brew install  macvim --env-std --override-system-vim -—python
 fi
 
 
