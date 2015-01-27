@@ -1,5 +1,18 @@
+" Disable filetype
+filetype off
+
 " Enable pathogen
 execute pathogen#infect()
+
+" Turn on file type detection
+filetype on
+filetype plugin indent on
+
+" Enable smart indent
+set smartindent
+
+" Tab as spaces
+set expandtab
 
 " Use vim settings rather than vi settings
 set nocompatible
@@ -17,9 +30,6 @@ syntax enable
 set background=light
 colorscheme solarized
 
-" Turn on file type detection
-filetype plugin indent on
-
 " Show absolute line numbers
 set number
 
@@ -28,6 +38,9 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Turn on spellcheck for gitcommit
 autocmd FileType gitcommit setlocal spell
+
+" Enable specific settings to Python files
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 
 " Disable auto install for go plugin
 let g:go_disable_autoinstall = 0
