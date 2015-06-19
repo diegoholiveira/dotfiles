@@ -66,7 +66,6 @@ export PROMPT_COMMAND=__prompt_command
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="4;33"
 export CLICOLOR="auto"
-export VIM_APP_DIR="/usr/local/Cellar/macvim/7.4-73_1"
 
 
 # ----------------------------------------------------------------------------------------
@@ -79,16 +78,12 @@ if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
 fi
 
+# load local variables
+if [ -f ~/.variables ]; then
+  source ~/.variables
+fi
+
 # load local aliases
 if [ -f ~/.aliases ]; then
     source ~/.aliases
 fi
-
-
-# ----------------------------------------------------------------------------------------
-#
-# Usefull aliases
-#
-# ----------------------------------------------------------------------------------------
-alias mvim="~/dotfiles/bin/mvim"
-
