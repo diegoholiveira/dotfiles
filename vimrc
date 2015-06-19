@@ -42,12 +42,5 @@ autocmd FileType gitcommit setlocal spell
 " Enable specific settings to Python files
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 
-" Disable auto install for go plugin
-let g:go_disable_autoinstall = 0
-
-" Remap the leader key
-let mapleader = ","
-
 " UTF-8 Everywhere
 set encoding=utf-8
-
