@@ -79,11 +79,6 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 # load local aliases
-if [ -f ~/.variables ]; then
-    source ~/.variables
-fi
-
-# load local aliases
 if [ -f ~/.aliases ]; then
-    source ~/.aliases
+    source ~/.local_profile
 fi

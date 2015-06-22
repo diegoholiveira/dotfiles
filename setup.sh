@@ -59,7 +59,7 @@ fi
 # ----------------------------------------------------------------------------
 
 DOTFILES_DIR=~/dotfiles
-DOTFILES="bashrc bash_profile gitconfig gitignore vimrc gvimrc"
+DOTFILES="bash_profile gitconfig gitignore vimrc"
 
 echo "Installing dotfiles..."
 for file in $DOTFILES; do
@@ -74,6 +74,7 @@ done
 
 # Remove the older vim folder
 rm -rf ~/.vim
+
 # creating an alias to my vim files
 ln -s $DOTFILES_DIR/vim ~/.vim
 
@@ -85,4 +86,3 @@ fi
 
 echo ""
 echo "Please, restart your terminal..."
-
