@@ -11,8 +11,11 @@ filetype plugin indent on
 " Enable smart indent
 set smartindent
 
-" Tab as spaces
+" Configure the default behavior for
+" indent (global setup)
 set expandtab
+set shiftwidth=4
+set softtabstop=4
 
 " Use vim settings rather than vi settings
 set nocompatible
@@ -40,7 +43,8 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
 
 " Enable specific settings to Python files
-autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
 
 " UTF-8 Everywhere
 set encoding=utf-8
+

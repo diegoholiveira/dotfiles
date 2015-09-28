@@ -55,6 +55,11 @@ function mitsuhikos_virtualenv() {
   fi
 }
 
+# get the time elapsed to request an url
+function perf {
+  curl -I -s -w "Duration: %{time_total}ms\n" "$1"
+}
+
 # ----------------------------------------------------------------------------------------
 #
 # Setup environment varibles
