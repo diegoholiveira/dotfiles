@@ -55,23 +55,21 @@ function mitsuhikos_virtualenv() {
   fi
 }
 
-# get the time elapsed to request an url
-function perf {
-  curl -I -s -w "Duration: %{time_total}ms\n" "$1"
-}
 
 # ----------------------------------------------------------------------------------------
 #
 # Setup environment varibles
 #
 # ----------------------------------------------------------------------------------------
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 export EDITOR=vim
 export GIT_EDITOR=vim
 export PROMPT_COMMAND=__prompt_command
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="4;33"
 export CLICOLOR="auto"
-
+export GO15VENDOREXPERIMENT=1
 
 # ----------------------------------------------------------------------------------------
 #

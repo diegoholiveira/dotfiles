@@ -1,3 +1,14 @@
+" Use vim settings rather than vi settings
+set nocompatible
+
+" Configure an useful status line
+set statusline=%02n:%<%f\ %y 	" Display the buffer number with the file name
+set statusline+=%=		" Switch to the right side
+set statusline+=%(%l,%c%)	" line, character
+
+" Always display the status line
+set laststatus=2
+
 " Disable filetype
 filetype off
 
@@ -16,9 +27,6 @@ set smartindent
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-
-" Use vim settings rather than vi settings
-set nocompatible
 
 " Set 256 colors mode
 set t_Co=256
@@ -42,9 +50,21 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 " Turn on spellcheck for gitcommit
 autocmd FileType gitcommit setlocal spell
 
-" Enable specific settings to Python files
+" Enable specific settings to YAML files
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
 
 " UTF-8 Everywhere
 set encoding=utf-8
+
+" Disable fold (this is a very annoying thing!)
+set nofoldenable
+
+" Recommended settings for syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
