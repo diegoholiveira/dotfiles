@@ -68,3 +68,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" Configure CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*.pyc
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|venv)$'
+
