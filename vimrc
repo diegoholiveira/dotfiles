@@ -53,6 +53,9 @@ autocmd FileType gitcommit setlocal spell
 " Enable specific settings to YAML files
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
 
+" Make crontab work like a charm with Vim
+autocmd filetype crontab setlocal nobackup nowritebackup
+
 " UTF-8 Everywhere
 set encoding=utf-8
 
