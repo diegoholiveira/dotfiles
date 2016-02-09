@@ -25,3 +25,6 @@ git clone git://github.com/airblade/vim-gitgutter.git ~/.vim/bundle/vim-gitgutte
 # Install CtrlP
 git clone git@github.com:kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 
+# Install support for RustLang
+git clone --depth=1 https://github.com/rust-lang/rust.vim.git ~/.vim/bundle/rust.vim
+
