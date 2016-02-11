@@ -24,7 +24,8 @@ brew install git git-flow
 #
 # ----------------------------------------------------------------------------
 brew install python
-
+# Update pip and setuptools
+pip install --upgrade pip setuptools
 
 # ----------------------------------------------------------------------------
 #
@@ -40,6 +41,14 @@ brew install macvim --env-std --override-system-vim -—python
 #
 # ----------------------------------------------------------------------------
 brew install vcprompt
+
+
+# ----------------------------------------------------------------------------
+#
+# Install drafter (To assist in API Blueprint files)
+#
+# ----------------------------------------------------------------------------
+brew install --HEAD https://raw.github.com/apiaryio/drafter/master/tools/homebrew/drafter.rb
 
 
 # ----------------------------------------------------------------------------
