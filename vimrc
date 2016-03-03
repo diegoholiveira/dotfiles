@@ -38,7 +38,7 @@ set hidden
 syntax enable
 
 " Enable solarized color scheme
-set background=light
+set background=dark
 colorscheme solarized
 
 " Show absolute line numbers
