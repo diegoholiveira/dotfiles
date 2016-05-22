@@ -50,6 +50,9 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 " Turn on spellcheck for gitcommit
 autocmd FileType gitcommit setlocal spell
 
+" Enable specific settings to bash files
+autocmd FileType sh setlocal shiftwidth=2 softtabstop=2
+
 " Enable specific settings to YAML files
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
 
