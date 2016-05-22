@@ -61,34 +61,17 @@ if [ ! -d ~/dotfiles ]; then
    git clone https://github.com/diegoholiveira/dotfiles.git
 fi
 
-# ----------------------------------------------------------------------------
-#
-# Install my dotfiles (using symlinks)
-#
-# ----------------------------------------------------------------------------
-DOTFILES_DIR=~/dotfiles
-DOTFILES="bash_profile gitconfig gitignore vimrc gvimrc"
-
-echo "Installing dotfiles..."
-for file in $DOTFILES; do
-    if [ -f ~/".$file" ]; then
-        echo "    Removing the old symlink to .$file in home directory."
-        rm -rf ~/".$file"
-    fi
-
-    echo "    Creating symlink to .$file in home directory."
-    ln -s $DOTFILES_DIR/$file ~/".$file"
-done
-
 if [ ! -f ~/.git-completion.bash ]; then
     echo ""
     echo "Setting up git autocomplete..."
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash &> /dev/null
 fi
 
-# Setup vim
-source $DOTFILES_DIR/configure_vim.sh
+# Setup dotfile
+. $DOTFILES_DIR/configure_links.sh
 
-echo ""
-echo "Please, restart your terminal..."
+# Setup vim
+. $DOTFILES_DIR/configure_vim.sh
+
+. ~/.bash_profile
 
