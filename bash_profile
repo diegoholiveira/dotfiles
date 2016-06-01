@@ -76,11 +76,11 @@ export GO15VENDOREXPERIMENT=1
 # ----------------------------------------------------------------------------------------
 # load the git completion to allow git auto complete
 if [ -f ~/.git-completion.bash ]; then
-    source ~/.git-completion.bash
+    . ~/.git-completion.bash
 fi
 
 # load local aliases
 if [ -f ~/.local_profile ]; then
-    source ~/.local_profile
+    . ~/.local_profile
 fi
 
