@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+# vi: set ft=sh :
 # ----------------------------------------------------------------------------------------
 #
 # Functions
@@ -68,6 +70,7 @@ export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="4;33"
 export CLICOLOR="auto"
 export GO15VENDOREXPERIMENT=1
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # ----------------------------------------------------------------------------------------
 #
