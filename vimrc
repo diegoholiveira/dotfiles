@@ -56,6 +56,9 @@ autocmd FileType sh setlocal shiftwidth=2 softtabstop=2
 " Enable specific settings to YAML files
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
 
+" Enable specific settings to YAML files
+autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2
+
 " Make crontab work like a charm with Vim
 autocmd filetype crontab setlocal nobackup nowritebackup
 
