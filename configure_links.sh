@@ -6,7 +6,7 @@
 #
 # ----------------------------------------------------------------------------
 DOTFILES_DIR=~/dotfiles
-DOTFILES="bash_profile gitconfig gitignore vimrc gvimrc"
+DOTFILES="bash_profile gitconfig gitignore vimrc gvimrc tmux.conf"
 
 echo "Installing dotfiles..."
 for file in $DOTFILES; do
