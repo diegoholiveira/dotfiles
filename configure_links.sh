@@ -10,12 +10,12 @@ DOTFILES="bash_profile gitconfig gitignore vimrc gvimrc"
 
 echo "Installing dotfiles..."
 for file in $DOTFILES; do
-    if [ -f ~/".$file" ]; then
-        echo "    Removing the old symlink to .$file in home directory."
-        rm -rf ~/".$file"
-    fi
+  if [ -f ~/".$file" ]; then
+    echo "    Removing the old symlink to .$file in home directory."
+    rm -rf ~/".$file"
+  fi
 
-    echo "    Creating symlink to .$file in home directory."
-    ln -s $DOTFILES_DIR/$file ~/".$file"
+  echo "    Creating symlink to .$file in home directory."
+  ln -s $DOTFILES_DIR/$file ~/".$file"
 done
 

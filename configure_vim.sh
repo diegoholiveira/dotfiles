@@ -28,6 +28,3 @@ git clone git://github.com/airblade/vim-gitgutter.git ~/.vim/bundle/vim-gitgutte
 # Install CtrlP
 git clone git://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 
-# Install support for API Blueprint format
-git clone git://github.com/kylef/apiblueprint.vim.git ~/.vim/bundle/apiblueprint.vim
-

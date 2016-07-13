@@ -27,10 +27,7 @@
 [color "sh"]
     branch = yellow
 [alias]
-    hist = log --pretty=format:\"%C(green)%h%Creset %C(black)%cr%Creset %s %C(auto)%d%Creset %C(blue)%an%Creset\"
-    tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
     amend = commit --amend -C HEAD
-    latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
     undo = reset --soft HEAD~1
 [push]
     default = tracking

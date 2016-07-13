@@ -1,3 +1,6 @@
+# -*- mode: sh -*-
+# vi: set ft=sh :
+
 # ----------------------------------------------------------------------------------------
 #
 # Functions
@@ -10,6 +13,7 @@ function __prompt_command() {
 
   # ANSI color code
   local Color_Off="\[\033[0m\]"
+
   # regular colors
   local Red="\[\033[0;31m\]"
   local Green="\[\033[0;32m\]"
@@ -22,19 +26,19 @@ function __prompt_command() {
   PS1="$Green\u$Color_Off at $Purple\h$Color_Off in $Blue\w$Color_Off"
 
   if [ "$VIRTUALENV" != "" ]; then
-      PS1+=" working on $Red$VIRTUALENV$Color_Off"
+    PS1+=" working on $Red$VIRTUALENV$Color_Off"
   fi
 
   if [ "$VC_INFO" != "" ]; then
-      PS1+=" $VC_INFO"
+    PS1+=" $VC_INFO"
   fi
 
   PS1+="\n$Blue\t$Color_Off"
 
   if [ $EXIT -eq 0 ]; then
-      PS1+=" $Green[✔]$Color_Off";
+    PS1+=" $Green[✔]$Color_Off";
   else
-      PS1+=" $Red[✘]$Color_Off";
+    PS1+=" $Red[✘]$Color_Off";
   fi
 
   PS1+=" \$: "
@@ -49,7 +53,7 @@ function mitsuhikos_virtualenv() {
       folder=`dirname "${VIRTUAL_ENV}"`
       ENV_NAME=`basename "$folder"`
     fi
-  echo -n $ENV_NAME
+    echo -n $ENV_NAME
   fi
 }
 
@@ -69,6 +73,15 @@ export GREP_COLOR="4;33"
 export CLICOLOR="auto"
 export GO15VENDOREXPERIMENT=1
 
+
+# ----------------------------------------------------------------------------------------
+#
+# Aliases
+#
+# ----------------------------------------------------------------------------------------
+alias git-branch-cleanup="git branch | grep -v \"master\" | xargs git branch -D"
+
+
 # ----------------------------------------------------------------------------------------
 #
 # External scripts
@@ -76,11 +89,11 @@ export GO15VENDOREXPERIMENT=1
 # ----------------------------------------------------------------------------------------
 # load the git completion to allow git auto complete
 if [ -f ~/.git-completion.bash ]; then
-    . ~/.git-completion.bash
+  . ~/.git-completion.bash
 fi
 
 # load local aliases
 if [ -f ~/.local_profile ]; then
-    . ~/.local_profile
+  . ~/.local_profile
 fi
 
