@@ -10,6 +10,9 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 # Install support for EditorConfig
 git clone git://github.com/editorconfig/editorconfig-vim.git ~/.vim/bundle/editorconfig-vim
 
+# Install support for Rust
+git clone git://github.com/rust-lang/rust.vim.git ~/.vim/bundle/rust.vim
+
 # Install support for GoLang
 git clone git://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
 
