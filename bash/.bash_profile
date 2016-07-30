@@ -1,9 +1,7 @@
 # -*- mode: sh -*-
 # vi: set ft=sh :
 # ----------------------------------------------------------------------------------------
-#
 # Functions
-#
 # ----------------------------------------------------------------------------------------
 # Source: http://stackoverflow.com/questions/16715103/bash-prompt-with-last-exit-code
 function __prompt_command() {
@@ -58,10 +56,9 @@ function mitsuhikos_virtualenv() {
 
 
 # ----------------------------------------------------------------------------------------
-#
 # Setup environment varibles
-#
 # ----------------------------------------------------------------------------------------
+export PATH=/usr/local/bin:$PATH
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR=vim
@@ -74,26 +71,34 @@ export GO15VENDOREXPERIMENT=1
 if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
+export PYENV_ROOT=/usr/local/var/pyenv
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
 
 # ----------------------------------------------------------------------------------------
-#
 # Aliases
-#
 # ----------------------------------------------------------------------------------------
 alias git-branch-cleanup="git branch | grep -v \"master\" | xargs git branch -D"
 
 
 # ----------------------------------------------------------------------------------------
-#
 # External scripts
-#
 # ----------------------------------------------------------------------------------------
-# load the git completion to allow git auto complete
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
+if which pyenv > /dev/null; then
+  eval "$(pyenv init -)";
 fi
 
-# load local aliases
+if which pyenv-virtualenv > /dev/null; then
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+BREW_PREFIX=$(brew --prefix)
+if [ -f $BREW_PREFIX/etc/bash_completion ]; then
+  . $BREW_PREFIX/etc/bash_completion
+  . $BREW_PREFIX/etc/bash_completion.d/git-completion.bash
+  . $BREW_PREFIX/etc/bash_completion.d/tmux
+fi
+
 if [ -f ~/.local_profile ]; then
   . ~/.local_profile
 fi
