@@ -7,7 +7,7 @@ if [ ! -f /usr/local/bin/brew ]; then
 fi
 
 # Install basic packages
-PACKAGES="bash bash-completion git python pyenv pyenv-virtualenv tmux vcprompt"
+PACKAGES="bash bash-completion git python pyenv pyenv-virtualenv tmux stow vcprompt"
 for PKG in $PACKAGES; do
   if brew list -1 | grep -q "^${PKG}\$"; then
     brew upgrade $PKG
