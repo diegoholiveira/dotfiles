@@ -8,6 +8,7 @@ fi
 
 # Install basic packages
 PACKAGES="bash bash-completion git python pyenv pyenv-virtualenv tmux vcprompt"
+PACKAGES="$PACKAGES ssh-copy-id tree"
 for PKG in $PACKAGES; do
   if brew list -1 | grep -q "^${PKG}\$"; then
     brew upgrade $PKG
@@ -41,10 +42,6 @@ pip install --upgrade pip setuptools
 # ----------------------------------------------------------------------------
 if [ ! -d $DOTFILES_DIR ]; then
    git clone https://github.com/diegoholiveira/dotfiles.git $DOTFILES_DIR
-fi
-
-if [ ! -f ~/.git-completion.bash ]; then
-    curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash &> /dev/null
 fi
 
 cd $DOTFILES_DIR
