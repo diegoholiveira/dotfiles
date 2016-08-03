@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 DOTFILES_DIR=~/dotfiles
 
 # Install homebrew
@@ -45,16 +45,17 @@ if [ ! -d $DOTFILES_DIR ]; then
 fi
 
 cd $DOTFILES_DIR
-stow bash
-stow git
-stow tmux
-stow vim
+for APP in "bash git tmux vim"; do
+  stow $APP
+done
 
 # Setup vim
 . $DOTFILES_DIR/vim_setup.sh
 
-# Change to the new shell
-chsh -s /usr/local/bin/bash
+# change to the new shell
+if [ "$SHELL" == "/bin/bash" ]; then
+  chsh -s /usr/local/bin/bash
+fi
 
 . ~/.bash_profile
 

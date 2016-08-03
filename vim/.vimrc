@@ -27,6 +27,7 @@ set smartindent
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+set tabstop=4
 
 " Set 256 colors mode
 set t_Co=256
@@ -51,13 +52,13 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
 
 " Enable specific settings to bash files
-autocmd FileType sh setlocal shiftwidth=2 softtabstop=2
+autocmd FileType sh setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " Enable specific settings to YAML files
-autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " Enable specific settings to YAML files
-autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " Make crontab work like a charm with Vim
 autocmd filetype crontab setlocal nobackup nowritebackup
