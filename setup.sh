@@ -33,7 +33,6 @@ if [ $? -ne 0 ]; then
   sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
 fi
 
-
 # Upgrade pip and setuptools
 pip install --upgrade pip setuptools
 
