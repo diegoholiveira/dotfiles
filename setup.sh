@@ -49,7 +49,7 @@ for APP in "bash git tmux vim"; do
 done
 
 # Setup vim
-. $DOTFILES_DIR/vim_setup.sh
+. $DOTFILES_DIR/setup_vim.sh
 
 # change to the new shell
 if [ "$SHELL" == "/bin/bash" ]; then
