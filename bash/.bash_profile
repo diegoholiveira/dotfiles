@@ -76,22 +76,8 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 
 # ----------------------------------------------------------------------------------------
-# Aliases
-# ----------------------------------------------------------------------------------------
-alias git-branch-cleanup="git branch | grep -v \"master\" | xargs git branch -D"
-
-
-# ----------------------------------------------------------------------------------------
 # External scripts
 # ----------------------------------------------------------------------------------------
-if which pyenv > /dev/null; then
-  eval "$(pyenv init -)";
-fi
-
-if which pyenv-virtualenv > /dev/null; then
-  eval "$(pyenv virtualenv-init -)"
-fi
-
 BREW_PREFIX=$(brew --prefix)
 if [ -f $BREW_PREFIX/etc/bash_completion ]; then
   . $BREW_PREFIX/etc/bash_completion
@@ -99,7 +85,5 @@ if [ -f $BREW_PREFIX/etc/bash_completion ]; then
   . $BREW_PREFIX/etc/bash_completion.d/tmux
 fi
 
-if [ -f ~/.local_profile ]; then
-  . ~/.local_profile
-fi
+. ~/dotfiles/bash/helpers.sh
 

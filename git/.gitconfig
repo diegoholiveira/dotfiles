@@ -27,6 +27,9 @@
 [alias]
     amend = commit --amend -C HEAD
     undo = reset --soft HEAD~1
+	branch-clean = "!f() { \
+		git branch | grep -v \"master\" | xargs git branch -D; \
+		}; f"
 [push]
     default = tracking
 
