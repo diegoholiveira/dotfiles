@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 # Environment variables
-ANSIBLE_DIR="/usr/local/etc/ansible"
-ANSIBLE_HOSTS="${ANSIBLE_DIR}/hosts"
 BREW_PKGS="ansible bash bash-completation git python pyenv pyenv-virtualenv"
 BREW_PKGS="${BREW_PKGS} tree tmux stow vcprompt ssh-copy-id rust scala sbt"
 BREW_PKGS="${BREW_PKGS} node npm php70 composer"
@@ -23,9 +21,6 @@ if [ -d ~/.vim ]; then
   # Remove the older vim folder
   rm -rf ~/.vim
 fi
-
-# Create a configuration folder for ansible
-mkdir -p ${ANSIBLE_DIR}
 
 # Create vim folders to install plugins
 mkdir -p ~/.vim/{autoload,bundle}
@@ -135,12 +130,6 @@ fi
 
 # Upgrade pip and setuptools
 pip install --upgrade pip setuptools
-
-# Setup ansible hosts
-{
-  echo "[localhost]"
-  echo "127.0.0.1"
-} > ${ANSIBLE_HOSTS}
 
 # Generates a ssh key for my user
 if [ -f ~/.ssh/id_rsa ]; then
