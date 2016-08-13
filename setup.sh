@@ -4,7 +4,7 @@
 BREW_PKGS="ansible bash bash-completation git python pyenv pyenv-virtualenv"
 BREW_PKGS="${BREW_PKGS} tree tmux stow vcprompt ssh-copy-id rust scala sbt"
 BREW_PKGS="${BREW_PKGS} node npm php70 composer"
-CASK_APPS="iterm2 firefox spotify phpstorm pycharm send-to-kindle unrarx"
+CASK_APPS="iterm2 firefox spotify phpstorm pycharm send-to-kindle unrarx flux"
 CASK_APPS="${CASK_APPS} docker vagrant virtualbox asepsis sequel-pro"
 DOTFILES_DIR=~/dotfiles
 NODE_GLOBAL_PKGS="nvm eslint eslint-config-airbnb eslint-plugin-jsx-a11y"
