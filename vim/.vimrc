@@ -44,14 +44,17 @@ set number
 
 " Enable highlight the matching [{()}]
 set showmatch
-
+" }}}
+" Status line {{{
 " Always display the status line
 set laststatus=2
 
-" Configure an useful status line
-set statusline=%02n:%<%f\ %y	" Display the buffer number with the file name
-set statusline+=%=				" Switch to the right side
-set statusline+=%(%l,%c%)		" line, character
+" Display the buffer number with the file name
+set statusline=%02n:%<%f\ %y
+" Switch to the right side
+set statusline+=%=
+" line, character
+set statusline+=%(%l,%c%)
 " }}}
 " Editor settings {{{
 " Defines default spell language
@@ -74,14 +77,6 @@ set expandtab
 set hidden
 " }}}
 " Navigation {{{
-" move to beginning/end of line
-nnoremap B ^
-nnoremap E $
-
-" $/^ doesn't do anything
-nnoremap $ <nop>
-nnoremap ^ <nop>
-
 " Create splits will be more easily
 set splitbelow
 set splitright
@@ -91,7 +86,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
 " }}}
 " Backup and swap {{{
 " Disable auto backup and swap file
@@ -100,30 +94,20 @@ set noswapfile
 " }}}
 " AutoGroups {{{
 augroup configgroup
-	autocmd!
-
-	autocmd vimenter * highlight clear SignColumn
-
-	" Remove extra spaces
-	autocmd bufwritepre *.php,*.py,*.js,*.css,*.scala,*.rs,*.md :call <SID>StripTrailingWhitespaces()
-
-	" Let vim knows that Vagrant files are ruby!
-	autocmd bufenter Vagrantfile setlocal filetype=ruby
-
-	" Enable specific settings to bash files
-	autocmd filetype sh setlocal tabstop=2 softtabstop=2
-
-	" Enable specific settings to yaml files
-	autocmd filetype yaml setlocal tabstop=2 softtabstop=2
-
-	" Enable specific settings to ruby files
-	autocmd filetype ruby setlocal tabstop=2 softtabstop=2
-
-	" Enable specific settings to javascript files
-	autocmd filetype javascript setlocal tabstop=2 softtabstop=2
-
-	" Use actual tab chars in Makefiles.
-	autocmd filetype make setlocal noexpandtab
+    autocmd!
+    autocmd vimenter * highlight clear SignColumn
+    " Let vim knows that Vagrant files are ruby!
+    autocmd bufenter Vagrantfile setlocal filetype=ruby
+    " Enable specific settings to bash files
+    autocmd filetype sh setlocal tabstop=2 softtabstop=2
+    " Enable specific settings to yaml files
+    autocmd filetype yaml setlocal tabstop=2 softtabstop=2
+    " Enable specific settings to ruby files
+    autocmd filetype ruby setlocal tabstop=2 softtabstop=2
+    " Enable specific settings to javascript files
+    autocmd filetype javascript setlocal tabstop=2 softtabstop=2
+    " Use actual tab chars in Makefiles.
+    autocmd filetype make setlocal noexpandtab
 augroup END
 " }}}
 " Syntastic {{{
@@ -132,6 +116,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_php_checkers = ['php', 'phpcs']
+let g:syntastic_php_phpcs_args = "--standard=PSR2"
 let g:syntastic_error_symbol = "\u274C"
 let g:syntastic_warning_symbol = "\u26A0"
 let g:syntastic_style_error_symbol = "\u2049"
@@ -164,17 +150,3 @@ nnoremap <Leader>o :CtrlP<CR>
 " Checks the spell with F7
 nnoremap <F7> z=
 " }}}
-" Custom functions {{{
-" strips trailing whitespace at the end of files. this
-" is called on buffer write in the autogroup above.
-function! <SID>StripTrailingWhitespaces()
-    " save last search & cursor position
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    let @/=_s
-    call cursor(l, c)
-endfunction
-" }}}
-
