@@ -110,12 +110,6 @@ augroup configgroup
 	" Let vim knows that Vagrant files are ruby!
 	autocmd bufenter Vagrantfile setlocal filetype=ruby
 
-	" Turn on spellcheck for markdown files
-	autocmd filetype markdown setlocal spell
-
-	" Turn on spellcheck for gitcommit
-	autocmd filetype gitcommit setlocal spell
-
 	" Enable specific settings to bash files
 	autocmd filetype sh setlocal tabstop=2 softtabstop=2
 
