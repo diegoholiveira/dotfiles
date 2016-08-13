@@ -1,5 +1,3 @@
-# -*- mode: sh -*-
-# vi: set ft=sh :
 # ----------------------------------------------------------------------------------------
 # Functions
 # ----------------------------------------------------------------------------------------
@@ -56,18 +54,18 @@ function mitsuhikos_virtualenv() {
 
 
 # ----------------------------------------------------------------------------------------
-# Setup environment varibles
+# Setup environment variables
 # ----------------------------------------------------------------------------------------
 export PATH=/usr/local/bin:$PATH
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export TERM=screen-256color-bce
 export EDITOR=vim
 export GIT_EDITOR=vim
 export PROMPT_COMMAND=__prompt_command
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="4;33"
 export CLICOLOR="auto"
-export GO15VENDOREXPERIMENT=1
 if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
