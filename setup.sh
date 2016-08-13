@@ -102,7 +102,7 @@ for APP in $STOW_FILES; do
 done
 
 # Import iTerm2 configs
-defaults export com.googlecode.iterm2 ${DOTFILES_DIR}/iterm2.plist
+defaults import com.googlecode.iterm2 ${DOTFILES_DIR}/iterm2.plist
 
 # Add the new shell to the list of allowed shells
 grep -q "/usr/local/bin/bash" /etc/shells
