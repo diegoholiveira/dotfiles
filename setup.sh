@@ -7,7 +7,7 @@ BREW_PKGS="ansible bash bash-completation git python pyenv pyenv-virtualenv"
 BREW_PKGS="${BREW_PKGS} tree tmux stow vcprompt ssh-copy-id rust scala sbt"
 BREW_PKGS="${BREW_PKGS} node npm"
 CASK_APPS="iterm2 firefox spotify phpstorm pycharm send-to-kindle"
-CASK_APPS="${CASK_APPS} docker vagrant virtualbox asepsis"
+CASK_APPS="${CASK_APPS} docker vagrant virtualbox asepsis sequel-pro"
 DOTFILES_DIR=~/dotfiles
 NODE_GLOBAL_PKGS="nvm eslint eslint-config-airbnb eslint-plugin-jsx-a11y"
 NODE_GLOBAL_PKGS="${NODE_GLOBAL_PKGS} eslint-plugin-react eslint-plugin-import"
@@ -28,7 +28,13 @@ mkdir -p ${ANSIBLE_DIR}
 # Create vim folders to install plugins
 mkdir -p ~/.vim/{autoload,bundle}
 
-# Install homebrew
+# Install Xcode command line tools
+xcode-select -p &> /dev/null
+if [ ! $? ]; then
+	xcode-select --install
+fi
+
+# Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
