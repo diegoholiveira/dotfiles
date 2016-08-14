@@ -52,7 +52,7 @@ done
 # Install Brew packages
 for PKG in $BREW_PKGS; do
   if brew list -1 | grep -q "^${PKG}\$"; then
-    brew update $PKG
+    brew upgrade $PKG
   else
     brew install $PKG
   fi
@@ -61,7 +61,7 @@ done
 # Replace the system vim for a better vim
 if brew list -1 | grep -q "^macvim\$"; then
   brew unlinkapps macvim
-  brew update macvim --with-override-system-vim
+  brew upgrade macvim --with-override-system-vim
 else
   brew install macvim --with-override-system-vim
 fi
