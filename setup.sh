@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Environment variables
-BREW_PKGS="ansible bash bash-completation git python pyenv pyenv-virtualenv"
+BREW_PKGS="ansible bash bash-completion git python pyenv pyenv-virtualenv"
 BREW_PKGS="${BREW_PKGS} tree tmux stow vcprompt ssh-copy-id rust scala sbt"
 BREW_PKGS="${BREW_PKGS} node npm php70 composer"
 CASK_APPS="iterm2 firefox spotify java send-to-kindle unrarx flux"
