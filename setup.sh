@@ -108,7 +108,10 @@ fi
 
 # Install global packages using NPM
 for PKG in $NODE_GLOBAL_PKGS; do
-  npm install -g ${PKG}
+  npm -g ls ${PKG} > /dev/null 2>&1
+  if [ "$?" == "1" ]; then
+    npm -g install ${PKG}
+  fi
 done
 
 # Install php code sniffer
