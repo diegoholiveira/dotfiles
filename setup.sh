@@ -136,4 +136,6 @@ echo ""
 echo "To secure your ssh key, please add a passphrase to it using the command above:"
 echo "    ssh-keygen -p -f ~/.ssh/id_rsa"
 echo ""
-
+echo "Before start using the computer, please restart the SO to reload all changes"
+echo "made by this script!"
+echo ""
