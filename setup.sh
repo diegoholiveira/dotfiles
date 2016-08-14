@@ -40,8 +40,7 @@ else
 fi
 
 # Tap homebrew/php
-brew tap | grep -q "homebrew/php"
-if [ ! $? ]; then
+if ! brew tap | grep -q "homebrew/php"; then
   brew tap homebrew/php
 fi
 
