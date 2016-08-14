@@ -79,11 +79,6 @@ for PLUGIN in $VIM_PLUGINS; do
 done
 cd -
 
-# Install global packages using NPM
-for PKG in $NODE_GLOBAL_PKGS; do
-  npm install -g ${PKG}
-done
-
 # Clone the repository into the dotfiles dir
 if [ ! -d $DOTFILES_DIR ]; then
   git clone https://github.com/diegoholiveira/dotfiles.git $DOTFILES_DIR
@@ -111,6 +106,11 @@ fi
 # Start using the new bash profile
 . ~/.bash_profile
 
+# Install global packages using NPM
+for PKG in $NODE_GLOBAL_PKGS; do
+  npm install -g ${PKG}
+done
+
 # Install php code sniffer
 if [ ! -d $PHPCS_DIR ]; then
   composer global require "squizlabs/php_codesniffer=@stable"
@@ -125,7 +125,7 @@ fi
 pip install --upgrade pip setuptools
 
 # Generates a ssh key for my user
-if [ -f ~/.ssh/id_rsa ]; then
+if [ ! -f ~/.ssh/id_rsa ]; then
   ssh-keygen -t rsa -b 4096 -C "contato@diegoholiveira.com" -N "" -f ~/.ssh/id_rsa -q
 fi
 
