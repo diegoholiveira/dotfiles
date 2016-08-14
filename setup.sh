@@ -80,7 +80,7 @@ done
 cd -
 
 # Install global packages using NPM
-for PKG in NODE_GLOBAL_PKGS; do
+for PKG in $NODE_GLOBAL_PKGS; do
   npm install -g ${PKG}
 done
 
