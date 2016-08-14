@@ -83,5 +83,7 @@ if [ -f $BREW_PREFIX/etc/bash_completion ]; then
   . $BREW_PREFIX/etc/bash_completion.d/tmux
 fi
 
-. ~/dotfiles/bash/helpers.sh
+if [ -e ~/.helpers.sh ]; then
+  . ~/.helpers.sh
+fi
 
