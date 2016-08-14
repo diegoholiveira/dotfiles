@@ -33,10 +33,10 @@ else
 fi
 
 # Install Cask
-if brew tap | grep -q "caskroom/cask"; then
-  brew cask update
-else
+if ! brew tap | grep -q "caskroom/cask"; then
   brew tap caskroom/cask
+else
+  brew cask update
 fi
 
 # Tap homebrew/php
