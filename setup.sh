@@ -25,12 +25,6 @@ fi
 # Create vim folders to install plugins
 mkdir -p ~/.vim/{autoload,bundle}
 
-# Install Xcode command line tools
-xcode-select -p &> /dev/null
-if [ $? ]; then
-  xcode-select --install
-fi
-
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
