@@ -27,7 +27,7 @@ mkdir -p ~/.vim/{autoload,bundle}
 
 # Install Xcode command line tools
 xcode-select -p &> /dev/null
-if [ ! $? ]; then
+if [ $? ]; then
   xcode-select --install
 fi
 
