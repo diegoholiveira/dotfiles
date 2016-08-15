@@ -1,0 +1,5 @@
+# collection of useful aliases
+
+alias grep="grep --color"
+alias tailf="tail -f"
+

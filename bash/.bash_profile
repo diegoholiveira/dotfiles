@@ -79,11 +79,9 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 BREW_PREFIX=$(brew --prefix)
 if [ -f $BREW_PREFIX/etc/bash_completion ]; then
   . $BREW_PREFIX/etc/bash_completion
-  . $BREW_PREFIX/etc/bash_completion.d/git-completion.bash
-  . $BREW_PREFIX/etc/bash_completion.d/tmux
 fi
 
-if [ -e ~/.helpers.sh ]; then
-  . ~/.helpers.sh
+if [ -e ~/.aliases ]; then
+  . ~/.aliases
 fi
 
