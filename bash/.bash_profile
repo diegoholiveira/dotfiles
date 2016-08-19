@@ -81,6 +81,8 @@ if [ -f $BREW_PREFIX/etc/bash_completion ]; then
   . $BREW_PREFIX/etc/bash_completion
 fi
 
+eval "$(thefuck --alias)"
+
 if [ -e ~/.aliases ]; then
   . ~/.aliases
 fi
