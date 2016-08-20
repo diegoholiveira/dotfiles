@@ -16,7 +16,7 @@ function __prompt_command() {
   local Purple="\[\033[0;35m\]"
 
   VC_INFO=`vcprompt -f "[%n:%b]"`
-  VIRTUALENV=`mitsuhikos_virtualenv`
+  VIRTUALENV=`pyenv_virtualenv`
 
   PS1="$Green\u$Color_Off at $Purple\h$Color_Off in $Blue\w$Color_Off"
 
@@ -39,16 +39,9 @@ function __prompt_command() {
   PS1+=" \$: "
 }
 
-# source: https://github.com/mitsuhiko/dotfiles/blob/master/bash/bashrc#L54
-function mitsuhikos_virtualenv() {
-  if [ x$VIRTUAL_ENV != x ]; then
-    if [[ $VIRTUAL_ENV == *.virtualenvs/* ]]; then
-      ENV_NAME=`basename "${VIRTUAL_ENV}"`
-    else
-      folder=`dirname "${VIRTUAL_ENV}"`
-      ENV_NAME=`basename "$folder"`
-    fi
-    echo -n $ENV_NAME
+function pyenv_virtualenv() {
+  if [ x$PYENV_VERSION != x ]; then
+    echo -n $PYENV_VERSION
   fi
 }
 
@@ -81,6 +74,8 @@ if [ -f $BREW_PREFIX/etc/bash_completion ]; then
   . $BREW_PREFIX/etc/bash_completion
 fi
 
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 eval "$(thefuck --alias)"
 
 if [ -e ~/.aliases ]; then
