@@ -44,24 +44,36 @@ set number
 
 " Enable highlight the matching [{()}]
 set showmatch
+
+" Highlight search results in the editor
+set hlsearch
 " }}}
 " Status line {{{
 " Always display the status line
 set laststatus=2
-
-" Display the buffer number with the file name
-set statusline=%02n:%<%f\ %y
+" Clear the statusline
+set statusline=
+" Display the buffer number
+set statusline+=%02n
+" Display the file name
+set statusline+=\ File:
+set statusline+=\ %f
+" Display the file type
+set statusline+=\ [%{strlen(&filetype)?&filetype:'none'}
+" Display the file format
+set statusline +=\ %{strlen(&fileformat)?&fileformat:''}
+" Display the file encoding
+set statusline+=\ %{strlen(&fileencoding)?&fileencoding:&encoding}]
 " Switch to the right side
 set statusline+=%=
-" line, character
-set statusline+=%(%l,%c%)
+" Display the current line and total lines
+set statusline+=%l\ /\ %L
 " }}}
 " Editor settings {{{
 " Defines default spell language
 set spell spelllang=en_us
 
-" Allows vim to use special comments in the
-" files to define some configs
+" Allows vim to use special comments in the files to configure itself
 set modelines=1
 
 " Show existing tab as 4 spaces
@@ -70,11 +82,17 @@ set tabstop=4
 " Number of spaces when editing
 set softtabstop=4
 
+" Indents will have a width of 4
+set shiftwidth=4
+
 " On pressing tab, insert 4 spaces
 set expandtab
 
 " Make vim handle better with multiple buffers
 set hidden
+
+" Configure the behavior of the backspace in insert mode
+set backspace=indent,eol,start
 " }}}
 " Navigation {{{
 " Create splits will be more easily
@@ -92,21 +110,21 @@ nnoremap <C-H> <C-W><C-H>
 set nobackup
 set noswapfile
 " }}}
-" AutoGroups {{{
+" Autocmds {{{
 augroup configgroup
+    " Remove previous autocmds from this group (avoid execute it twice)
     autocmd!
-    autocmd vimenter * highlight clear SignColumn
+    " python template
+    autocmd bufnewfile *.py 0r ~/.vim/skeleton.py
+    " php template
+    autocmd bufnewfile *.php 0r ~/.vim/skeleton.php
+    " html template
+    autocmd bufnewfile *.html 0r ~/.vim/skeleton.html
     " Let vim knows that Vagrant files are ruby!
     autocmd bufenter Vagrantfile setlocal filetype=ruby
-    " Enable specific settings to bash files
-    autocmd filetype sh setlocal tabstop=2 softtabstop=2
-    " Enable specific settings to yaml files
-    autocmd filetype yaml setlocal tabstop=2 softtabstop=2
-    " Enable specific settings to ruby files
-    autocmd filetype ruby setlocal tabstop=2 softtabstop=2
-    " Enable specific settings to javascript files
-    autocmd filetype javascript setlocal tabstop=2 softtabstop=2
-    " Use actual tab chars in Makefiles.
+    " Use indent with size 2 for some files
+    autocmd filetype sh,yaml,ruby,javascript,html,css setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " Use a real tab char in Makefile
     autocmd filetype make setlocal noexpandtab
 augroup END
 " }}}
@@ -145,4 +163,10 @@ nnoremap <silent> <F7> z=
 
 " Execute Syntastic
 nnoremap <silent> <F5> :SyntasticCheck<CR>
+
+" Execute :CtrlPBuffer to quickly switch buffers
+nnoremap <silent> <F2> :CtrlPBuffer<CR>
+
+" Disable or enable the search highlighting
+noremap <silent> <C-F> :set hlsearch! hlsearch?<CR>
 " }}}

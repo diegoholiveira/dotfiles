@@ -12,14 +12,14 @@ NODE_GLOBAL_PKGS="${NODE_GLOBAL_PKGS} eslint-plugin-react eslint-plugin-import e
 PHPCS_DIR=~/.composer/vendor/squizlabs/php_codesniffer
 PHPCS_BIN="${PHPCS_DIR}/scripts/phpcs"
 STOW_FILES="bash git tmux vim eslint"
-VIM_PLUGINS="editorconfig/editorconfig-vim rust-lang/rust.vim pangloss/vim-javascript"
+VIM_PLUGINS="rust-lang/rust.vim pangloss/vim-javascript"
 VIM_PLUGINS="${VIM_PLUGINS} scrooloose/syntastic altercation/vim-colors-solarized"
 VIM_PLUGINS="${VIM_PLUGINS} airblade/vim-gitgutter kien/ctrlp.vim derekwyatt/vim-scala"
 
 # Clean old Vim files
 if [ -d ~/.vim ]; then
   # Remove the older vim folder
-  rm -rf ~/.vim
+  rm -rf ~/.vim/{autoload,bundle}
 fi
 
 # Create vim folders to install plugins
@@ -69,16 +69,6 @@ fi
 # Link macvim to the apps
 brew linkapps macvim
 
-# Install Pathogen to manage vim plugins
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-
-# Get my vim plugins
-cd ~/.vim/bundle
-for PLUGIN in $VIM_PLUGINS; do
-  git clone "git://github.com/${PLUGIN}.git"
-done
-cd -
-
 # Clone the repository into the dotfiles dir
 if [ ! -d $DOTFILES_DIR ]; then
   git clone https://github.com/diegoholiveira/dotfiles.git $DOTFILES_DIR
@@ -88,6 +78,16 @@ fi
 for APP in $STOW_FILES; do
   stow --dir=${DOTFILES_DIR} ${APP}
 done
+
+# Install Pathogen to manage vim plugins
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+# Get my vim plugins
+cd ~/.vim/bundle
+for PLUGIN in $VIM_PLUGINS; do
+  git clone "git://github.com/${PLUGIN}.git"
+done
+cd -
 
 # Import iTerm2 configs
 defaults import com.googlecode.iterm2 ${DOTFILES_DIR}/iterm2.plist

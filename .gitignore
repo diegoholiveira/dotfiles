@@ -1,1 +1,4 @@
-*.pyc
+# Ignore file files downloaded from internet
+vim/.vim/autoload
+vim/.vim/bundle
+
