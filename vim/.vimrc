@@ -111,13 +111,19 @@ augroup configgroup
 augroup END
 " }}}
 " Syntastic {{{
+" Disable the active mode (only call Syntastic when I want)
+let g:syntastic_mode_map = {'mode': 'passive',
+                            \ 'active_filetypes': [],
+                            \ 'passive_filetypes': []}
+
 " Keep the errors list updated with the checkers
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+" Setup javascript linter
 let g:syntastic_javascript_checkers = ['eslint']
+" Setup php linter and codesniffer
 let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_php_phpcs_args = "--standard=PSR2"
+" Replace default symbols
 let g:syntastic_error_symbol = "\u274C"
 let g:syntastic_warning_symbol = "\u26A0"
 let g:syntastic_style_error_symbol = "\u2049"
@@ -133,20 +139,10 @@ let g:ctrlp_working_path_mode = 0
 " Make CtrlP ignore some file and folders
 let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 " }}}
-" Leader shortcuts {{{
-" Makes space as the mapleader
-let mapleader = "\<Space>"
-
-" Executes SyntasticCheck with space + l
-nnoremap <Leader>l :SyntasticCheck<CR>
-
-" Opens the Syntastic errors list with space + e
-nnoremap <Leader>e :Errors<CR>
-
-" Open CtrlP with space + o
-nnoremap <Leader>o :CtrlP<CR>
-" }}}
-" Other shortcuts {{{
+" Shortcuts {{{
 " Checks the spell with F7
-nnoremap <F7> z=
+nnoremap <silent> <F7> z=
+
+" Execute Syntastic
+nnoremap <silent> <F5> :SyntasticCheck<CR>
 " }}}
