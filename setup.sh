@@ -3,7 +3,7 @@
 # Environment variables
 BREW_PKGS="ansible bash bash-completion git python pyenv pyenv-virtualenv"
 BREW_PKGS="${BREW_PKGS} tree tmux stow vcprompt ssh-copy-id rust scala sbt httpie"
-BREW_PKGS="${BREW_PKGS} node php70 composer thefuck"
+BREW_PKGS="${BREW_PKGS} node php70 php70-ast phan composer thefuck"
 CASK_APPS="iterm2 firefox spotify java send-to-kindle unrarx flux"
 CASK_APPS="${CASK_APPS} docker vagrant virtualbox sequel-pro sublime-text"
 DOTFILES_DIR=~/dotfiles
