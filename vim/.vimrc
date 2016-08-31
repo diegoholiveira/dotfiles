@@ -67,7 +67,7 @@ set statusline+=\ %{strlen(&fileencoding)?&fileencoding:&encoding}]
 " Switch to the right side
 set statusline+=%=
 " Display the current line and total lines
-set statusline+=%l\ /\ %L
+set statusline+=%l\ /\ %L\ \|\ %c
 " }}}
 " Editor settings {{{
 " Defines default spell language
@@ -93,6 +93,10 @@ set hidden
 
 " Configure the behavior of the backspace in insert mode
 set backspace=indent,eol,start
+
+" Mark the characters after 79 columns
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+match OverLength /\%>80v.\+/
 " }}}
 " Navigation {{{
 " Create splits will be more easily
