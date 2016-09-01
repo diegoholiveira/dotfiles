@@ -73,8 +73,8 @@ set statusline+=%l\ /\ %L\ \|\ %c
 " Defines default spell language
 set spell spelllang=en_us
 
-" Allows vim to use special comments in the files to configure itself
-set modelines=1
+" Enable modeline
+set modeline
 
 " Show existing tab as 4 spaces
 set tabstop=4
