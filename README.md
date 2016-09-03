@@ -15,7 +15,7 @@ Feel free to take a look :)
 
 When I need to start from scratch, I just run this script that install every thing to me:
 
-```curl -sS https://raw.githubusercontent.com/diegoholiveira/dotfiles/master/setup.sh | bash```
+```curl -sS https://raw.githubusercontent.com/diegoholiveira/dotfiles/master/setup | bash```
 
 **Important**: this script has one dependency that is required to run: Xcode must be installed
 because MacVim needs it to compile!

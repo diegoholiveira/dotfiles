@@ -1,20 +1,29 @@
 #!/usr/bin/env bash
-
-# Environment variables
-BREW_PKGS="ansible bash bash-completion git python pyenv pyenv-virtualenv"
-BREW_PKGS="${BREW_PKGS} tree tmux stow vcprompt ssh-copy-id rust scala sbt httpie"
-BREW_PKGS="${BREW_PKGS} node php70 php70-ast phan composer thefuck"
-CASK_APPS="iterm2 firefox spotify java send-to-kindle unrarx flux"
-CASK_APPS="${CASK_APPS} docker vagrant virtualbox sequel-pro sublime-text"
+# vim: ft=sh
 DOTFILES_DIR=~/dotfiles
-NODE_GLOBAL_PKGS="eslint eslint-plugin-jsx-a11y"
-NODE_GLOBAL_PKGS="${NODE_GLOBAL_PKGS} eslint-plugin-react eslint-plugin-import eslint-config-airbnb"
+NODE_PKGS="eslint eslint-plugin-jsx-a11y"
+NODE_PKGS="${NODE_PKGS} eslint-plugin-react "
+NODE_PKGS="${NODE_PKGS} eslint-plugin-import eslint-config-airbnb"
 PHPCS_DIR=~/.composer/vendor/squizlabs/php_codesniffer
 PHPCS_BIN="${PHPCS_DIR}/scripts/phpcs"
 STOW_FILES="bash git tmux vim eslint"
 VIM_PLUGINS="rust-lang/rust.vim pangloss/vim-javascript"
-VIM_PLUGINS="${VIM_PLUGINS} scrooloose/syntastic altercation/vim-colors-solarized"
-VIM_PLUGINS="${VIM_PLUGINS} airblade/vim-gitgutter kien/ctrlp.vim derekwyatt/vim-scala"
+VIM_PLUGINS="${VIM_PLUGINS} altercation/vim-colors-solarized"
+VIM_PLUGINS="${VIM_PLUGINS} airblade/vim-gitgutter kien/ctrlp.vim" 
+VIM_PLUGINS="${VIM_PLUGINS} scrooloose/syntasti cerekwyatt/vim-scala"
+
+# Define the platform
+if [[ "${OSTYPE}" == "linux-gnu" ]]; then
+  PLATFORM_SCRIPT="setup-fedora"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  PLATFORM_SCRIPT="setup-mac"
+else
+  echo "Platform not supported!"
+  exit 1
+fi
+
+# Prepare the platform
+curl -sS https://raw.githubusercontent.com/diegoholiveira/dotfiles/master/${PLATFORM_SCRIPT} | bash
 
 # Clean old Vim files
 if [ -d ~/.vim ]; then
@@ -24,50 +33,6 @@ fi
 
 # Create vim folders to install plugins
 mkdir -p ~/.vim/{autoload,bundle}
-
-# Install Homebrew
-if [ ! -f /usr/local/bin/brew ]; then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else
-  brew update
-fi
-
-# Install Cask
-if ! brew tap | grep -q "caskroom/cask"; then
-  brew tap caskroom/cask
-else
-  brew cask update
-fi
-
-# Tap homebrew/php
-if ! brew tap | grep -q "homebrew/php"; then
-  brew tap homebrew/php
-fi
-
-# Install Cask apps
-for APP in $CASK_APPS; do
-  brew cask install $APP
-done
-
-# Install Brew packages
-for PKG in $BREW_PKGS; do
-  if brew list -1 | grep -q "^${PKG}\$"; then
-    brew upgrade $PKG
-  else
-    brew install $PKG
-  fi
-done
-
-# Replace the system vim for a better vim
-if brew list -1 | grep -q "^macvim\$"; then
-  brew unlinkapps macvim
-  brew upgrade macvim --with-override-system-vim
-else
-  brew install macvim --with-override-system-vim
-fi
-
-# Link macvim to the apps
-brew linkapps macvim
 
 # Clone the repository into the dotfiles dir
 if [ ! -d $DOTFILES_DIR ]; then
@@ -89,25 +54,11 @@ for PLUGIN in $VIM_PLUGINS; do
 done
 cd -
 
-# Import iTerm2 configs
-defaults import com.googlecode.iterm2 ${DOTFILES_DIR}/iterm2.plist
-
-# Add the new shell to the list of allowed shells
-grep -q "/usr/local/bin/bash" /etc/shells
-if [ $? -ne 0 ]; then
-  sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
-fi
-
-# change to the new shell
-if [ "$SHELL" == "/bin/bash" ]; then
-  chsh -s /usr/local/bin/bash
-fi
-
 # Start using the new bash profile
 . ~/.bash_profile
 
 # Install global packages using NPM
-for PKG in $NODE_GLOBAL_PKGS; do
+for PKG in $NODE_PKGS; do
   npm -g ls ${PKG} > /dev/null 2>&1
   if [ "$?" == "1" ]; then
     npm -g install ${PKG}
@@ -142,3 +93,4 @@ echo ""
 echo "Before start using the computer, please restart the SO to reload all changes"
 echo "made by this script!"
 echo ""
+
