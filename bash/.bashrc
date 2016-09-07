@@ -2,6 +2,11 @@
 # Functions
 # ------------------------------------------------------------------------------
 function __prompt_command() {
+  # Dynamic info
+  local LAST_STATUS="$?"
+  local GIT_INFO=$(__git_ps1 "(%s)")
+  local PYENV_VIRTUALENV=$(pyenv_virtualenv)
+
   # ANSI color code
   local COLOR_OFF="\[\033[0m\]"
 
@@ -11,10 +16,7 @@ function __prompt_command() {
   local COLOR_BLUE="\[\033[0;34m\]";
   local COLOR_PURPLE="\[\033[0;35m\]"
   
-  # Dynamic info
-  local EXIT="$?"
-  local GIT_INFO=$(__git_ps1 "(%s)")
-  local PYENV_VIRTUALENV=$(pyenv_virtualenv)
+  # PS1 parts
   local USER="${COLOR_GREEN}\u${COLOR_OFF}"
   local HOST="${COLOR_PURPLE}\h${COLOR_OFF}"
   local WORKING_DIR="${COLOR_BLUE}\w${COLOR_OFF}"
@@ -31,7 +33,7 @@ function __prompt_command() {
 
   PS1="${PS1}\n${COLOR_BLUE}\t${COLOR_OFF}"
 
-  if [ $EXIT -eq 0 ]; then
+  if [ "${LAST_STATUS}" == "0" ]; then
     PS1="${PS1} ${COLOR_GREEN}[✔]${COLOR_OFF}";
   else
     PS1="${PS1} ${COLOR_RED}[✘]${COLOR_OFF}";
