@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# vim: ft=sh
+PACKAGES="${PACKAGES} vim-enhanced gvim php php-ast php-dbg"
+PACKAGES="${PACKAGES} php-json php-pecl-xdebug php-mbstring"
+
+# Install Remi's repository
+sudo dnf install http://rpms.remirepo.net/fedora/remi-release-24.rpm
+
+# Enable Remi's repository
+sudo dnf config-manager --set-enabled remi-php70
+
+# Update DNF metadata
+sudo dnf update -y
+
+# Install the packages
+for $PACKAGE in "$PACKAGES"; do
+  sudo dnf install -y $PACKAGE
+done
+
+# Upgrade pip
+sudo pip install --upgrade pip
+
+# Install PyEnv
+curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+
+# Remove the current composer install
+if [ -f /usr/local/bin/composer ]; then
+  sudo rm -f /usr/local/bin/composer
+fi
+
+# Download the composer setup
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('SHA384', 'composer-setup.php') === 'e115a8dc7871f15d853148a7fbac7da27d6c0030b848d9b3dc09e2a0388afed865e6a3d6b3c0fad45c48e2b5fc1196ae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+
+# Setup composer
+if [ -f composer-setup.php ]; then
+  sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+  rm -f composer-setup.php
+else
+  exit 1
+fi
+
+# Turn composer into a executable
+chmod +x /usr/local/bin/composer
+
+# Install etsy/phan
+composer global require "etsy/phan:dev-master"
+

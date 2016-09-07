@@ -73,6 +73,9 @@ set statusline+=%l\ /\ %L\ \|\ %c
 " Defines default spell language
 set spell spelllang=en_us
 
+" Disable line wrap
+set nowrap
+
 " Enable modeline
 set modeline
 

@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 # vim: ft=sh
+COMPOSER_PACKAGES="etsy/phan:dev-master squizlabs/php_codesniffer=@stable" 
 DOTFILES_DIR=~/dotfiles
+GIT_COMPLETION_FILE=~/.git-completion.bash
 NODE_PKGS="eslint eslint-plugin-jsx-a11y"
 NODE_PKGS="${NODE_PKGS} eslint-plugin-react "
 NODE_PKGS="${NODE_PKGS} eslint-plugin-import eslint-config-airbnb"
-PHPCS_DIR=~/.composer/vendor/squizlabs/php_codesniffer
-PHPCS_BIN="${PHPCS_DIR}/scripts/phpcs"
+PACKAGES="ansible bash-completion git python nodejs npm"
+PACKAGES="${PACKAGES} tree tmux stow scala sbt"
 STOW_FILES="bash git tmux vim eslint"
 VIM_PLUGINS="rust-lang/rust.vim pangloss/vim-javascript"
 VIM_PLUGINS="${VIM_PLUGINS} altercation/vim-colors-solarized"
 VIM_PLUGINS="${VIM_PLUGINS} airblade/vim-gitgutter kien/ctrlp.vim" 
-VIM_PLUGINS="${VIM_PLUGINS} scrooloose/syntasti cerekwyatt/vim-scala"
+VIM_PLUGINS="${VIM_PLUGINS} scrooloose/syntastic derekwyatt/vim-scala"
 
 # Define the platform
 if [[ "${OSTYPE}" == "linux-gnu" ]]; then
@@ -22,8 +24,16 @@ else
   exit 1
 fi
 
-# Prepare the platform
-curl -sS https://raw.githubusercontent.com/diegoholiveira/dotfiles/master/${PLATFORM_SCRIPT} | bash
+if [ -e ${DOTFILES_DIR}/${PLATFORM_SCRIPT} ]; then
+  # Prepare the platform running the local script
+  . ${DOTFILES_DIR}/${PLATFORM_SCRIPT}
+else
+  # Download and execute the platform script
+  curl -o ${PLATFORM_SCRIPT} \
+    https://raw.githubusercontent.com/diegoholiveira/dotfiles/master/${PLATFORM_SCRIPT}
+  . ${PLATFORM_SCRIPT}
+  rm -f ${PLATFORM_SCRIPT}
+fi
 
 # Clean old Vim files
 if [ -d ~/.vim ]; then
@@ -65,18 +75,10 @@ for PKG in $NODE_PKGS; do
   fi
 done
 
-# Install php code sniffer
-if [ ! -d $PHPCS_DIR ]; then
-  composer global require "squizlabs/php_codesniffer=@stable"
-fi
-
-# Creates an symlink to PHPCS_BIN in /usr/local/bin
-if [ -e /usr/local/bin/phpcs ]; then
-  ln -s $PHPCS_BIN /usr/local/bin/phpcs
-fi
-
-# Upgrade pip and setuptools
-pip install --upgrade pip setuptools
+# Install composer packages
+for PACKAGE in $COMPOSER_PACKAGES; do
+  composer global require "${PACKAGE}"
+done
 
 # Generates a ssh key for my user
 if [ ! -f ~/.ssh/id_rsa ]; then

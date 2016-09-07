@@ -1,42 +1,43 @@
-# ----------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Functions
-# ----------------------------------------------------------------------------------------
-# Source: http://stackoverflow.com/questions/16715103/bash-prompt-with-last-exit-code
+# ------------------------------------------------------------------------------
 function __prompt_command() {
-  # last status code
-  local EXIT="$?"
-
   # ANSI color code
-  local Color_Off="\[\033[0m\]"
+  local COLOR_OFF="\[\033[0m\]"
 
   # regular colors
-  local Red="\[\033[0;31m\]"
-  local Green="\[\033[0;32m\]"
-  local Blue="\[\033[0;34m\]";
-  local Purple="\[\033[0;35m\]"
+  local COLOR_RED="\[\033[0;31m\]"
+  local COLOR_GREEN="\[\033[0;32m\]"
+  local COLOR_BLUE="\[\033[0;34m\]";
+  local COLOR_PURPLE="\[\033[0;35m\]"
+  
+  # Dynamic info
+  local EXIT="$?"
+  local GIT_INFO=$(__git_ps1 "(%s)")
+  local PYENV_VIRTUALENV=$(pyenv_virtualenv)
+  local USER="${COLOR_GREEN}\u${COLOR_OFF}"
+  local HOST="${COLOR_PURPLE}\h${COLOR_OFF}"
+  local WORKING_DIR="${COLOR_BLUE}\w${COLOR_OFF}"
+  
+  PS1="${USER} at ${HOST} in ${WORKING_DIR}"
 
-  VC_INFO=`vcprompt -f "[%n:%b]"`
-  VIRTUALENV=`pyenv_virtualenv`
-
-  PS1="$Green\u$Color_Off at $Purple\h$Color_Off in $Blue\w$Color_Off"
-
-  if [ "$VIRTUALENV" != "" ]; then
-    PS1+=" working on $Red$VIRTUALENV$Color_Off"
+  if [ "${PYENV_VIRTUALENV}" != "" ]; then
+    PS1="${PS1} working on ${COLOR_RED}${PYENV_VIRTUALENV}${COLOR_OFF}"
   fi
 
-  if [ "$VC_INFO" != "" ]; then
-    PS1+=" $VC_INFO"
+  if [ "${GIT_INFO}" != "" ]; then
+    PS1="${PS1} ${GIT_INFO}"
   fi
 
-  PS1+="\n$Blue\t$Color_Off"
+  PS1="${PS1}\n${COLOR_BLUE}\t${COLOR_OFF}"
 
   if [ $EXIT -eq 0 ]; then
-    PS1+=" $Green[✔]$Color_Off";
+    PS1="${PS1} ${COLOR_GREEN}[✔]${COLOR_OFF}";
   else
-    PS1+=" $Red[✘]$Color_Off";
+    PS1="${PS1} ${COLOR_RED}[✘]${COLOR_OFF}";
   fi
 
-  PS1+=" \$: "
+  PS1="${PS1} \$: "
 }
 
 function pyenv_virtualenv() {
@@ -46,10 +47,17 @@ function pyenv_virtualenv() {
 }
 
 
-# ----------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# Setup local variables
+# ------------------------------------------------------------------------------
+GIT_COMPLETION_FILE=/usr/share/git-core/contrib/completion/git-prompt.sh
+ALIASES_FILE=~/.aliases.bash
+
+
+# ------------------------------------------------------------------------------
 # Setup environment variables
-# ----------------------------------------------------------------------------------------
-export PATH=/usr/local/bin:$PATH
+# ------------------------------------------------------------------------------
+export PATH=/usr/local/bin:~/.composer/vendor/bin:$PATH
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export TERM=screen-256color-bce
@@ -64,11 +72,20 @@ if [ -f /usr/libexec/java_home ]; then
 fi
 export PYENV_ROOT=/usr/local/var/pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export GIT_PS1_SHOWDIRTYSTATE=1
 
 
-# ----------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # External scripts
-# ----------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+if [ -e ${GIT_COMPLETION_FILE} ]; then
+  . ${GIT_COMPLETION_FILE}
+fi
+
+if [ -e ~/${ALIASES_FILE} ]; then
+  . ${ALIASES_FILE}
+fi
+
 BREW_PREFIX=$(brew --prefix)
 if [ -f $BREW_PREFIX/etc/bash_completion ]; then
   . $BREW_PREFIX/etc/bash_completion
@@ -77,8 +94,4 @@ fi
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(thefuck --alias)"
-
-if [ -e ~/.aliases ]; then
-  . ~/.aliases
-fi
 

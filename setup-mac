@@ -2,9 +2,8 @@
 # vim: ft=sh
 
 # Environment variables
-BREW_PKGS="ansible bash bash-completion git python pyenv pyenv-virtualenv"
-BREW_PKGS="${BREW_PKGS} tree tmux stow vcprompt ssh-copy-id rust scala sbt"
-BREW_PKGS="${BREW_PKGS} node php70 php70-ast phan composer thefuck httpie"
+BREW_PKGS="${PACKAGES} bash pyenv pyenv-virtualenv ssh-copy-id"
+BREW_PKGS="${BREW_PKGS} php70 php70-ast phan composer"
 CASK_APPS="iterm2 firefox spotify java send-to-kindle unrarx flux"
 CASK_APPS="${CASK_APPS} docker vagrant virtualbox sequel-pro sublime-text"
 
@@ -40,6 +39,9 @@ for PKG in $BREW_PKGS; do
     brew install $PKG
   fi
 done
+
+# Upgrade pip and setuptools
+pip install --upgrade pip setuptools
 
 # Replace the system vim for a better vim
 if brew list -1 | grep -q "^macvim\$"; then
