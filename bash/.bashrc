@@ -60,18 +60,18 @@ GIT_COMPLETION_FILE=/usr/share/git-core/contrib/completion/git-prompt.sh
 # ------------------------------------------------------------------------------
 if [[ "${OSTYPE}" == "linux-gnu" ]]; then
   export PATH=~/.composer/vendor/bin:~/.pyenv/bin:~/.pyenv/plugins/pyenv-virtualenv/bin:$PATH
+  export JAVA_HOME=/etc/alternatives/java_sdk
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH=/usr/local/bin:~/.composer/vendor/bin:~/.pyenv/bin:$PATH
-fi
-if [ -f /usr/libexec/java_home ]; then
-  export JAVA_HOME=$(/usr/libexec/java_home)
+  if [ -f /usr/libexec/java_home ]; then
+    export JAVA_HOME=$(/usr/libexec/java_home)
+  fi
 fi
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR=vim
 export GIT_EDITOR=vim
 export PROMPT_COMMAND=__prompt_command
-export CLICOLOR="auto"
 export PYENV_ROOT=~/.pyversions
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export GIT_PS1_SHOWDIRTYSTATE=1
