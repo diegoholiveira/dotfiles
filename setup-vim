@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# vim: set ft=sh
+AUTOLOAD_DIR=~/.vim/autoload
+PATHOGEN_FILE=~/.vim/autoload/pathogen.vim
+PLUGINS_DIR=~/.vim/bundle
+VIM_PLUGINS="rust-lang/rust.vim pangloss/vim-javascript"
+VIM_PLUGINS="${VIM_PLUGINS} altercation/vim-colors-solarized"
+VIM_PLUGINS="${VIM_PLUGINS} airblade/vim-gitgutter kien/ctrlp.vim" 
+VIM_PLUGINS="${VIM_PLUGINS} scrooloose/syntastic derekwyatt/vim-scala"
+
+# Create vim folders to install plugins
+mkdir -p $AUTOLOAD_DIR
+mkdir -p $PLUGINS_DIR
+
+if [ ! -f ${PATHOGEN_FILE} ]; then
+  echo "Downloading Pathogen..."
+  # Install Pathogen to manage vim plugins
+  curl -LSso ${PATHOGEN_FILE} https://tpo.pe/pathogen.vim
+fi
+
+# Get my vim plugins
+for PLUGIN in $VIM_PLUGINS; do
+  DESTINATION=$PLUGINS_DIR/${PLUGIN##*/}
+  if [ ! -d $DESTINATION ]; then
+    git clone "git://github.com/${PLUGIN}.git" $DESTINATION
+  fi
+done
+

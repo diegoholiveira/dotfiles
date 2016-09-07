@@ -3,8 +3,12 @@
 " smooth fonts
 set antialias
 
-" Configure Monaco (size 14) as font
-set guifont=Monaco:h14
+" Define the editor font based on the gui interface
+if has("gui_macvim")
+    set guifont=DejaVu\ Sans\ Mono:h14
+else
+    set guifont=DejaVu\ Sans\ Mono\ 14
+endif
 " }}}
 " Interface layout {{{
 " Hide toolbar
