@@ -5,9 +5,9 @@ set antialias
 
 " Define the editor font based on the gui interface
 if has("gui_macvim")
-    set guifont=DejaVu\ Sans\ Mono:h14
+    set guifont=DejaVu\ Sans\ Mono:h10
 else
-    set guifont=DejaVu\ Sans\ Mono\ 14
+    set guifont=DejaVu\ Sans\ Mono\ 10
 endif
 " }}}
 " Interface layout {{{
