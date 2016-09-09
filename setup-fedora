@@ -2,7 +2,7 @@
 # vim: ft=sh
 PACKAGES="${PACKAGES} vim-enhanced gvim php php-ast php-dbg"
 PACKAGES="${PACKAGES} php-json php-mbstring php-pdo vagrant"
-PACKAGES="${PACKAGES} dejavu-sans-fonts dejavu-sans-mono-fonts"
+PACKAGES="${PACKAGES} dejavu-sans-fonts dejavu-sans-mono-fonts xclip"
 
 # First things first
 sudo dnf install -y kernel-devel
