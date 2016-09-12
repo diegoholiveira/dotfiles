@@ -165,7 +165,7 @@ let g:ctrlp_switch_buffer = 0
 " Make CtrlP respect if we changes the working dir during a session
 let g:ctrlp_working_path_mode = 0
 " Make CtrlP ignore some file and folders
-let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
+let g:ctrlp_custom_ignore = '\vendor/|vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 " }}}
 " Shortcuts {{{
 " Checks the spell with F7

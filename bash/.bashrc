@@ -75,6 +75,7 @@ export PROMPT_COMMAND=__prompt_command
 export PYENV_ROOT=~/.pyversions
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export GIT_PS1_SHOWDIRTYSTATE=1
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 
 # ------------------------------------------------------------------------------
