@@ -5,9 +5,6 @@ set nocompatible
 
 " UTF-8 Everywhere
 set encoding=utf-8
-
-" Disable all bells since this is very annoying!
-set belloff=all
 " }}}
 " Launch Pathogen {{{
 " turn filetype detection off and disable loading
