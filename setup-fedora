@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # vim: ft=sh
 PACKAGES="${PACKAGES} vim-enhanced gvim php php-ast php-dbg"
-PACKAGES="${PACKAGES} php-json php-mbstring php-pdo vagrant"
+PACKAGES="${PACKAGES} php-json php-mbstring php-pdo php-pgsql php-xml"
 PACKAGES="${PACKAGES} dejavu-sans-fonts dejavu-sans-mono-fonts xclip"
 
 # First things first
@@ -26,6 +26,9 @@ sudo dnf update -y
 for PACKAGE in "$PACKAGES"; do
   sudo dnf install -y $PACKAGE
 done
+
+# Install Vagrant 1.8.5
+sudo dnf install -y https://releases.hashicorp.com/vagrant/1.8.5/vagrant_1.8.5_x86_64.rpm
 
 # Upgrade pip
 sudo pip install --upgrade pip
