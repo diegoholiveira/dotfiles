@@ -33,9 +33,6 @@ set background=dark
 colorscheme solarized
 " }}}
 " Editor layout {{{
-" Enable the cursor go one char more on end of line
-set virtualedit=onemore
-
 " Enable visual autocomplete for command menu
 set wildmenu
 
@@ -99,7 +96,7 @@ set backspace=indent,eol,start
 
 " Mark the characters after 79 columns
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-match OverLength /\%>80v.\+/
+match OverLength /\%>120v.\+/
 " }}}
 " Navigation {{{
 " Create splits will be more easily
