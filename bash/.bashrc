@@ -59,7 +59,7 @@ GIT_COMPLETION_FILE=/usr/share/git-core/contrib/completion/git-prompt.sh
 # Setup environment variables
 # ------------------------------------------------------------------------------
 if [[ "${OSTYPE}" == "linux-gnu" ]]; then
-  export PATH=~/.composer/vendor/bin:~/.pyenv/bin:~/.pyenv/plugins/pyenv-virtualenv/bin:$PATH
+  export PATH=~/.pyenv/bin:~/.local/bin:~/.config/composer/vendor/bin:$PATH
   export JAVA_HOME=/etc/alternatives/java_sdk
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH=/usr/local/bin:~/.composer/vendor/bin:~/.pyenv/bin:$PATH
@@ -72,7 +72,6 @@ export LANG=en_US.UTF-8
 export EDITOR=vim
 export GIT_EDITOR=vim
 export PROMPT_COMMAND=__prompt_command
-export PYENV_ROOT=~/.pyversions
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export GIT_PS1_SHOWDIRTYSTATE=1
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
