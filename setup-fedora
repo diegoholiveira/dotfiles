@@ -3,7 +3,7 @@
 PACKAGES="${PACKAGES} vim-enhanced gvim php php-ast php-dbg"
 PACKAGES="${PACKAGES} php-json php-mbstring php-pdo php-pgsql php-xml"
 PACKAGES="${PACKAGES} dejavu-sans-fonts dejavu-sans-mono-fonts xclip"
-PACKAGES="${PACKAGES} openssl-devel"
+PACKAGES="${PACKAGES} openssl-devel readline-devel sqlite-devel"
 
 # First things first
 sudo dnf install -y kernel-devel
