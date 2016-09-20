@@ -5,9 +5,6 @@ set nocompatible
 
 " UTF-8 Everywhere
 set encoding=utf-8
-
-" Disable all bells since this is very annoying!
-set belloff=all
 " }}}
 " Launch Pathogen {{{
 " turn filetype detection off and disable loading
@@ -36,9 +33,6 @@ set background=dark
 colorscheme solarized
 " }}}
 " Editor layout {{{
-" Enable the cursor go one char more on end of line
-set virtualedit=onemore
-
 " Enable visual autocomplete for command menu
 set wildmenu
 
@@ -102,7 +96,7 @@ set backspace=indent,eol,start
 
 " Mark the characters after 79 columns
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-match OverLength /\%>80v.\+/
+match OverLength /\%>120v.\+/
 " }}}
 " Navigation {{{
 " Create splits will be more easily
