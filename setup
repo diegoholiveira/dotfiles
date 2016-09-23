@@ -49,6 +49,11 @@ done
 # Start using the new bash profile
 . ~/.bash_profile
 
+# Install pyenv
+if [ ! -d ~/.pyenv ]; then
+  curl -sS https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+fi
+
 # Install global packages using NPM
 for PKG in $NODE_PKGS; do
   npm -g ls ${PKG} > /dev/null 2>&1
