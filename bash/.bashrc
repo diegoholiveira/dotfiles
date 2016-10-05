@@ -62,7 +62,7 @@ if [[ "${OSTYPE}" == "linux-gnu" ]]; then
   export PATH=~/.pyenv/bin:~/.local/bin:~/.config/composer/vendor/bin:$PATH
   export JAVA_HOME=/etc/alternatives/java_sdk
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  export PATH=/usr/local/bin:~/.composer/vendor/bin:~/.pyenv/bin:$PATH
+  export PATH=~/.composer/vendor/bin:$PATH
   if [ -f /usr/libexec/java_home ]; then
     export JAVA_HOME=$(/usr/libexec/java_home)
   fi

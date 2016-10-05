@@ -15,6 +15,9 @@
     branch-clean = "!f() { \
         git branch | grep -v \"master\" | xargs git branch -D; \
         }; f"
+	co = checkout
+	ci = commit
+	br = branch
 [push]
     default = tracking
 
