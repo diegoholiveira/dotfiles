@@ -26,3 +26,12 @@ for PLUGIN in $VIM_PLUGINS; do
   fi
 done
 
+# Create an folder to hold syntax files
+mkdir -p ~/.vim/syntax
+
+# Download nginx syntax file
+curl -LSso nginx.vim http://www.vim.org/scripts/download_script.php\?src_id\=19394
+
+# Move it into vim
+mv nginx.vim ~/.vim/syntax/
+
