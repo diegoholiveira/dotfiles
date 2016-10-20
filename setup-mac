@@ -2,7 +2,7 @@
 # vim: ft=sh
 
 # Environment variables
-BREW_PKGS="${PACKAGES} bash ssh-copy-id"
+BREW_PKGS="${PACKAGES} bash ssh-copy-id ruby"
 BREW_PKGS="${BREW_PKGS} php70 php70-ast phan composer"
 CASK_APPS="iterm2 firefox spotify java send-to-kindle unrarx flux"
 CASK_APPS="${CASK_APPS} docker vagrant virtualbox sequel-pro sublime-text"
