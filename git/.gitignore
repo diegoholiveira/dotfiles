@@ -9,4 +9,5 @@ Thumbs.db
 *.bak
 .vagrant
 vim/.netrwhist
+.phpstorm_helpers
 
