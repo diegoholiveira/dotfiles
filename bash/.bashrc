@@ -60,7 +60,7 @@ GIT_COMPLETION_FILE=/usr/share/git-core/contrib/completion/git-prompt.sh
 # ------------------------------------------------------------------------------
 export PATH=~/.npm-packages/bin:$PATH
 if [[ "${OSTYPE}" == "linux-gnu" ]]; then
-  export PATH=~/.pyenv/bin:~/.local/bin:~/.config/composer/vendor/bin:$PATH
+  export PATH=~/.npm-packages/bin:~/.pyenv/bin:~/.local/bin:~/.config/composer/vendor/bin:$PATH
   export JAVA_HOME=/etc/alternatives/java_sdk
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH=~/.composer/vendor/bin:$PATH

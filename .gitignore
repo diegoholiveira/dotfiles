@@ -1,4 +1,4 @@
 # Ignore file files downloaded from internet
-vim/.vim/autoload
-vim/.vim/bundle
+vim/.vim
+!vim/.vim/.gitkeep
 
