@@ -36,7 +36,7 @@ if [ ! -d $DOTFILES_DIR ]; then
 fi
 
 # Install fonts
-./setup-font
+. ${DOTFILES_DIR}/setup-font
 
 # Remove the previous Bash profile
 rm -f ~/.bash_profile ~/.bashrc
