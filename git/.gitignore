@@ -10,4 +10,5 @@ Thumbs.db
 .vagrant
 vim/.netrwhist
 .phpstorm_helpers
+npm-debug.log
 

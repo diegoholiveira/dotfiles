@@ -34,3 +34,11 @@ fi
 # Download the composer setup
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 sudo chmod +x /usr/local/bin/composer
+
+# Install solarized for gnome terminal
+git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git
+cd gnome-terminal-colors-solarized
+bash set_dark.sh
+cd -
+rm -rf gnome-terminal-colors-solarized
+
