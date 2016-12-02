@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# vim: set ft=sh
+
+DEST=~/.local/share/fonts
+if [[ "${OSTYPE}" == "linux-gnu" ]]; then
+  mkdir -p ~/.local/share/fonts
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  DEST=~/Library/Fonts
+else
+  echo "Platform not supported!"
+  exit 1
+fi
+
+cd $DEST
+curl -fLo "Knack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Knack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+curl -fLo "Knack Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Knack%20Regular%20Nerd%20Font%20Complete.ttf
+cd -
+

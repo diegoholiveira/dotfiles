@@ -5,9 +5,9 @@ set antialias
 
 " Define the editor font based on the gui interface
 if has("gui_macvim")
-    set guifont=DroidSansMonoforPowerline\ Nerd\ Font:h12
+    set guifont=Knack\ Nerd\ Font:h10
 else
-    set guifont=DroidSansMonoforPowerline\ Nerd\ Font\ 12
+    set guifont=Knack\ Nerd\ Font\ 10
 endif
 " }}}
 " Interface layout {{{
