@@ -42,3 +42,6 @@ bash set_dark.sh
 cd -
 rm -rf gnome-terminal-colors-solarized
 
+# Disable beep for terminal input
+echo 'set bell-style none' >> ~/.inputrc
+

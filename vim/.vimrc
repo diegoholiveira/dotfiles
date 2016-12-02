@@ -5,6 +5,9 @@ set nocompatible
 
 " UTF-8 Everywhere
 set encoding=utf-8
+
+" Disable the annoying beep
+set visualbell
 " }}}
 " Launch Pathogen {{{
 " turn filetype detection off and disable loading
