@@ -35,6 +35,11 @@ if [ ! -d $DOTFILES_DIR ]; then
   git clone https://github.com/diegoholiveira/dotfiles.git $DOTFILES_DIR
 fi
 
+# Install nerd fonts
+git clone https://github.com/ryanoasis/nerd-fonts.git
+bash nerd-fonts/install.sh DroidSansMono
+rm -rf nerd-fonts
+
 # Remove the previous Bash profile
 rm -f ~/.bash_profile ~/.bashrc
 

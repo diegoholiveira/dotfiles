@@ -2,23 +2,18 @@
 # vim: ft=sh
 PACKAGES="${PACKAGES} vim-enhanced gvim php php-ast php-dbg"
 PACKAGES="${PACKAGES} php-json php-mbstring php-pdo php-pgsql php-xml"
-PACKAGES="${PACKAGES} dejavu-sans-fonts dejavu-sans-mono-fonts xclip"
-PACKAGES="${PACKAGES} openssl-devel readline-devel sqlite-devel"
+PACKAGES="${PACKAGES} xclip vagrant virtualbox openssl-devel"
+PACKAGES="${PACKAGES} readline-devel sqlite-devel"
 
 # First things first
 sudo dnf install -y kernel-devel
 
-# Install virtualbox
-sudo dnf install -y http://download.virtualbox.org/virtualbox/5.1.4/VirtualBox-5.1-5.1.4_110228_fedora24-1.x86_64.rpm
+# Install virtualbox repository
+curl -O http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+sudo mv virtualbox.repo /etc/yum.repos.d/
 
 # Add the current user into virtual box users
 sudo usermod -a -G vboxusers $USER
-
-# Install Remi's repository
-sudo dnf install -y http://rpms.remirepo.net/fedora/remi-release-24.rpm
-
-# Enable Remi's repository
-sudo dnf config-manager --set-enabled remi-php70
 
 # Update DNF metadata
 sudo dnf update -y
@@ -27,9 +22,6 @@ sudo dnf update -y
 for PACKAGE in "$PACKAGES"; do
   sudo dnf install -y $PACKAGE
 done
-
-# Install Vagrant 1.8.5
-sudo dnf install -y https://releases.hashicorp.com/vagrant/1.8.5/vagrant_1.8.5_x86_64.rpm
 
 # Upgrade pip
 sudo pip install --upgrade pip
