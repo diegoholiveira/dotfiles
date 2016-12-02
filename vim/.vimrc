@@ -121,12 +121,6 @@ set noswapfile
 augroup configgroup
     " Remove previous autocmds from this group (avoid execute it twice)
     autocmd!
-    " python template
-    autocmd bufnewfile *.py 0r ~/.vim/skeleton.py
-    " php template
-    autocmd bufnewfile *.php 0r ~/.vim/skeleton.php
-    " html template
-    autocmd bufnewfile *.html 0r ~/.vim/skeleton.html
     " Let vim knows that Vagrant files are ruby!
     autocmd bufenter Vagrantfile setlocal filetype=ruby
     " Use indent with size 2 for some files
