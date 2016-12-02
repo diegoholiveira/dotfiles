@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # vim: ft=sh
-COMPOSER_PACKAGES="etsy/phan=@dev squizlabs/php_codesniffer=@stable" 
+COMPOSER_PACKAGES="squizlabs/php_codesniffer=@stable" 
 DOTFILES_DIR=~/dotfiles
 GIT_COMPLETION_FILE=~/.git-completion.bash
 NODE_PKGS="eslint-plugin-jsx-a11y eslint-plugin-react"
