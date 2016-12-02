@@ -34,15 +34,3 @@ fi
 # Download the composer setup
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 sudo chmod +x /usr/local/bin/composer
-
-# Setup composer
-if [ -f composer-setup.php ]; then
-  sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-  rm -f composer-setup.php
-else
-  exit 1
-fi
-
-# Turn composer into a executable
-sudo chmod +x /usr/local/bin/composer
-
