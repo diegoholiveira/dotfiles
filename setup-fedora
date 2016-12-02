@@ -12,9 +12,6 @@ sudo dnf install -y kernel-devel
 curl -O http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
 sudo mv virtualbox.repo /etc/yum.repos.d/
 
-# Add the current user into virtual box users
-sudo usermod -a -G vboxusers $USER
-
 # Update DNF metadata
 sudo dnf update -y
 
@@ -22,6 +19,9 @@ sudo dnf update -y
 for PACKAGE in "$PACKAGES"; do
   sudo dnf install -y $PACKAGE
 done
+
+# Add the current user into virtual box users
+sudo usermod -a -G vboxusers $USER
 
 # Upgrade pip
 sudo pip install --upgrade pip
