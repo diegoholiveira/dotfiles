@@ -124,7 +124,7 @@ augroup configgroup
     " Let vim knows that Vagrant files are ruby!
     autocmd bufenter Vagrantfile setlocal filetype=ruby
     " Use indent with size 2 for some files
-    autocmd filetype sh,yaml,ruby,javascript,html,css,scss,json setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd filetype sh,yaml,ruby,javascript,html,css,scss,json,vue setlocal tabstop=2 softtabstop=2 shiftwidth=2
     " Indent blade files as html
     autocmd bufenter *.blade.php setlocal tabstop=2 softtabstop=2 shiftwidth=2
     " Use a real tab char in Makefile
