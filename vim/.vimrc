@@ -122,13 +122,20 @@ augroup configgroup
     " Remove previous autocmds from this group (avoid execute it twice)
     autocmd!
     " Let vim knows that Vagrant files are ruby!
-    autocmd bufenter Vagrantfile setlocal filetype=ruby
+    autocmd BufEnter Vagrantfile setlocal filetype=ruby
     " Use indent with size 2 for some files
-    autocmd filetype sh,yaml,ruby,javascript,html,css,scss,json,vue setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    " Indent blade files as html
-    autocmd bufenter *.blade.php setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType sh setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType css setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType scss setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType json setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType vue setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufEnter *.blade.php setlocal tabstop=2 softtabstop=2 shiftwidth=2
     " Use a real tab char in Makefile
-    autocmd filetype make setlocal noexpandtab
+    autocmd FileType make setlocal noexpandtab
 augroup END
 " }}}
 " Syntastic {{{
