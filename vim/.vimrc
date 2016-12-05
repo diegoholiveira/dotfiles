@@ -96,10 +96,6 @@ set hidden
 
 " Configure the behavior of the backspace in insert mode
 set backspace=indent,eol,start
-
-" Mark the characters after 79 columns
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-match OverLength /\%>120v.\+/
 " }}}
 " Navigation {{{
 " Create splits will be more easily
