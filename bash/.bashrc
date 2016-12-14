@@ -92,8 +92,8 @@ if [ -f /usr/local/bin/brew ]; then
   . $BREW_PREFIX/etc/bash_completion
 fi
 
-if [ -f /usr/share/bash_completion/bash_completion ]; then
-  . /usr/share/bash_completion/bash_completion
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+  . /usr/share/bash-completion/bash_completion
 fi
 
 eval "$(pyenv init -)"
