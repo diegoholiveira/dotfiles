@@ -119,6 +119,8 @@ augroup configgroup
     autocmd!
     " Let vim knows that Vagrant files are ruby!
     autocmd BufEnter Vagrantfile setlocal filetype=ruby
+    " Teach vim that RAML is fancy YAML
+    autocmd BufEnter *.raml setlocal filetype=yaml
     " Use indent with size 2 for some files
     autocmd FileType sh setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
