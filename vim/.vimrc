@@ -134,6 +134,8 @@ augroup configgroup
     autocmd BufEnter *.blade.php setlocal tabstop=2 softtabstop=2 shiftwidth=2
     " Use a real tab char in Makefile
     autocmd FileType make setlocal noexpandtab
+    " Remove white space before save
+    autocmd BufWritePre * call StripTrailingWhitespace()
 augroup END
 " }}}
 " Syntastic {{{
@@ -177,4 +179,18 @@ nnoremap <silent> <F2> :CtrlPBuffer<CR>
 
 " Disable or enable the search highlighting
 noremap <silent> <C-F> :set hlsearch! hlsearch?<CR>
+" Manually removes white spaces
+noremap <F3> :call StripTrailingWhitespace()<CR>
+" }}}
+" Functions {{{
+" Strips whitespaces
+function StripTrailingWhitespace()
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
+    %s/\s\+$//e
+    normal 'yz<CR>
+    normal `z
+  endif
+endfunction
 " }}}
