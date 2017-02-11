@@ -3,10 +3,10 @@
 AUTOLOAD_DIR=~/.vim/autoload
 PATHOGEN_FILE=~/.vim/autoload/pathogen.vim
 PLUGINS_DIR=~/.vim/bundle
-VIM_PLUGINS="rust-lang/rust.vim pangloss/vim-javascript posva/vim-vue"
-VIM_PLUGINS="${VIM_PLUGINS} altercation/vim-colors-solarized lambdatoast/elm.vim"
-VIM_PLUGINS="${VIM_PLUGINS} airblade/vim-gitgutter ctrlpvim/ctrlp.vim" 
-VIM_PLUGINS="${VIM_PLUGINS} scrooloose/syntastic derekwyatt/vim-scala"
+VIM_PLUGINS="pangloss/vim-javascript posva/vim-vue"
+VIM_PLUGINS="${VIM_PLUGINS} altercation/vim-colors-solarized"
+VIM_PLUGINS="${VIM_PLUGINS} airblade/vim-gitgutter ctrlpvim/ctrlp.vim"
+VIM_PLUGINS="${VIM_PLUGINS} scrooloose/syntastic"
 
 # Create vim folders to install plugins
 mkdir -p $AUTOLOAD_DIR
@@ -25,13 +25,3 @@ for PLUGIN in $VIM_PLUGINS; do
     git clone "git://github.com/${PLUGIN}.git" $DESTINATION
   fi
 done
-
-# Create an folder to hold syntax files
-mkdir -p ~/.vim/syntax
-
-# Download nginx syntax file
-curl -LSso nginx.vim http://www.vim.org/scripts/download_script.php\?src_id\=19394
-
-# Move it into vim
-mv nginx.vim ~/.vim/syntax/
-
