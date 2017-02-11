@@ -64,10 +64,6 @@ set statusline+=\ [%{strlen(&filetype)?&filetype:'none'}
 set statusline +=\ %{strlen(&fileformat)?&fileformat:''}
 " Display the file encoding
 set statusline+=\ %{strlen(&fileencoding)?&fileencoding:&encoding}]
-" Add syntastic warnings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 " Switch to the right side
 set statusline+=%=
 " Display the current line and total lines
@@ -143,6 +139,10 @@ augroup configgroup
 augroup END
 " }}}
 " Syntastic {{{
+" Disable the active mode (only call Syntastic when I want)
+let g:syntastic_mode_map = {'mode': 'passive',
+                            \ 'active_filetypes': [],
+                            \ 'passive_filetypes': []}
 " Keep the errors list updated with the checkers
 let g:syntastic_always_populate_loc_list = 1
 " Setup javascript linter
