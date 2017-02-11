@@ -148,9 +148,9 @@ let g:syntastic_always_populate_loc_list = 1
 " Automatic open an window when errors are detected
 let g:syntastic_auto_loc_list = 1
 " Verify when open a file
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 " Verify before save
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 " Setup javascript linter
 let g:syntastic_javascript_checkers = ['eslint']
 " Setup php linter and codesniffer
