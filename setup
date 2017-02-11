@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # vim: ft=sh
 DOTFILES_DIR=~/dotfiles
-GIT_COMPLETION_FILE=~/.git-completion.bash
 NODE_PKGS="eslint-plugin-jsx-a11y eslint-plugin-react"
 NODE_PKGS="${NODE_PKGS} eslint-plugin-import eslint-config-airbnb eslint"
 PACKAGES="ansible bash-completion git python nodejs npm"
@@ -9,7 +8,7 @@ PACKAGES="${PACKAGES} tree tmux stow"
 PACKAGES="${PACKAGES} bash ssh-copy-id ruby pyenv pyenv-virtualenv"
 PACKAGES="${PACKAGES} php71 php71-ast php71-intl composer php-code-sniffer"
 STOW_FILES="bash git tmux vim eslint npm"
-CASK_APPS="iterm2 firefox spotify java send-to-kindle unrarx flux"
+CASK_APPS="iterm2 firefox spotify java unrarx flux macvim"
 CASK_APPS="${CASK_APPS} docker vagrant virtualbox sequel-pro sublime-text"
 
 # Install Homebrew
@@ -36,19 +35,11 @@ for PKG in $BREW_PKGS; do
   fi
 done
 
+# Install vim replace macos defaults
+brew install vim --with-override-system-vi --with-python3
+
 # Upgrade pip and setuptools
 pip install --upgrade pip setuptools
-
-# Replace the system vim for a better vim
-if brew list -1 | grep -q "^macvim\$"; then
-  brew unlinkapps macvim
-  brew upgrade macvim --with-override-system-vim
-else
-  brew install macvim --with-override-system-vim
-fi
-
-# Link macvim to the apps
-brew linkapps macvim
 
 # Import iTerm2 configs
 defaults import com.googlecode.iterm2 ${DOTFILES_DIR}/iterm2.plist

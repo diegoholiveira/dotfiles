@@ -15,12 +15,12 @@ function __prompt_command() {
   local COLOR_GREEN="\[\033[0;32m\]"
   local COLOR_BLUE="\[\033[0;34m\]";
   local COLOR_PURPLE="\[\033[0;35m\]"
-  
+
   # PS1 parts
   local USER="${COLOR_GREEN}\u${COLOR_OFF}"
   local HOST="${COLOR_PURPLE}\h${COLOR_OFF}"
   local WORKING_DIR="${COLOR_BLUE}\w${COLOR_OFF}"
-  
+
   PS1="${USER} at ${HOST} in ${WORKING_DIR}"
 
   if [ "${PYENV_VIRTUALENV}" != "" ]; then
@@ -52,21 +52,18 @@ function pyenv_virtualenv() {
 # ------------------------------------------------------------------------------
 # Setup local variables
 # ------------------------------------------------------------------------------
-GIT_COMPLETION_FILE=/usr/share/git-core/contrib/completion/git-prompt.sh
-
+BREW_PREFIX=$(brew --prefix)
+GIT_PROMPT_FILE="${BREW_PREFIX}/etc/bash_completion.d/git-prompt.sh"
+GIT_COMPLETION_FILE="${BREW_PREFIX}/etc/bash_completion.d/git-completion.bash"
+BASH_COMPLETION_FILE="${BREW_PREFIX}/etc/bash_completion"
 
 # ------------------------------------------------------------------------------
 # Setup environment variables
 # ------------------------------------------------------------------------------
 export PATH=~/.npm-packages/bin:$PATH
-if [[ "${OSTYPE}" == "linux-gnu" ]]; then
-  export PATH=~/.npm-packages/bin:~/.pyenv/bin:~/.local/bin:~/.config/composer/vendor/bin:$PATH
-  export JAVA_HOME=/etc/alternatives/java_sdk
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  export PATH=~/.composer/vendor/bin:$PATH
-  if [ -f /usr/libexec/java_home ]; then
-    export JAVA_HOME=$(/usr/libexec/java_home)
-  fi
+export PATH=~/.composer/vendor/bin:$PATH
+if [ -f /usr/libexec/java_home ]; then
+  export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -83,19 +80,17 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 # ------------------------------------------------------------------------------
 . ~/.bash_aliases
 
-if [ -e ${GIT_COMPLETION_FILE} ]; then
-  . ${GIT_COMPLETION_FILE}
+if [ -f $GIT_PROMPT_FILE ]; then
+  . $GIT_PROMPT_FILE
 fi
 
-if [ -f /usr/local/bin/brew ]; then
-  BREW_PREFIX=$(brew --prefix)
-  . $BREW_PREFIX/etc/bash_completion
+if [ -f $GIT_COMPLETION_FILE ]; then
+  . $GIT_COMPLETION_FILE
 fi
 
-if [ -f /usr/share/bash-completion/bash_completion ]; then
-  . /usr/share/bash-completion/bash_completion
+if [ -f $BASH_COMPLETION_FILE ]; then
+  . $BASH_COMPLETION_FILE
 fi
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
