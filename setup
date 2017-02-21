@@ -21,6 +21,11 @@ else
   brew update
 fi
 
+# Install Brew packages
+for PACKAGE in $PACKAGES; do
+  brew install $PACKAGE
+done
+
 # Install Cask apps
 for APP in $CASK_APPS; do
   brew cask install $APP
