@@ -163,23 +163,31 @@ let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 " Make CtrlP respect if we changes the working dir during a session
 let g:ctrlp_working_path_mode = 0
-" Make CtrlP ignore some file and folders
-let g:ctrlp_custom_ignore = '\vendor/|vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
+" Disable the default custom ignore
+if exists("g:ctrlp_custom_ignore")
+  unlet g:ctrlp_custom_ignore
+endif
+" Disable the custom command
+if exists("g:ctrlp_user_command")
+  unlet g:ctrlp_user_command
+endif
+" Define files and folders that must be ignored by ctrlp
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|vendor$',
+    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 " }}}
 " Shortcuts {{{
 " Checks the spell with F7
-nnoremap <silent> <F7> z=
+nnoremap <silent> <C-E> z=
 
 " Execute Syntastic
-nnoremap <silent> <F5> :SyntasticCheck<CR>
+nnoremap <silent> <C-L> :SyntasticCheck<CR>
 
 " Execute :CtrlPBuffer to quickly switch buffers
-nnoremap <silent> <F2> :CtrlPBuffer<CR>
+nnoremap <silent> <C-O> :CtrlPBuffer<CR>
 
 " Disable or enable the search highlighting
 noremap <silent> <C-F> :set hlsearch! hlsearch?<CR>
-" Manually removes white spaces
-noremap <F3> :call StripTrailingWhitespace()<CR>
 " }}}
 " Functions {{{
 " Strips whitespaces
