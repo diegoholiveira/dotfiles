@@ -54,7 +54,6 @@ function pyenv_virtualenv() {
 # ------------------------------------------------------------------------------
 BREW_PREFIX=$(brew --prefix)
 GIT_PROMPT_FILE="${BREW_PREFIX}/etc/bash_completion.d/git-prompt.sh"
-GIT_COMPLETION_FILE="${BREW_PREFIX}/etc/bash_completion.d/git-completion.bash"
 BASH_COMPLETION_FILE="${BREW_PREFIX}/etc/bash_completion"
 
 # ------------------------------------------------------------------------------
