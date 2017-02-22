@@ -83,10 +83,6 @@ if [ -f $GIT_PROMPT_FILE ]; then
   . $GIT_PROMPT_FILE
 fi
 
-if [ -f $GIT_COMPLETION_FILE ]; then
-  . $GIT_COMPLETION_FILE
-fi
-
 if [ -f $BASH_COMPLETION_FILE ]; then
   . $BASH_COMPLETION_FILE
 fi
