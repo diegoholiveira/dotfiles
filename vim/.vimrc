@@ -157,6 +157,9 @@ let g:syntastic_style_error_symbol = "\u2049"
 let g:syntastic_style_warning_symbol = "\uF4A9"
 " }}}
 " CtrlP {{{
+" Invoke Ctrl-p with c-p
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 " Make CtrlP order results top to bottom (first at top)
 let g:ctrlp_match_window = 'bottom,order:ttb'
 " Make CtrlP always open files in new buffers
@@ -182,9 +185,6 @@ nnoremap <silent> <C-E> z=
 
 " Execute Syntastic
 nnoremap <silent> <C-L> :SyntasticCheck<CR>
-
-" Execute :CtrlPBuffer to quickly switch buffers
-nnoremap <silent> <C-O> :CtrlPBuffer<CR>
 
 " Disable or enable the search highlighting
 noremap <silent> <C-F> :set hlsearch! hlsearch?<CR>
