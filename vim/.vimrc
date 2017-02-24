@@ -188,6 +188,9 @@ nnoremap <silent> <C-L> :SyntasticCheck<CR>
 
 " Disable or enable the search highlighting
 noremap <silent> <C-F> :set hlsearch! hlsearch?<CR>
+
+" Execute :CtrlPBuffer to quickly switch buffers
+nnoremap <silent> <C-O> :CtrlPBuffer<CR>
 " }}}
 " Functions {{{
 " Strips whitespaces
