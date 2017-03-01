@@ -59,8 +59,7 @@ BASH_COMPLETION_FILE="${BREW_PREFIX}/etc/bash_completion"
 # ------------------------------------------------------------------------------
 # Setup environment variables
 # ------------------------------------------------------------------------------
-export PATH=~/.npm-packages/bin:$PATH
-export PATH=~/.composer/vendor/bin:$PATH
+export PATH=/usr/local/sbin:~/.composer/vendor/bin:~/.npm-packages/bin:$PATH
 if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
