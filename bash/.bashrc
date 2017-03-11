@@ -85,6 +85,3 @@ fi
 if [ -f $BASH_COMPLETION_FILE ]; then
   . $BASH_COMPLETION_FILE
 fi
-
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
