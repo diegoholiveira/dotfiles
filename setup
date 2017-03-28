@@ -8,7 +8,7 @@ PACKAGES="${PACKAGES} tree tmux stow"
 PACKAGES="${PACKAGES} bash ssh-copy-id ruby pyenv pyenv-virtualenv"
 PACKAGES="${PACKAGES} php71 php71-ast php71-intl composer php-code-sniffer"
 STOW_FILES="bash git tmux vim eslint npm"
-CASK_APPS="iterm2 firefox spotify java unrarx flux macvim"
+CASK_APPS="iterm2 firefox spotify java unrarx macvim"
 CASK_APPS="${CASK_APPS} docker vagrant virtualbox sequel-pro sublime-text"
 
 # Install Homebrew
