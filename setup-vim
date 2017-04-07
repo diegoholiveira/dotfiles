@@ -3,10 +3,10 @@
 AUTOLOAD_DIR=~/.vim/autoload
 PATHOGEN_FILE=~/.vim/autoload/pathogen.vim
 PLUGINS_DIR=~/.vim/bundle
-VIM_PLUGINS="pangloss/vim-javascript posva/vim-vue"
+VIM_PLUGINS="pangloss/vim-javascript"
 VIM_PLUGINS="${VIM_PLUGINS} altercation/vim-colors-solarized"
 VIM_PLUGINS="${VIM_PLUGINS} airblade/vim-gitgutter ctrlpvim/ctrlp.vim"
-VIM_PLUGINS="${VIM_PLUGINS} scrooloose/syntastic"
+VIM_PLUGINS="${VIM_PLUGINS} scrooloose/syntastic fatih/vim-go"
 
 # Create vim folders to install plugins
 mkdir -p $AUTOLOAD_DIR
