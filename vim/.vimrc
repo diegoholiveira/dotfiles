@@ -26,9 +26,6 @@ filetype plugin indent on
 " Colors {{{
 syntax on
 
-" Set 256 colors mode
-set t_Co=256
-
 " Set up the background
 set background=dark
 
@@ -47,27 +44,6 @@ set showmatch
 
 " Highlight search results in the editor
 set hlsearch
-" }}}
-" Status line {{{
-" Always display the status line
-set laststatus=2
-" Clear the statusline
-set statusline=
-" Display the buffer number
-set statusline+=%02n
-" Display the file name
-set statusline+=\ File:
-set statusline+=\ %f
-" Display the file type
-set statusline+=\ [%{strlen(&filetype)?&filetype:'none'}
-" Display the file format
-set statusline +=\ %{strlen(&fileformat)?&fileformat:''}
-" Display the file encoding
-set statusline+=\ %{strlen(&fileencoding)?&fileencoding:&encoding}]
-" Switch to the right side
-set statusline+=%=
-" Display the current line and total lines
-set statusline+=%l\ /\ %L\ \|\ %c
 " }}}
 " Editor settings {{{
 " Defines default spell language
@@ -138,23 +114,15 @@ augroup configgroup
     autocmd BufWritePre * call StripTrailingWhitespace()
 augroup END
 " }}}
-" Syntastic {{{
-" Disable the active mode (only call Syntastic when I want)
-let g:syntastic_mode_map = {'mode': 'passive',
-                            \ 'active_filetypes': [],
-                            \ 'passive_filetypes': []}
-" Keep the errors list updated with the checkers
-let g:syntastic_always_populate_loc_list = 1
-" Setup javascript linter
-let g:syntastic_javascript_checkers = ['eslint']
-" Setup php linter and codesniffer
-let g:syntastic_php_checkers = ['php', 'phpcs']
-let g:syntastic_php_phpcs_args = "--standard=PSR2"
-" Replace default symbols
-let g:syntastic_error_symbol = "\u274C"
-let g:syntastic_warning_symbol = "\u26A0"
-let g:syntastic_style_error_symbol = "\u2049"
-let g:syntastic_style_warning_symbol = "\uF4A9"
+" Airline {{{
+" Always display the status line
+set laststatus=2
+" Use solarized theme
+let g:airline_theme='solarized'
+" Display tabline by default
+let g:airline#extensions#tabline#enabled = 1
+" Enable powerline fonts
+let g:airline_powerline_fonts = 1
 " }}}
 " CtrlP {{{
 " Invoke Ctrl-p with c-p

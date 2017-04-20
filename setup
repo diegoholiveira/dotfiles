@@ -91,6 +91,8 @@ for PACKAGE in $COMPOSER_PACKAGES; do
   composer global require "${PACKAGE}"
 done
 
+. $DOTFILES_DIR/setup-powerline-fonts
+
 # Generates a ssh key for my user
 if [ ! -f ~/.ssh/id_rsa ]; then
   ssh-keygen -t rsa -b 4096 -C "contato@diegoholiveira.com" -N "" -f ~/.ssh/id_rsa -q
