@@ -108,6 +108,7 @@ augroup configgroup
     autocmd FileType json setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType vue setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufEnter *.blade.php setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType tf,hcl,nomad setlocal tabstop=2 softtabstop=2 shiftwidth=2
     " Use a real tab char in Makefile
     autocmd FileType make setlocal noexpandtab
     " Remove white space before save

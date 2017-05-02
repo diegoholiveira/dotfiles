@@ -12,6 +12,7 @@ VIM_PLUGINS=(
   "ctrlpvim/ctrlp.vim"
   "editorconfig/editorconfig-vim"
   "fatih/vim-go"
+  "fatih/vim-hclfmt"
   "pangloss/vim-javascript"
   "vim-airline/vim-airline"
   "vim-airline/vim-airline-themes"
