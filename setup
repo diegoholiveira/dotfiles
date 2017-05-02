@@ -1,47 +1,53 @@
 #!/usr/bin/env bash
 # vim: ft=sh
+set -euo pipefail
+IFS=$'\n\t'
+
+BREW_PACKAGES=(
+  "ansible" "bash" "bash-completion" "composer"
+  "docker-compose" "git" "go" "nodejs"
+  "php71" "php71-ast" "php71-intl"  "php-code-sniffer"
+  "pyenv" "pyenv-virtualenv" "python" "ruby"
+  "ssh-copy-id" "stow" "tree" "tmux"
+)
+CASK_PACKAGES=(
+  "docker" "firefox" "iterm2" "java"
+  "macvim" "sequel-pro" "spotify" "sublime-text"
+  "unrarx" "vagrant" "virtualbox" "vlc"
+)
 DOTFILES_DIR=~/dotfiles
-NODE_PKGS="eslint-plugin-jsx-a11y eslint-plugin-react"
-NODE_PKGS="${NODE_PKGS} eslint-plugin-import eslint-config-airbnb eslint"
-PACKAGES="ansible bash-completion git python nodejs npm"
-PACKAGES="${PACKAGES} tree tmux stow go docker-compose"
-PACKAGES="${PACKAGES} bash ssh-copy-id ruby pyenv pyenv-virtualenv"
-PACKAGES="${PACKAGES} php71 php71-ast php71-intl composer php-code-sniffer"
-STOW_FILES="bash git tmux vim eslint npm"
-CASK_APPS="iterm2 firefox spotify java unrarx macvim"
-CASK_APPS="${CASK_APPS} docker vagrant virtualbox sequel-pro sublime-text"
+POWERLINE_FONTS_FILE=~/.powerline-fonts-installed
+STOW_FILES=("bash" "git" "tmux" "vim" "npm")
 
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  brew tap homebrew/dupes
-  brew tap homebrew/versions
-  brew tap homebrew/php
-else
-  brew update
 fi
 
-# Install Brew packages
-for PACKAGE in $PACKAGES; do
-  brew install $PACKAGE
-done
-
 # Install Cask apps
-for APP in $CASK_APPS; do
-  brew cask install $APP
+for PACKAGE in ${CASK_PACKAGES[@]}; do
+  INSTALLED=$(brew cask list -1 | grep "^${PACKAGE}\$" || true)
+  if [ "$INSTALLED" != "$PACKAGE" ]; then
+    brew cask install $PACKAGE
+  fi
 done
 
 # Install Brew packages
-for PKG in $BREW_PKGS; do
-  if brew list -1 | grep -q "^${PKG}\$"; then
-    brew upgrade $PKG
-  else
-    brew install $PKG
+for PACKAGE in ${BREW_PACKAGES[@]}; do
+  INSTALLED=$(brew list -1 | grep "^${PACKAGE}\$" || true)
+  if [ "$INSTALLED" != "$PACKAGE" ]; then
+    brew install $PACKAGE
   fi
 done
 
 # Install vim replace macos defaults
-brew install vim --with-override-system-vi --with-python3
+INSTALLED=$(brew list -1 | grep "^vim\$" || true)
+if [ "$INSTALLED" != "vim" ]; then
+  brew install vim --with-override-system-vi --with-python3
+fi
+
+# Upgrade all installed packages
+brew upgrade
 
 # Upgrade pip and setuptools
 pip install --upgrade pip setuptools
@@ -68,30 +74,22 @@ fi
 rm -f ~/.bash_profile ~/.bashrc
 
 # Link the profiles to my versions
-for APP in $STOW_FILES; do
+for APP in ${STOW_FILES[@]}; do
   stow --dir=${DOTFILES_DIR} ${APP}
 done
 
 # Setup vim
-. $DOTFILES_DIR/setup-vim
+$DOTFILES_DIR/setup-vim
 
-# Start using the new bash profile
-. ~/.bash_profile
-
-# Install global packages using NPM
-for PKG in $NODE_PKGS; do
-  npm -g ls ${PKG} > /dev/null 2>&1
-  if [ "$?" == "1" ]; then
-    npm -g install ${PKG}
-  fi
-done
-
-# Install composer packages
-for PACKAGE in $COMPOSER_PACKAGES; do
-  composer global require "${PACKAGE}"
-done
-
-. $DOTFILES_DIR/setup-powerline-fonts
+# Setup powerline fonts
+if [ ! -f $POWERLINE_FONTS_FILE ]; then
+  git clone https://github.com/powerline/fonts.git
+  cd fonts
+  ./install.sh
+  cd ..
+  rm -rf fonts
+  touch $POWERLINE_FONTS_FILE
+fi
 
 # Generates a ssh key for my user
 if [ ! -f ~/.ssh/id_rsa ]; then
@@ -108,4 +106,3 @@ echo ""
 echo "Before start using the computer, please restart the SO to reload all changes"
 echo "made by this script!"
 echo ""
-
