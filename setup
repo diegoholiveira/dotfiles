@@ -5,7 +5,7 @@ IFS=$'\n\t'
 
 BREW_PACKAGES=(
   "ansible" "bash" "bash-completion" "composer"
-  "docker-compose" "git" "go" "nodejs"
+  "docker-compose" "flake8" "git" "go" "nodejs"
   "php71" "php71-ast" "php71-intl"  "php-code-sniffer"
   "pyenv" "pyenv-virtualenv" "python" "ruby"
   "ssh-copy-id" "stow" "tree" "tmux"
