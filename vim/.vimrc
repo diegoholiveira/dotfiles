@@ -133,6 +133,8 @@ let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 " Make CtrlP respect if we changes the working dir during a session
 let g:ctrlp_working_path_mode = 0
+" Disable cache
+let g:ctrlp_use_caching = 0
 " Disable the default custom ignore
 if exists("g:ctrlp_custom_ignore")
   unlet g:ctrlp_custom_ignore
