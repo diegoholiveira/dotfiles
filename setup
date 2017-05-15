@@ -78,9 +78,6 @@ for APP in ${STOW_FILES[@]}; do
   stow --dir=${DOTFILES_DIR} ${APP}
 done
 
-# Setup vim
-$DOTFILES_DIR/setup-vim
-
 # Setup powerline fonts
 if [ ! -f $POWERLINE_FONTS_FILE ]; then
   git clone https://github.com/powerline/fonts.git
