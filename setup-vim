@@ -3,36 +3,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-AUTOLOAD_DIR=~/.vim/autoload
-PATHOGEN_FILE=~/.vim/autoload/pathogen.vim
-PLUGINS_DIR=~/.vim/bundle
-VIM_PLUGINS=(
-  "altercation/vim-colors-solarized"
-  "airblade/vim-gitgutter"
-  "ctrlpvim/ctrlp.vim"
-  "editorconfig/editorconfig-vim"
-  "fatih/vim-go"
-  "fatih/vim-hclfmt"
-  "pangloss/vim-javascript"
-  "posva/vim-vue"
-  "vim-airline/vim-airline"
-  "vim-airline/vim-airline-themes"
-)
+# Install plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# Create vim folders to install plugins
-mkdir -p $AUTOLOAD_DIR
-mkdir -p $PLUGINS_DIR
-
-if [ ! -f ${PATHOGEN_FILE} ]; then
-  echo "Downloading Pathogen..."
-  # Install Pathogen to manage vim plugins
-  curl -LSso ${PATHOGEN_FILE} https://tpo.pe/pathogen.vim
-fi
-
-# Get my vim plugins
-for PLUGIN in ${VIM_PLUGINS[@]}; do
-  DESTINATION=$PLUGINS_DIR/${PLUGIN##*/}
-  if [ ! -d $DESTINATION ]; then
-    git clone "git://github.com/${PLUGIN}.git" $DESTINATION
-  fi
-done
+# That's it!

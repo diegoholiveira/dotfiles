@@ -1,4 +1,18 @@
 " vim:foldmethod=marker:foldlevel=0
+" vim-plug {{{
+call plug#begin('~/.vim/plugged')
+Plug 'altercation/vim-colors-solarized'
+Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-hclfmt'
+Plug 'pangloss/vim-javascript'
+Plug 'posva/vim-vue'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+call plug#end()
+" }}}
 " General {{{
 " Use vim settings rather than vi settings
 set nocompatible
@@ -8,17 +22,9 @@ set encoding=utf-8
 
 " Disable the annoying beep
 set visualbell
-" }}}
-" Launch Pathogen {{{
-" turn filetype detection off and disable loading
-" of indent scripts and filetype plugins
-filetype off
-filetype plugin indent off
 
-" Enable pathogen
-execute pathogen#infect()
-execute pathogen#helptags()
-
+" Enable autoread
+set autoread
 " Turn on filetype detection, indent scripts
 " filetype plugins and syntax highlighting
 filetype plugin indent on
@@ -30,7 +36,7 @@ syntax on
 set background=dark
 
 " Enable solarized color scheme
-colorscheme solarized
+silent! colorscheme solarized
 " }}}
 " Editor layout {{{
 " Enable visual autocomplete for command menu
@@ -51,9 +57,6 @@ set spell spelllang=en_us
 
 " Disable line wrap
 set nowrap
-
-" Enable modeline
-set modeline
 
 " Show existing tab as 4 spaces
 set tabstop=4
