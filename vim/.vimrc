@@ -152,9 +152,6 @@ let g:ctrlp_custom_ignore = {
 " Checks the spell with F7
 nnoremap <silent> <C-E> z=
 
-" Execute Syntastic
-nnoremap <silent> <C-L> :SyntasticCheck<CR>
-
 " Disable or enable the search highlighting
 noremap <silent> <C-F> :set hlsearch! hlsearch?<CR>
 
