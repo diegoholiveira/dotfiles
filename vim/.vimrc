@@ -1,9 +1,19 @@
 " vim:foldmethod=marker:foldlevel=0
 " Plug {{{
-if empty(glob("~/.vim/autoload/plug.vim"))
-    execute '!mkdir -p ~/.vim/autoload'
-    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+let vimplug_exists=expand('~/.vim/autoload/plug.vim')
+if !filereadable(vimplug_exists)
+    if !executable("curl")
+        echoerr "You have to install curl or first install vim-plug yourself!"
+        execute "q!"
+    endif
+
+    echo "Installing Vim-Plug..."
+    echo ""
+    silent !\curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    autocmd VimEnter * PlugInstall
 endif
+
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
@@ -11,8 +21,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'fatih/vim-hclfmt'
-Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'posva/vim-vue'
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -25,7 +37,10 @@ set nocompatible
 set encoding=utf-8
 
 " Disable the annoying beep
-set visualbell
+set noerrorbells visualbell t_vb=
+
+" Define that we are using a fast terminal
+set ttyfast
 
 " Enable autoread
 set autoread
@@ -113,11 +128,16 @@ augroup configgroup
     autocmd FileType css setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType scss setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType json setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd BufEnter *.blade.php setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " Define blade templates as html files
+    autocmd BufEnter *.blade.php setlocal filetype=html
     " Use a real tab char in Makefile
     autocmd FileType make setlocal noexpandtab
     " Remove white space before save
-    autocmd BufWritePre * call StripTrailingWhitespace()
+    autocmd BufEnter * EnableStripWhitespaceOnSave
+    " Improve python editing
+    autocmd FileType python setlocal colorcolumn=79
+    " Disable visualbell
+    autocmd GUIEnter * set visualbell t_vb=
 augroup END
 " }}}
 " Airline {{{
@@ -164,16 +184,4 @@ noremap <silent> <C-F> :set hlsearch! hlsearch?<CR>
 
 " Execute :CtrlPBuffer to quickly switch buffers
 nnoremap <silent> <C-O> :CtrlPBuffer<CR>
-" }}}
-" Functions {{{
-" Strips whitespaces
-function StripTrailingWhitespace()
-  if !&binary && &filetype != 'diff'
-    normal mz
-    normal Hmy
-    %s/\s\+$//e
-    normal 'yz<CR>
-    normal `z
-  endif
-endfunction
 " }}}
