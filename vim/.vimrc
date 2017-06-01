@@ -25,7 +25,6 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'posva/vim-vue'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
