@@ -3,7 +3,7 @@
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 if !filereadable(vimplug_exists)
     if !executable("curl")
-        echoerr "You have to install curl or first install vim-plug yourself!"
+        echoerr "You have to install curl or install vim-plug yourself!"
         execute "q!"
     endif
 
@@ -25,7 +25,6 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'posva/vim-vue'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
