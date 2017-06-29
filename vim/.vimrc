@@ -17,6 +17,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
+Plug 'cespare/vim-toml'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
@@ -25,13 +26,21 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'posva/vim-vue'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+Plug 'rust-lang/rust.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 " }}}
 " General {{{
-" Use vim settings rather than vi settings
-set nocompatible
+" Disable the arrow keys
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 
 " UTF-8 Everywhere
 set encoding=utf-8
@@ -51,15 +60,15 @@ filetype plugin indent on
 " Colors {{{
 syntax on
 
-" Set up the background
-set background=dark
-
 " Enable solarized color scheme
 silent! colorscheme solarized
 " }}}
 " Editor layout {{{
 " Enable visual autocomplete for command menu
 set wildmenu
+
+" Highlight the current line
+set cursorline
 
 " Show absolute line numbers
 set number
@@ -69,6 +78,9 @@ set showmatch
 
 " Highlight search results in the editor
 set hlsearch
+
+" Defines the search as case insensitive
+set ignorecase
 " }}}
 " Editor settings {{{
 " Defines default spell language
@@ -89,11 +101,14 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
-" Make vim handle better with multiple buffers
+" Make vim allow me to have more than one unsaved buffers
 set hidden
 
 " Configure the behavior of the backspace in insert mode
 set backspace=indent,eol,start
+
+" Start scroll when I'm 3 lines from top/bottom
+set scrolloff=3
 " }}}
 " Navigation {{{
 " Create splits will be more easily
@@ -119,25 +134,10 @@ augroup configgroup
     autocmd BufEnter Vagrantfile setlocal filetype=ruby
     " Teach vim that RAML is fancy YAML
     autocmd BufEnter *.raml setlocal filetype=yaml
-    " Use indent with size 2 for some files
-    autocmd FileType sh setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType css setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType scss setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType json setlocal tabstop=2 softtabstop=2 shiftwidth=2
     " Define blade templates as html files
     autocmd BufEnter *.blade.php setlocal filetype=html
-    " Use a real tab char in Makefile
-    autocmd FileType make setlocal noexpandtab
     " Remove white space before save
     autocmd BufEnter * EnableStripWhitespaceOnSave
-    " Improve python editing
-    autocmd FileType python setlocal colorcolumn=79
-    " Disable visualbell
-    autocmd GUIEnter * set visualbell t_vb=
 augroup END
 " }}}
 " Airline {{{
@@ -174,6 +174,10 @@ endif
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|vendor$',
     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+" }}}
+" rust.vim {{{
+" Enable auto formatting
+let g:rustfmt_autosave = 1
 " }}}
 " Shortcuts {{{
 " Checks the spell with F7
