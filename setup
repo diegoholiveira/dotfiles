@@ -12,7 +12,7 @@ BREW_PACKAGES=(
 )
 CASK_PACKAGES=(
   "docker" "firefox" "iterm2" "java"
-  "macvim" "pencil" "sequel-pro" "spotify"
+  "macvim" "sequel-pro" "spotify"
   "sublime-text" "unrarx" "vagrant"
   "virtualbox" "vlc"
 )
@@ -41,7 +41,7 @@ for PACKAGE in ${BREW_PACKAGES[@]}; do
   fi
 done
 
-# Install vim replace macos defaults
+# Install vim replace MacOS defaults
 INSTALLED=$(brew list -1 | grep "^vim\$" || true)
 if [ "$INSTALLED" != "vim" ]; then
   brew install vim --with-override-system-vi --with-python3
