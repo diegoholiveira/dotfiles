@@ -2,11 +2,6 @@
 " Plug {{{
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 if !filereadable(vimplug_exists)
-    if !executable("curl")
-        echoerr "You have to install curl or install vim-plug yourself!"
-        execute "q!"
-    endif
-
     echo "Installing Vim-Plug..."
     echo ""
     silent !\curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -30,6 +25,20 @@ Plug 'rust-lang/rust.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
+" }}}
+" Spell languages files {{{
+let spell_en_exists=expand('~/.vim/spell/en.utf-8.spl')
+let spell_pt_exists=expand('~/.vim/spell/pt.utf-8.spl')
+if !filereadable(spell_en_exists)
+    echo "Downloading English spell file..."
+    echo ""
+    silent !\curl -fLo ~/.vim/spell/en.utf-8.spl --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl
+endif
+if !filereadable(spell_pt_exists)
+    echo "Downloading Portuguese spell file..."
+    echo ""
+    silent !\curl -fLo ~/.vim/spell/pt.utf-8.spl --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/pt.utf-8.spl
+endif
 " }}}
 " General {{{
 " Disable the arrow keys
@@ -188,4 +197,10 @@ noremap <silent> <C-F> :set hlsearch! hlsearch?<CR>
 
 " Execute :CtrlPBuffer to quickly switch buffers
 nnoremap <silent> <C-O> :CtrlPBuffer<CR>
+" }}}
+" Commands {{{
+" Enable Portuguese in the spell checker
+command! Pt setlocal spell spelllang=pt_br
+" Enable English in the spell checker
+command! En setlocal spell spelllang=en_us
 " }}}
