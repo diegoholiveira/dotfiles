@@ -62,6 +62,7 @@ set ttyfast
 
 " Enable autoread
 set autoread
+
 " Turn on filetype detection, indent scripts
 " filetype plugins and syntax highlighting
 filetype plugin indent on
@@ -92,6 +93,9 @@ set hlsearch
 set ignorecase
 " }}}
 " Editor settings {{{
+" Defines the time to switch back to normal mode (ms)
+set updatetime=10000
+
 " Defines default spell language
 set spell spelllang=en_us
 
@@ -147,6 +151,8 @@ augroup configgroup
     autocmd BufEnter *.blade.php setlocal filetype=html
     " Remove white space before save
     autocmd BufEnter * EnableStripWhitespaceOnSave
+    " Switch back to normal mode when inactive
+    autocmd CursorHoldI * stopinsert
 augroup END
 " }}}
 " Airline {{{
