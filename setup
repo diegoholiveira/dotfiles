@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 # vim: ft=sh
-set -euo pipefail
 IFS=$'\n\t'
 
 BREW_PACKAGES=(
-  "ansible" "bash" "bash-completion" "composer"
-  "docker-compose" "flake8" "git" "go" "nodejs"
-  "php71" "php71-ast" "php71-intl"  "php-code-sniffer"
-  "pyenv" "pyenv-virtualenv" "python" "ruby"
-  "ssh-copy-id" "stow" "tig" "tree" "tmux"
+  "ansible" "bash" "bash-completion"
+  "docker" "docker-compose" "flake8" "git" "go"
+  "nodejs" "php71" "php71-ast" "php71-intl"
+  "php-code-sniffer" "pyenv" "pyenv-virtualenv"
+  "python" "ruby" "ssh-copy-id" "stow"
+  "tig" "tree" "tmux"
 )
 CASK_PACKAGES=(
-  "docker" "firefox" "iterm2" "java"
-  "macvim" "pencil" "sequel-pro" "spotify"
+  "firefox" "iterm2" "java"
+  "macvim" "sequel-pro" "spotify"
   "sublime-text" "unrarx" "vagrant"
   "virtualbox" "vlc"
 )
@@ -53,9 +53,6 @@ brew upgrade
 # Upgrade pip and setuptools
 pip install --upgrade pip setuptools
 
-# Import iTerm2 configs
-defaults import com.googlecode.iterm2 ${DOTFILES_DIR}/iterm2.plist
-
 # Add the new shell to the list of allowed shells
 grep -q "/usr/local/bin/bash" /etc/shells
 if [ $? -ne 0 ]; then
@@ -66,10 +63,14 @@ fi
 if [ "$SHELL" == "/bin/bash" ]; then
   chsh -s /usr/local/bin/bash
 fi
+
 # Clone the repository into the dotfiles dir
 if [ ! -d $DOTFILES_DIR ]; then
   git clone https://github.com/diegoholiveira/dotfiles.git $DOTFILES_DIR
 fi
+
+# Import iTerm2 configs
+defaults import com.googlecode.iterm2 ${DOTFILES_DIR}/iterm2.plist
 
 # Remove the previous Bash profile
 rm -f ~/.bash_profile ~/.bashrc
