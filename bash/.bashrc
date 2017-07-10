@@ -80,6 +80,10 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # ------------------------------------------------------------------------------
 . ~/.bash_aliases
 
+if [ -f ~/.bashrc_local ]; then
+  . ~/.bashrc_local
+fi
+
 if [ -f $GIT_PROMPT_FILE ]; then
   . $GIT_PROMPT_FILE
 fi
