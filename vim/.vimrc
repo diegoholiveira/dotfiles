@@ -15,6 +15,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'cespare/vim-toml'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'elmcast/elm-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'fatih/vim-hclfmt'
 Plug 'jelera/vim-javascript-syntax'
