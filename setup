@@ -5,7 +5,7 @@ IFS=$'\n\t'
 BREW_PACKAGES=(
   "ansible" "bash" "bash-completion"
   "docker" "docker-compose" "flake8" "git" "go"
-  "nodejs" "pyenv" "pyenv-virtualenv"
+  "nodejs" "pass" "pyenv" "pyenv-virtualenv"
   "python" "ruby" "ssh-copy-id" "stow"
   "tig" "tree" "tmux"
 )
@@ -17,7 +17,7 @@ CASK_PACKAGES=(
 )
 DOTFILES_DIR=~/dotfiles
 POWERLINE_FONTS_FILE=~/.powerline-fonts-installed
-STOW_FILES=("bash" "git" "tmux" "vim" "npm")
+STOW_FILES=("bash" "git" "npm" "tmux" "vim")
 
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then

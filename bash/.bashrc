@@ -53,8 +53,10 @@ function pyenv_virtualenv() {
 # Setup local variables
 # ------------------------------------------------------------------------------
 BREW_PREFIX=$(brew --prefix)
-GIT_PROMPT_FILE="${BREW_PREFIX}/etc/bash_completion.d/git-prompt.sh"
 BASH_COMPLETION_FILE="${BREW_PREFIX}/etc/bash_completion"
+BASH_COMPLETION_EXTENSIONS=(
+  "git-prompt.sh" "pass"
+)
 
 # ------------------------------------------------------------------------------
 # Setup environment variables
@@ -74,6 +76,7 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 export GOPATH=~/.go
 export PATH=$PATH:$(go env GOPATH)/bin
+export PASSWORD_STORE_DIR=~/dotfiles/pass
 
 # ------------------------------------------------------------------------------
 # External scripts
@@ -84,13 +87,14 @@ if [ -f ~/.bashrc_local ]; then
   . ~/.bashrc_local
 fi
 
-if [ -f $GIT_PROMPT_FILE ]; then
-  . $GIT_PROMPT_FILE
-fi
+. $BASH_COMPLETION_FILE
 
-if [ -f $BASH_COMPLETION_FILE ]; then
-  . $BASH_COMPLETION_FILE
-fi
+for FILE in ${BASH_COMPLETION_EXTENSIONS[@]}; do
+  FULL_FILE="${BREW_PREFIX}/etc/bash_completion.d/${FILE}"
+  if [ -f $FULL_FILE ]; then
+    . $FULL_FILE
+  fi
+done
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
