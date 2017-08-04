@@ -4,10 +4,10 @@ IFS=$'\n\t'
 
 BREW_PACKAGES=(
   "ansible" "bash" "bash-completion"
-  "docker" "docker-compose" "flake8" "git" "go"
+  "docker" "docker-compose" "exa" "flake8" "git" "go"
   "nodejs" "pass" "pyenv" "pyenv-virtualenv"
-  "python" "ruby" "ssh-copy-id" "stow"
-  "tig" "tree" "tmux"
+  "python" "ruby" "ssh-copy-id"
+  "stow" "tig" "tmux"
 )
 CASK_PACKAGES=(
   "docker" "firefox" "iterm2" "java"
