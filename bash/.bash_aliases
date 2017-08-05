@@ -2,7 +2,7 @@
 alias tailf="tail -f"
 alias grep="grep --color=always -n"
 alias php-repl="php -a -d auto_prepend_file=./vendor/autoload.php"
-alias ls="exa -l"
+alias ls="exa -la"
 alias tree="exa --tree"
 
 search() {
