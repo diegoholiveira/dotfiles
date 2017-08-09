@@ -11,7 +11,8 @@ BREW_PACKAGES=(
 )
 CASK_PACKAGES=(
   "docker" "firefox" "google-chrome"
-  "iterm2" "java" "macvim" "sequel-pro" "spotify"
+  "iterm2" "java" "macdown" "macvim"
+  "sequel-pro" "spotify"
   "sublime-text" "unrarx" "vagrant"
   "virtualbox" "vlc"
 )
