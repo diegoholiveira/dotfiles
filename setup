@@ -10,8 +10,8 @@ BREW_PACKAGES=(
   "stow" "tig" "tmux"
 )
 CASK_PACKAGES=(
-  "docker" "firefox" "iterm2" "java"
-  "macvim" "sequel-pro" "spotify"
+  "docker" "firefox" "google-chrome"
+  "iterm2" "java" "macvim" "sequel-pro" "spotify"
   "sublime-text" "unrarx" "vagrant"
   "virtualbox" "vlc"
 )
@@ -67,9 +67,6 @@ fi
 if [ ! -d $DOTFILES_DIR ]; then
   git clone https://github.com/diegoholiveira/dotfiles.git $DOTFILES_DIR
 fi
-
-# Import iTerm2 configs
-defaults import com.googlecode.iterm2 ${DOTFILES_DIR}/iterm2.plist
 
 # Remove the previous Bash profile
 rm -f ~/.bash_profile ~/.bashrc
