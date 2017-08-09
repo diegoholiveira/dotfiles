@@ -16,12 +16,7 @@ function __prompt_command() {
   local COLOR_BLUE="\[\033[0;34m\]";
   local COLOR_PURPLE="\[\033[0;35m\]"
 
-  # PS1 parts
-  local USER="${COLOR_GREEN}\u${COLOR_OFF}"
-  local HOST="${COLOR_PURPLE}\h${COLOR_OFF}"
-  local WORKING_DIR="${COLOR_BLUE}\w${COLOR_OFF}"
-
-  PS1="${USER} at ${HOST} in ${WORKING_DIR}"
+  PS1="${COLOR_BLUE}\w${COLOR_OFF}"
 
   if [ "${PYENV_VIRTUALENV}" != "" ]; then
     PS1="${PS1} working on ${COLOR_RED}${PYENV_VIRTUALENV}${COLOR_OFF}"
@@ -31,15 +26,13 @@ function __prompt_command() {
     PS1="${PS1} ${GIT_INFO}"
   fi
 
-  PS1="${PS1}\n${COLOR_BLUE}\t${COLOR_OFF}"
-
   if [ "${LAST_STATUS}" == "0" ]; then
-    PS1="${PS1} ${COLOR_GREEN}[✔]${COLOR_OFF}";
+    local CMD_STATUS="${COLOR_GREEN}[✔]${COLOR_OFF}";
   else
-    PS1="${PS1} ${COLOR_RED}[✘]${COLOR_OFF}";
+    local CMD_STATUS="${COLOR_RED}[✘]${COLOR_OFF}";
   fi
 
-  PS1="${PS1} \$: "
+  PS1="${PS1}\n${CMD_STATUS} \$: "
 }
 
 function pyenv_virtualenv() {
