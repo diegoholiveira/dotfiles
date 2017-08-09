@@ -54,9 +54,6 @@ function pyenv_virtualenv() {
 # ------------------------------------------------------------------------------
 BREW_PREFIX=$(brew --prefix)
 BASH_COMPLETION_FILE="${BREW_PREFIX}/etc/bash_completion"
-BASH_COMPLETION_EXTENSIONS=(
-  "git-prompt.sh" "pass"
-)
 
 # ------------------------------------------------------------------------------
 # Setup environment variables
@@ -88,13 +85,6 @@ if [ -f ~/.bashrc_local ]; then
 fi
 
 . $BASH_COMPLETION_FILE
-
-for FILE in ${BASH_COMPLETION_EXTENSIONS[@]}; do
-  FULL_FILE="${BREW_PREFIX}/etc/bash_completion.d/${FILE}"
-  if [ -f $FULL_FILE ]; then
-    . $FULL_FILE
-  fi
-done
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
