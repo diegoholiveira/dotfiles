@@ -27,12 +27,12 @@ function __prompt_command() {
   fi
 
   if [ "${LAST_STATUS}" == "0" ]; then
-    local CMD_STATUS="${COLOR_GREEN}[✔]${COLOR_OFF}";
+    local COLOR_ON="${COLOR_GREEN}";
   else
-    local CMD_STATUS="${COLOR_RED}[✘]${COLOR_OFF}";
+    local COLOR_ON="${COLOR_RED}";
   fi
 
-  PS1="${PS1}\n${CMD_STATUS} \$: "
+  PS1="${PS1}\n${COLOR_ON}\$${COLOR_OFF} "
 }
 
 function pyenv_virtualenv() {
