@@ -1,5 +1,5 @@
 [core]
-    excludesfile = /Users/diegoholiveira/.gitexcludes
+    excludesfile = ~/.gitexcludes
 [user]
     name = Diego Oliveira
     email = contato@diegoholiveira.com
@@ -12,8 +12,9 @@
 [alias]
     amend = commit --amend -C HEAD
     undo = reset --soft HEAD~1
-	co = checkout
-	ci = commit
-	br = branch
+    co = checkout
+    ci = commit
+    br = branch
+    st = status
 [push]
     default = tracking
