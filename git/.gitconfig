@@ -12,9 +12,5 @@
 [alias]
     amend = commit --amend -C HEAD
     undo = reset --soft HEAD~1
-    co = checkout
-    ci = commit
-    br = branch
-    st = status
 [push]
     default = tracking
