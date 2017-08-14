@@ -10,7 +10,7 @@ BREW_PACKAGES=(
   "stow" "tig" "tmux"
 )
 CASK_PACKAGES=(
-  "docker" "firefox" "google-chrome"
+  "docker" "firefox" "flux" "google-chrome"
   "iterm2" "java" "macdown" "macvim"
   "sequel-pro" "spotify"
   "sublime-text" "unrarx" "vagrant"
