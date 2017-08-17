@@ -51,9 +51,6 @@ fi
 # Upgrade all installed packages
 brew upgrade
 
-# Upgrade pip and setuptools
-pip install --upgrade pip setuptools
-
 # Add the new shell to the list of allowed shells
 grep -q "/usr/local/bin/bash" /etc/shells
 if [ $? -ne 0 ]; then
