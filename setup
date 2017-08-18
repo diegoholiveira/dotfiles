@@ -3,7 +3,7 @@
 IFS=$'\n\t'
 
 BREW_PACKAGES=(
-  "ansible" "bash" "bash-completion"
+  "ansible" "bash" "bash-completion@2"
   "docker" "docker-compose" "exa" "flake8"
   "git" "gnupg@2.0" "go"
   "nodejs" "pass" "pyenv" "pyenv-virtualenv"

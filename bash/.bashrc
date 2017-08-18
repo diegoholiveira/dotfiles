@@ -45,8 +45,7 @@ function pyenv_virtualenv() {
 # ------------------------------------------------------------------------------
 # Setup local variables
 # ------------------------------------------------------------------------------
-BREW_PREFIX=$(brew --prefix)
-BASH_COMPLETION_FILE="${BREW_PREFIX}/etc/bash_completion"
+BASH_COMPLETION_FILE="/usr/local/share/bash-completion/bash_completion"
 
 # ------------------------------------------------------------------------------
 # Setup environment variables
@@ -73,10 +72,6 @@ export PASSWORD_STORE_DIR=~/dotfiles/pass
 # External scripts
 # ------------------------------------------------------------------------------
 . ~/.bash_aliases
-
-if [ -f ~/.bashrc_local ]; then
-  . ~/.bashrc_local
-fi
 
 . $BASH_COMPLETION_FILE
 
