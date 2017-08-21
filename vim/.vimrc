@@ -82,14 +82,14 @@ set number
 
 " Enable highlight the matching [{()}]
 set showmatch
-
-" Highlight search results in the editor
-set hlsearch
+" }}}
+" Editor settings {{{
+" Defines the search as incremental
+set incsearch
 
 " Defines the search as case insensitive
 set ignorecase
-" }}}
-" Editor settings {{{
+
 " Defines the time to switch back to normal mode (ms)
 set updatetime=10000
 
@@ -194,9 +194,6 @@ let g:rustfmt_autosave = 1
 " Shortcuts {{{
 " Checks the spell with F7
 nnoremap <silent> <C-E> z=
-
-" Disable or enable the search highlighting
-noremap <silent> <C-F> :set hlsearch! hlsearch?<CR>
 
 " Execute :CtrlPBuffer to quickly switch buffers
 nnoremap <silent> <C-O> :CtrlPBuffer<CR>
