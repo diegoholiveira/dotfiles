@@ -18,6 +18,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'fatih/vim-hclfmt'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'rust-lang/rust.vim'
