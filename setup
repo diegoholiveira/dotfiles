@@ -18,7 +18,6 @@ CASK_PACKAGES=(
   "virtualbox" "vlc"
 )
 DOTFILES_DIR=~/dotfiles
-POWERLINE_FONTS_FILE=~/.powerline-fonts-installed
 STOW_FILES=("bash" "git" "npm" "tmux" "vim")
 
 # Install Homebrew
@@ -74,16 +73,6 @@ rm -f ~/.bash_profile ~/.bashrc
 for APP in ${STOW_FILES[@]}; do
   stow --dir=${DOTFILES_DIR} ${APP}
 done
-
-# Setup powerline fonts
-if [ ! -f $POWERLINE_FONTS_FILE ]; then
-  git clone https://github.com/powerline/fonts.git
-  cd fonts
-  ./install.sh
-  cd ..
-  rm -rf fonts
-  touch $POWERLINE_FONTS_FILE
-fi
 
 # Generates a ssh key for my user
 if [ ! -f ~/.ssh/id_rsa ]; then

@@ -4,11 +4,7 @@
 set antialias
 
 " Define the editor font based on the gui interface
-if has("gui_macvim")
-    set guifont=Fira\ Mono\ for\ Powerline:h13
-else
-    set guifont=Knack\ Nerd\ Font\ 10
-endif
+set guifont=Monaco:h14
 " }}}
 " Interface layout {{{
 " Hide toolbar
