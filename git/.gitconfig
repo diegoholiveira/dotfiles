@@ -12,5 +12,8 @@
 [alias]
     amend = commit --amend -C HEAD
     undo = reset --soft HEAD~1
+    unstage = reset HEAD --
 [push]
     default = tracking
+[advice]
+    statusHints = false
