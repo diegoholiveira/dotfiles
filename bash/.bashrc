@@ -76,4 +76,3 @@ export PASSWORD_STORE_DIR=~/dotfiles/pass
 . $BASH_COMPLETION_FILE
 
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
