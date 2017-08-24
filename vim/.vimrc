@@ -18,7 +18,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'fatih/vim-hclfmt'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'rust-lang/rust.vim'
@@ -152,16 +151,6 @@ augroup configgroup
     " Switch back to normal mode when inactive
     autocmd CursorHoldI * stopinsert
 augroup END
-" }}}
-" Airline {{{
-" Always display the status line
-set laststatus=2
-" Use solarized theme
-let g:airline_theme='solarized'
-" Display tabline by default
-let g:airline#extensions#tabline#enabled = 1
-" Enable powerline fonts
-let g:airline_powerline_fonts = 1
 " }}}
 " CtrlP {{{
 " Invoke Ctrl-p with c-p
