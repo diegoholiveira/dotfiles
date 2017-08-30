@@ -51,7 +51,6 @@ BASH_COMPLETION_FILE="/usr/local/share/bash-completion/bash_completion"
 # Setup environment variables
 # ------------------------------------------------------------------------------
 export PATH=/usr/local/sbin:~/.npm-packages/bin:$PATH
-export PATH=/usr/local/opt/gnupg@2.0/bin:$PATH
 if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
