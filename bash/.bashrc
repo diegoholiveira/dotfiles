@@ -73,6 +73,10 @@ export PASSWORD_STORE_DIR=~/dotfiles/pass
 # ------------------------------------------------------------------------------
 . ~/.bash_aliases
 
+if [ -f ~/.bash_private ]; then
+  . ~/.bash_private
+fi
+
 . $BASH_COMPLETION_FILE
 
 eval "$(pyenv init -)"
