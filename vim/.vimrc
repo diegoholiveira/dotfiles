@@ -2,8 +2,6 @@
 " Plug {{{
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 if !filereadable(vimplug_exists)
-    echo "Installing Vim-Plug..."
-    echo ""
     silent !\curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     autocmd VimEnter * PlugInstall
@@ -21,19 +19,17 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'rust-lang/rust.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 " }}}
 " Spell languages files {{{
 let spell_en_exists=expand('~/.vim/spell/en.utf-8.spl')
 let spell_pt_exists=expand('~/.vim/spell/pt.utf-8.spl')
 if !filereadable(spell_en_exists)
-    echo "Downloading English spell file..."
-    echo ""
     silent !\curl -fLo ~/.vim/spell/en.utf-8.spl --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl
 endif
 if !filereadable(spell_pt_exists)
-    echo "Downloading Portuguese spell file..."
-    echo ""
     silent !\curl -fLo ~/.vim/spell/pt.utf-8.spl --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/pt.utf-8.spl
 endif
 " }}}
@@ -151,6 +147,16 @@ augroup configgroup
     " Switch back to normal mode when inactive
     autocmd CursorHoldI * stopinsert
 augroup END
+" }}}
+" Airline {{{
+" Always display the status line
+set laststatus=2
+" Use solarized theme
+let g:airline_theme='solarized'
+" Disable powerline fonts
+let g:airline_powerline_fonts = 0
+" Disable all extensions
+let g:airline_extensions = []
 " }}}
 " CtrlP {{{
 " Invoke Ctrl-p with c-p
