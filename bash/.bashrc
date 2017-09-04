@@ -50,7 +50,6 @@ BASH_COMPLETION_FILE="/usr/local/share/bash-completion/bash_completion"
 # ------------------------------------------------------------------------------
 # Setup environment variables
 # ------------------------------------------------------------------------------
-export PATH=/usr/local/sbin:~/.npm-packages/bin:$PATH
 if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
@@ -64,7 +63,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export GIT_PS1_SHOWDIRTYSTATE=1
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 export GOPATH=~/.go
-export PATH=$PATH:$(go env GOPATH)/bin
+export PATH=/usr/local/bin:~/.npm-packages/bin:$(go env GOPATH)/bin:$PATH
 export PASSWORD_STORE_DIR=~/dotfiles/pass
 
 # ------------------------------------------------------------------------------
