@@ -1,2 +1,3 @@
 vim/.vim/*
 !vim/.vim/after
+.python-version

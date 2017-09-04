@@ -18,6 +18,12 @@ CASK_PACKAGES=(
   "virtualbox" "vlc"
 )
 DOTFILES_DIR=~/dotfiles
+PYTHON_VERSIONS=(
+  "2.7.13"
+  "3.4.6"
+  "3.5.3"
+  "3.6.2"
+)
 STOW_FILES=("bash" "git" "npm" "tmux" "vim")
 
 # Install Homebrew
@@ -78,18 +84,25 @@ for APP in ${STOW_FILES[@]}; do
   stow --dir=${DOTFILES_DIR} ${APP}
 done
 
+. ~/.bashrc
+
+for PYTHON_VERSION in ${PYTHON_VERSIONS[@]}; do
+  pyenv install --skip-existing $PYTHON_VERSION
+  pyenv local $PYTHON_VERSION
+done
+
 # Generates a ssh key for my user
 if [ ! -f ~/.ssh/id_rsa ]; then
   ssh-keygen -t rsa -b 4096 -C "contato@diegoholiveira.com" -N "" -f ~/.ssh/id_rsa -q
-fi
 
-echo "------------------------------------------------------------------------------"
-echo "Final instructions"
-echo "------------------------------------------------------------------------------"
-echo ""
-echo "To secure your ssh key, please add a passphrase to it using the command above:"
-echo "    ssh-keygen -p -f ~/.ssh/id_rsa"
-echo ""
-echo "Before start using the computer, please restart the SO to reload all changes"
-echo "made by this script!"
-echo ""
+  echo "------------------------------------------------------------------------------"
+  echo "Final instructions"
+  echo "------------------------------------------------------------------------------"
+  echo ""
+  echo "To secure your ssh key, please add a passphrase to it using the command above:"
+  echo "    ssh-keygen -p -f ~/.ssh/id_rsa"
+  echo ""
+  echo "Before start using the computer, please restart the SO to reload all changes"
+  echo "made by this script!"
+  echo ""
+fi
