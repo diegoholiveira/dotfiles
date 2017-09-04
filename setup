@@ -88,7 +88,6 @@ done
 
 for PYTHON_VERSION in ${PYTHON_VERSIONS[@]}; do
   pyenv install --skip-existing $PYTHON_VERSION
-  pyenv local $PYTHON_VERSION
 done
 
 # Generates a ssh key for my user
