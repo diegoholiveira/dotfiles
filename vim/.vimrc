@@ -180,7 +180,7 @@ if exists("g:ctrlp_user_command")
 endif
 " Define files and folders that must be ignored by ctrlp
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|vendor$',
+    \ 'dir': '\.git$\|\.hg$\|\.svn$\|venv$\|bower_components$\|dist$\|node_modules$\|vendor$',
     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 " }}}
 " rust.vim {{{
