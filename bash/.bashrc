@@ -46,6 +46,7 @@ function pyenv_virtualenv() {
 # Setup local variables
 # ------------------------------------------------------------------------------
 BASH_COMPLETION_FILE="/usr/local/share/bash-completion/bash_completion"
+BREW_COMPLETION_FILE="/usr/local/Homebrew/completions/bash/brew"
 
 # ------------------------------------------------------------------------------
 # Setup environment variables
@@ -76,5 +77,9 @@ if [ -f ~/.bash_private ]; then
 fi
 
 . $BASH_COMPLETION_FILE
+
+if [ -f $BREW_COMPLETION_FILE ]; then
+  . $BREW_COMPLETION_FILE
+fi
 
 eval "$(pyenv init -)"
