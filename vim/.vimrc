@@ -61,7 +61,9 @@ set autoread
 filetype plugin indent on
 " }}}
 " Colors {{{
-syntax on
+if !exists("g:syntax_on")
+    syntax enable
+endif
 
 " Enable solarized color scheme
 silent! colorscheme solarized
