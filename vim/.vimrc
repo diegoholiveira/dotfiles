@@ -15,12 +15,11 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'fatih/vim-hclfmt'
+Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'rust-lang/rust.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 " }}}
 " Spell languages files {{{
@@ -74,6 +73,9 @@ set number
 
 " Enable highlight the matching [{()}]
 set showmatch
+
+" Always display the status line
+set laststatus=2
 " }}}
 " Editor settings {{{
 " Defines the search as incremental
@@ -163,19 +165,6 @@ command! Pt setlocal spell spelllang=pt_br
 " Enable English in the spell checker
 command! En setlocal spell spelllang=en_us
 " }}}
-" Plugin: Airline {{{
-" Always display the status line
-set laststatus=2
-
-" Use solarized theme
-let g:airline_theme='solarized'
-
-" Disable powerline fonts
-let g:airline_powerline_fonts = 0
-
-" Disable all extensions
-let g:airline_extensions = []
-" }}}
 " Plugin: CtrlP {{{
 " Invoke Ctrl-p with c-p
 let g:ctrlp_map = '<c-p>'
@@ -211,4 +200,8 @@ let g:ctrlp_custom_ignore = {
 " Plugin: rust.vim {{{
 " Enable auto formatting
 let g:rustfmt_autosave = 1
+" }}}
+" Plugin: Lightline {{{
+" Define solarized as default colorscheme
+let g:lightline = { 'colorscheme': 'solarized' }
 " }}}
