@@ -149,7 +149,21 @@ augroup configgroup
     autocmd CursorHoldI * stopinsert
 augroup END
 " }}}
-" Airline {{{
+" Shortcuts {{{
+" Checks the spell with F7
+nnoremap <silent> <C-E> z=
+
+" Execute :CtrlPBuffer to quickly switch buffers
+nnoremap <silent> <C-O> :CtrlPBuffer<CR>
+" }}}
+" Commands {{{
+" Enable Portuguese in the spell checker
+command! Pt setlocal spell spelllang=pt_br
+
+" Enable English in the spell checker
+command! En setlocal spell spelllang=en_us
+" }}}
+" Plugin: Airline {{{
 " Always display the status line
 set laststatus=2
 
@@ -162,7 +176,7 @@ let g:airline_powerline_fonts = 0
 " Disable all extensions
 let g:airline_extensions = []
 " }}}
-" CtrlP {{{
+" Plugin: CtrlP {{{
 " Invoke Ctrl-p with c-p
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -194,21 +208,7 @@ let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|\.hg$\|\.svn$\|venv$\|dist$\|node_modules$\|vendor$',
     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 " }}}
-" rust.vim {{{
+" Plugin: rust.vim {{{
 " Enable auto formatting
 let g:rustfmt_autosave = 1
-" }}}
-" Shortcuts {{{
-" Checks the spell with F7
-nnoremap <silent> <C-E> z=
-
-" Execute :CtrlPBuffer to quickly switch buffers
-nnoremap <silent> <C-O> :CtrlPBuffer<CR>
-" }}}
-" Commands {{{
-" Enable Portuguese in the spell checker
-command! Pt setlocal spell spelllang=pt_br
-
-" Enable English in the spell checker
-command! En setlocal spell spelllang=en_us
 " }}}
