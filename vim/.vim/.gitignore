@@ -1,3 +1,4 @@
-*
-!.gitignore
-!after
+# exclude files generated
+autoload
+plugged
+spell
