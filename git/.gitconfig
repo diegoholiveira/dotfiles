@@ -1,5 +1,7 @@
 [core]
     excludesfile = ~/.gitexcludes
+[credential]
+    helper = osxkeychain
 [user]
     name = Diego Oliveira
     email = contato@diegoholiveira.com
