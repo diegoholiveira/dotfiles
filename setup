@@ -8,14 +8,13 @@ BREW_PACKAGES=(
   "git" "gnupg" "go"
   "nodejs" "pass" "pyenv" "pyenv-virtualenv"
   "python" "ruby" "ssh-copy-id"
-  "stow" "tig" "tmux"
+  "stow" "tig" "tmux" "vagrant-completion"
 )
 CASK_PACKAGES=(
-  "docker" "firefox" "flux" "google-chrome"
+  "caffeine" "docker" "firefox" "flux" "google-chrome"
   "iterm2" "java" "macdown" "macvim"
   "sequel-pro" "spotify"
-  "sublime-text" "unrarx" "vagrant"
-  "virtualbox" "vlc"
+  "sublime-text" "vagrant" "virtualbox" "vlc"
 )
 DOTFILES_DIR=~/dotfiles
 PYTHON_VERSIONS=(
@@ -81,7 +80,7 @@ rm -f ~/.bash_profile ~/.bashrc
 
 # Link the profiles to my versions
 for APP in ${STOW_FILES[@]}; do
-  stow --dir=${DOTFILES_DIR} ${APP}
+  STOW_DIR=~/dotfiles stow ${APP}
 done
 
 . ~/.bashrc
