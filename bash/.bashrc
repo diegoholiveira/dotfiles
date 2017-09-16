@@ -48,24 +48,27 @@ function pyenv_virtualenv() {
 BASH_COMPLETION_FILE="/usr/local/share/bash-completion/bash_completion"
 BREW_COMPLETION_FILE="/usr/local/Homebrew/completions/bash/brew"
 
+
 # ------------------------------------------------------------------------------
 # Setup environment variables
 # ------------------------------------------------------------------------------
+export CLICOLOR=1
+export EDITOR=vim
+export GIT_EDITOR=vim
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GOPATH=~/.go
 if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
-export CLICOLOR=1
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export EDITOR=vim
-export GIT_EDITOR=vim
 export PROMPT_COMMAND=__prompt_command
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export GIT_PS1_SHOWDIRTYSTATE=1
-export VAGRANT_DEFAULT_PROVIDER=virtualbox
-export GOPATH=~/.go
 export PATH=/usr/local/bin:~/.npm-packages/bin:$(go env GOPATH)/bin:$PATH
 export PASSWORD_STORE_DIR=~/dotfiles/pass
+export STOW_DIR=~/dotfiles
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
+
 
 # ------------------------------------------------------------------------------
 # External scripts
