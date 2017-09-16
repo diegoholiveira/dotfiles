@@ -24,7 +24,7 @@ PYTHON_VERSIONS=(
   "3.5.3"
   "3.6.2"
 )
-STOW_FILES=("bash" "git" "npm" "tmux" "vim")
+STOW_FILES=("bash" "git" "npm" "ssh" "tmux" "vim")
 
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then

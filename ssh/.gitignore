@@ -1,0 +1,3 @@
+.ssh/*
+!.ssh/config
+!.gitignore
