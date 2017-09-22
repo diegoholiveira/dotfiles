@@ -78,6 +78,10 @@ set showmatch
 set laststatus=2
 " }}}
 " Editor settings {{{
+" Show tab as chars
+set list
+set listchars=tab:>-
+
 " Defines the search as incremental
 set incsearch
 
