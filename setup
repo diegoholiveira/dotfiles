@@ -18,7 +18,7 @@ CASK_PACKAGES=(
 )
 DOTFILES_DIR=~/dotfiles
 PYTHON_VERSIONS=(
-  "2.7.13"
+  "2.7.14"
   "3.4.6"
   "3.5.3"
   "3.6.2"
