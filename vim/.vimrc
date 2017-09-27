@@ -20,6 +20,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'rust-lang/rust.vim'
+Plug 'w0rp/ale'
 call plug#end()
 " }}}
 " Spell languages files {{{
@@ -169,6 +170,16 @@ command! Pt setlocal spell spelllang=pt_br
 " Enable English in the spell checker
 command! En setlocal spell spelllang=en_us
 " }}}
+" Plugin: Ale {{{
+" Define better error and warning icons
+let g:ale_sign_warning = '▲'
+let g:ale_sign_error = '✗'
+
+" Define the lints that will run
+let g:ale_linters = {
+    \ 'python': ['flake8'],
+\}
+" }}}
 " Plugin: CtrlP {{{
 " Invoke Ctrl-p with c-p
 let g:ctrlp_map = '<c-p>'
@@ -199,13 +210,14 @@ endif
 " Define files and folders that must be ignored by ctrlp
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|\.hg$\|\.svn$\|venv$\|dist$\|node_modules$\|vendor$',
-    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
-" }}}
-" Plugin: rust.vim {{{
-" Enable auto formatting
-let g:rustfmt_autosave = 1
+    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$'
+\ }
 " }}}
 " Plugin: Lightline {{{
 " Define solarized as default colorscheme
 let g:lightline = { 'colorscheme': 'solarized' }
+" }}}
+" Plugin: rust.vim {{{
+" Enable auto formatting
+let g:rustfmt_autosave = 1
 " }}}
