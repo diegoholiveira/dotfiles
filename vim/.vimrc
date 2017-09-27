@@ -179,6 +179,9 @@ let g:ale_sign_error = '✗'
 let g:ale_linters = {
     \ 'python': ['flake8'],
 \}
+
+" Configure ale to pass some args to flake8 (python linter)
+let g:ale_python_flake8_args = '--ignore=E501,E999'
 " }}}
 " Plugin: CtrlP {{{
 " Invoke Ctrl-p with c-p
