@@ -3,19 +3,13 @@
 IFS=$'\n\t'
 
 DOTFILES_DIR=~/dotfiles
-PYTHON_VERSIONS=(
-  "2.7.14"
-  "3.4.6"
-  "3.5.3"
-  "3.6.2"
-)
 STOW_FILES=("bash" "git" "npm" "ssh" "tmux" "vim")
 
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-  brew tap Homebrew/bundle
+  brew tap homebrew/bundle
 fi
 
 # Clone the repository into the dotfiles dir
@@ -25,7 +19,9 @@ fi
 
 # Install all dependencies using the Brewfile
 cd $DOTFILES_DIR
-brew bundle
+  echo 'Installing dependencies using brew...'
+
+  brew bundle > /dev/null
 cd -
 
 # Add the new shell to the list of allowed shells
@@ -43,19 +39,21 @@ fi
 defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES_DIR"
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
-# Remove the previous Bash profile
-rm -f ~/.bash_profile ~/.bashrc
-
 # Link the profiles to my versions
-for APP in ${STOW_FILES[@]}; do
-  STOW_DIR=~/dotfiles stow ${APP}
-done
+rm -f ~/.npmrc
+cd $DOTFILES_DIR
+  for APP in ${STOW_FILES[@]}; do
+    stow ${APP}
+  done
+cd -
 
 . ~/.bashrc
 
-for PYTHON_VERSION in ${PYTHON_VERSIONS[@]}; do
-  pyenv install --skip-existing $PYTHON_VERSION
-done
+# install pip packages
+echo 'Installing python packages using pip...'
+pip install \
+  vim-vint \
+  > /dev/null
 
 # Generates a ssh key for my user
 if [ ! -f ~/.ssh/id_rsa ]; then
