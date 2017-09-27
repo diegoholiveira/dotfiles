@@ -1,7 +1,8 @@
-" vim:foldmethod=marker:foldlevel=0
+" vim: foldmethod=marker:foldlevel=0
+scriptencoding utf-8
 " Plug {{{
-let vimplug_exists=expand('~/.vim/autoload/plug.vim')
-if !filereadable(vimplug_exists)
+let g:vimplug_exists=expand('~/.vim/autoload/plug.vim')
+if !filereadable(g:vimplug_exists)
     silent !\curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     autocmd VimEnter * PlugInstall
@@ -24,14 +25,19 @@ Plug 'w0rp/ale'
 call plug#end()
 " }}}
 " Spell languages files {{{
-let spell_en_exists=expand('~/.vim/spell/en.utf-8.spl')
-let spell_pt_exists=expand('~/.vim/spell/pt.utf-8.spl')
-if !filereadable(spell_en_exists)
+let g:spell_en_exists=expand('~/.vim/spell/en.utf-8.spl')
+let g:spell_pt_exists=expand('~/.vim/spell/pt.utf-8.spl')
+if !filereadable(g:spell_en_exists)
     silent !\curl -fLo ~/.vim/spell/en.utf-8.spl --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl
 endif
-if !filereadable(spell_pt_exists)
+if !filereadable(g:spell_pt_exists)
     silent !\curl -fLo ~/.vim/spell/pt.utf-8.spl --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/pt.utf-8.spl
 endif
+
+" remove variables used to verify the installation
+unlet g:vimplug_exists
+unlet g:spell_en_exists
+unlet g:spell_pt_exists
 " }}}
 " General {{{
 " Disable the arrow keys
@@ -55,7 +61,7 @@ set autoread
 filetype plugin indent on
 " }}}
 " Colors {{{
-if !exists("g:syntax_on")
+if !exists('g:syntax_on')
     syntax enable
 endif
 
@@ -204,12 +210,12 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_use_caching = 0
 
 " Disable the default custom ignore
-if exists("g:ctrlp_custom_ignore")
+if exists('g:ctrlp_custom_ignore')
   unlet g:ctrlp_custom_ignore
 endif
 
 " Disable the custom command
-if exists("g:ctrlp_user_command")
+if exists('g:ctrlp_user_command')
   unlet g:ctrlp_user_command
 endif
 
