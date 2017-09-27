@@ -66,7 +66,6 @@ export PROMPT_COMMAND=__prompt_command
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH=/usr/local/opt/python/libexec/bin:/usr/local/bin:~/.npm-packages/bin:$(go env GOPATH)/bin:$PATH
 export PASSWORD_STORE_DIR=~/dotfiles/pass
-export STOW_DIR=~/dotfiles
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 
