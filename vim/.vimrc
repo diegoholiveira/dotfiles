@@ -183,7 +183,7 @@ let g:ale_sign_error = '✗'
 
 " Define the lints that will run
 let g:ale_linters = {
-    \ 'python': ['flake8'],
+    \ 'python': ['flake8', 'pycodestyle']
 \}
 
 " Configure ale to pass some args to flake8 (python linter)

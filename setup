@@ -53,6 +53,7 @@ cd -
 echo 'Installing python packages using pip...'
 pip install \
   vim-vint \
+  pycodestyle \
   > /dev/null
 
 # Generates a ssh key for my user
