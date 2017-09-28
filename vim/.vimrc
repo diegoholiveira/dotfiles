@@ -219,6 +219,9 @@ if exists('g:ctrlp_user_command')
   unlet g:ctrlp_user_command
 endif
 
+" Allow hidden files be displayed
+let g:ctrlp_show_hidden = 1
+
 " Define files and folders that must be ignored by ctrlp
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|\.hg$\|\.svn$\|venv$\|dist$\|node_modules$\|vendor$',
