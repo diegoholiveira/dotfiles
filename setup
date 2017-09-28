@@ -39,6 +39,18 @@ fi
 defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES_DIR"
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
+# Disable Java in Safari
+defaults write com.apple.Safari \
+  com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled \
+  -bool false
+defaults write com.apple.Safari \
+  com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles \
+  -bool false
+
+# Lock the computer when init the screensaver
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
 # Link the profiles to my versions
 rm -f ~/.npmrc
 cd $DOTFILES_DIR
