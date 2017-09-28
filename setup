@@ -22,7 +22,7 @@ cd $DOTFILES_DIR
   echo 'Installing dependencies using brew...'
 
   brew bundle > /dev/null
-cd -
+cd - > /dev/null
 
 # Add the new shell to the list of allowed shells
 grep -q "/usr/local/bin/bash" /etc/shells
@@ -45,15 +45,16 @@ cd $DOTFILES_DIR
   for APP in ${STOW_FILES[@]}; do
     stow ${APP}
   done
-cd -
+cd - > /dev/null
 
 . ~/.bashrc
 
 # install pip packages
 echo 'Installing python packages using pip...'
 pip install \
-  vim-vint \
+  flake8 \
   pycodestyle \
+  vim-vint \
   > /dev/null
 
 # Generates a ssh key for my user
