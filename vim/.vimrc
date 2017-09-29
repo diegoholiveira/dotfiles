@@ -225,7 +225,7 @@ let g:ctrlp_show_hidden = 1
 " Define files and folders that must be ignored by ctrlp
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|\.hg$\|\.svn$\|venv$\|dist$\|node_modules$\|vendor$',
-    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$'
+    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.DS_Store$'
 \ }
 " }}}
 " Plugin: Lightline {{{
