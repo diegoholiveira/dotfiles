@@ -13,3 +13,23 @@ curl-post-json() {
 
   curl -H "Content-Type: application/json" -X POST -d $CONTENT $URL
 }
+
+new-sh() {
+  local FILENAME=$1
+
+  if [ ! -f $FILENAME ]; then
+    cat > $FILENAME <<"EOF"
+#!/usr/bin/env bash
+# vim: ft=sh
+set -euo pipefail
+IFS=$'\n\t'
+
+EOF
+
+    chmod +x $FILENAME
+    return 0
+  else
+    echo "File already exists"
+    return 1
+  fi
+}
