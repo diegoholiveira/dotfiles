@@ -20,6 +20,7 @@ brew "ruby"
 brew "rust"
 brew "sbt"
 brew "scala", args: ["with-src"]
+brew "shellcheck"
 brew "ssh-copy-id"
 brew "stow"
 brew "tig"

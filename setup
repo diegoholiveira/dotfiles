@@ -18,15 +18,15 @@ if [ ! -d $DOTFILES_DIR ]; then
 fi
 
 # Install all dependencies using the Brewfile
-cd $DOTFILES_DIR
+(
+  cd $DOTFILES_DIR || exit 1
   echo 'Installing dependencies using brew...'
 
   brew bundle > /dev/null
-cd - > /dev/null
+)
 
 # Add the new shell to the list of allowed shells
-grep -q "/usr/local/bin/bash" /etc/shells
-if [ $? -ne 0 ]; then
+if ! grep -q "/usr/local/bin/bash" /etc/shells; then
   sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
 fi
 
@@ -53,11 +53,12 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Link the profiles to my versions
 rm -f ~/.npmrc
-cd $DOTFILES_DIR
-  for APP in ${STOW_FILES[@]}; do
-    stow ${APP}
+(
+  cd $DOTFILES_DIR || exit 1
+  for APP in "${STOW_FILES[@]}"; do
+    stow "${APP}"
   done
-cd - > /dev/null
+)
 
 . ~/.bashrc
 
