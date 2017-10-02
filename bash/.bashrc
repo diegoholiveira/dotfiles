@@ -1,12 +1,8 @@
+#!/usr/bin/env bash
 # ------------------------------------------------------------------------------
 # Functions
 # ------------------------------------------------------------------------------
 function __prompt_command() {
-  # Dynamic info
-  local LAST_STATUS="$?"
-  local GIT_INFO=$(__git_ps1 "(%s)")
-  local PYENV_VIRTUALENV=$(pyenv_virtualenv)
-
   # ANSI color code
   local COLOR_OFF="\[\033[0m\]"
 
@@ -14,7 +10,14 @@ function __prompt_command() {
   local COLOR_RED="\[\033[0;31m\]"
   local COLOR_GREEN="\[\033[0;32m\]"
   local COLOR_BLUE="\[\033[0;34m\]";
-  local COLOR_PURPLE="\[\033[0;35m\]"
+
+  # Dynamic info
+  local LAST_STATUS="$?"
+  local GIT_INFO
+  local PYENV_VIRTUALENV
+
+  GIT_INFO=$(__git_ps1 "(%s)")
+  PYENV_VIRTUALENV=$(pyenv_virtualenv)
 
   PS1="${COLOR_BLUE}\w${COLOR_OFF}"
 
@@ -36,8 +39,8 @@ function __prompt_command() {
 }
 
 function pyenv_virtualenv() {
-  if [ x$PYENV_VERSION != x ]; then
-    echo -n $PYENV_VERSION
+  if [ x"$PYENV_VERSION" != x ]; then
+    echo -n "$PYENV_VERSION"
   fi
 }
 
@@ -57,18 +60,19 @@ export EDITOR=vim
 export GIT_EDITOR=vim
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GOPATH=~/.go
-if [ -f /usr/libexec/java_home ]; then
-  export JAVA_HOME=$(/usr/libexec/java_home)
-fi
+export JAVA_HOME
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PROMPT_COMMAND=__prompt_command
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PATH=/usr/local/opt/python/libexec/bin:/usr/local/bin:~/.npm-packages/bin:$(go env GOPATH)/bin:$PATH
+export PATH=/usr/local/opt/python/libexec/bin:/usr/local/bin:~/.npm-packages/bin:$PATH
 export PASSWORD_STORE_DIR=~/dotfiles/pass
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
-
+if [ -f /usr/libexec/java_home ]; then
+  JAVA_HOME=$(/usr/libexec/java_home)
+fi
+PATH=$(go env GOPATH)/bin:$PATH
 # ------------------------------------------------------------------------------
 # External scripts
 # ------------------------------------------------------------------------------

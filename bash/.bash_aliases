@@ -4,21 +4,21 @@ alias grep="grep --color=always -n"
 alias ls="ls -AlhF"
 
 search() {
-  grep -I -r -e $1 ${2:-.}
+  grep -I -r -e "$1" "${2:-.}"
 }
 
 curl-post-json() {
   local URL=$1
   local CONTENT=$2
 
-  curl -H "Content-Type: application/json" -X POST -d $CONTENT $URL
+  curl -H "Content-Type: application/json" -X POST -d "$CONTENT" "$URL"
 }
 
 new-sh() {
   local FILENAME=$1
 
-  if [ ! -f $FILENAME ]; then
-    cat > $FILENAME <<"EOF"
+  if [ ! -f "$FILENAME" ]; then
+    cat > "$FILENAME" <<"EOF"
 #!/usr/bin/env bash
 # vim: ft=sh
 set -euo pipefail
@@ -26,7 +26,7 @@ IFS=$'\n\t'
 
 EOF
 
-    chmod +x $FILENAME
+    chmod +x "$FILENAME"
     return 0
   else
     echo "File already exists"
