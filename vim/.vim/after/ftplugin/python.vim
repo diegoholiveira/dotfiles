@@ -1,2 +1,2 @@
 " define a visible char at 79 column
-set colorcolumn=79
+setlocal colorcolumn=79
