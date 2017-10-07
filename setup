@@ -19,6 +19,9 @@ fi
 
 # Install all dependencies using the Brewfile
 (
+  sudo mkdir -p /usr/local/sbin || true
+  sudo chmod "$USER:admin" /usr/local/sbin || true
+
   cd $DOTFILES_DIR || exit 1
   echo 'Installing dependencies using brew...'
 

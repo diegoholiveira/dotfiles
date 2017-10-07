@@ -1,4 +1,9 @@
 " vim:foldmethod=marker:foldlevel=0
+scriptencoding utf-8
+" Colors {{{
+" Change vim background
+set background=light
+" }}}
 " Fonts {{{
 " smooth fonts
 set antialias
