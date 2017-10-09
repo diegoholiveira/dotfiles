@@ -4,7 +4,10 @@ alias grep="grep --color=always -n"
 alias ls="ls -AlhF"
 
 search() {
-  grep -I -r -e "$1" "${2:-.}"
+  grep --exclude-dir="vendor" \
+    --exclude-dir="node_modules" \
+    --exclude-dir=".git" \
+    -I -r -e "$1" "${2:-.}"
 }
 
 curl-post-json() {
