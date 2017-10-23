@@ -36,3 +36,11 @@ EOF
     return 1
   fi
 }
+
+docker-clean() {
+  # Delete all containers
+  docker rm -f $(docker ps -a -q)
+
+  # Delete all Docker image
+  docker rmi -f $(docker images -q)
+}
