@@ -19,6 +19,7 @@ Plug 'fatih/vim-hclfmt'
 Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'posva/vim-vue'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'rust-lang/rust.vim'
 Plug 'w0rp/ale'
@@ -183,11 +184,6 @@ command! En setlocal spell spelllang=en_us
 " Define better error and warning icons
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
-
-" Define the lints that will run
-let g:ale_linters = {
-    \ 'python': ['flake8', 'pycodestyle']
-\}
 
 " Configure ale to pass some args to flake8 (python linter)
 let g:ale_python_flake8_args = '--ignore=E501,E999'
