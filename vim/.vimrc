@@ -67,6 +67,9 @@ endif
 
 " Enable solarized color scheme
 silent! colorscheme solarized
+
+" Define solarized to use 256 colors
+let g:solarized_termcolors = 256
 " }}}
 " Editor layout {{{
 " Enable visual autocomplete for command menu
