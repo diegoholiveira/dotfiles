@@ -192,10 +192,6 @@ let g:ale_python_flake8_args = '--ignore=E501,E999'
 let g:ale_echo_msg_format = '[%linter%] %s'
 " }}}
 " Plugin: CtrlP {{{
-" Invoke Ctrl-p with c-p
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
 " Make CtrlP order results top to bottom (first at top)
 let g:ctrlp_match_window = 'bottom,order:ttb'
 
@@ -208,23 +204,13 @@ let g:ctrlp_working_path_mode = 0
 " Disable cache
 let g:ctrlp_use_caching = 0
 
-" Disable the default custom ignore
-if exists('g:ctrlp_custom_ignore')
-  unlet g:ctrlp_custom_ignore
-endif
-
-" Disable the custom command
-if exists('g:ctrlp_user_command')
-  unlet g:ctrlp_user_command
-endif
-
 " Allow hidden files be displayed
 let g:ctrlp_show_hidden = 1
 
 " Define files and folders that must be ignored by ctrlp
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\.git$\|\.hg$\|\.svn$\|venv$\|dist$\|node_modules$\|vendor$',
-    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.DS_Store$'
+    \ 'dir': '\v[\/](\.(git|hg|svn)|vendor|venv|node_modules|dist|plugged)$',
+    \ 'file': '\v\.(exe|so|dll|pyc|DS_Store)$'
 \ }
 " }}}
 " Plugin: Lightline {{{
