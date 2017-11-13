@@ -41,16 +41,6 @@ unlet g:spell_en_exists
 unlet g:spell_pt_exists
 " }}}
 " General {{{
-" Disable the arrow keys
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
 " Define that we are using a fast terminal
 set ttyfast
 
