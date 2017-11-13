@@ -209,7 +209,7 @@ let g:ctrlp_show_hidden = 1
 
 " Define files and folders that must be ignored by ctrlp
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v[\/](\.(git|hg|svn)|vendor|venv|node_modules|dist|plugged)$',
+    \ 'dir': '\v[\/](\.(git|hg|svn)|vendor|venv|node_modules|dist|plugged|target)$',
     \ 'file': '\v\.(exe|so|dll|pyc|DS_Store)$'
 \ }
 " }}}
