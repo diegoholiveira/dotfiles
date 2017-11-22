@@ -14,7 +14,7 @@ curl-post-json() {
   local URL=$1
   local CONTENT=$2
 
-  curl -H "Content-Type: application/json" -X POST -d "$CONTENT" "$URL"
+  curl -i -H "Content-Type: application/json" -X POST -d "$CONTENT" "$URL"
 }
 
 new-sh() {
