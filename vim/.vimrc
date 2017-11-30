@@ -197,6 +197,9 @@ let g:ctrlp_use_caching = 0
 " Allow hidden files be displayed
 let g:ctrlp_show_hidden = 1
 
+" Define multiple opens to open hidden buffers
+let g:ctrlp_open_multiple_files = 'i'
+
 " Define files and folders that must be ignored by ctrlp
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\v[\/](\.(git|hg|svn)|vendor|venv|node_modules|dist|plugged|target)$',
