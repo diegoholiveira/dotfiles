@@ -72,7 +72,7 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 if [ -f /usr/libexec/java_home ]; then
   JAVA_HOME=$(/usr/libexec/java_home)
 fi
-PATH=$(go env GOPATH)/bin:$PATH
+PATH=$GOPATH/bin:$PATH
 PATH=$(brew --prefix homebrew/php/php71)/bin:$PATH
 # ------------------------------------------------------------------------------
 # External scripts
