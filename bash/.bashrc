@@ -73,7 +73,7 @@ if [ -f /usr/libexec/java_home ]; then
   JAVA_HOME=$(/usr/libexec/java_home)
 fi
 PATH=$GOPATH/bin:$PATH
-PATH=$(brew --prefix homebrew/php/php71)/bin:$PATH
+PATH=$(brew --prefix homebrew/php/php72)/bin:$PATH
 # ------------------------------------------------------------------------------
 # External scripts
 # ------------------------------------------------------------------------------
