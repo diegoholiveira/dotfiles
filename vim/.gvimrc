@@ -9,7 +9,7 @@ set background=light
 set antialias
 
 " Define the editor font based on the gui interface
-set guifont=Monaco:h14
+set guifont=IBMPlexMono:h14
 " }}}
 " Interface layout {{{
 " Hide toolbar

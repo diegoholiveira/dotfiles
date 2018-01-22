@@ -28,6 +28,16 @@ fi
   brew bundle > /dev/null
 )
 
+# Install IBM Plex (font-family)
+(
+  if [ ! -f /Library/Fonts/IBMPlexMono-Text.otf ]; then
+    curl -sSkLo fonts.zip https://raw.githubusercontent.com/ibm/type/master/ibm-plex.zip
+    unzip fonts.zip
+    cp fonts/Mono/desktop/mac/*.otf /Library/Fonts/
+    rm -rf fonts fonts.zip
+  fi
+)
+
 # Add the new shell to the list of allowed shells
 if ! grep -q "/usr/local/bin/bash" /etc/shells; then
   sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
