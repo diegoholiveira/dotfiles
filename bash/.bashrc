@@ -4,12 +4,12 @@
 # ------------------------------------------------------------------------------
 function __prompt_command() {
   # ANSI color code
-  local COLOR_OFF="\[\033[0m\]"
+  local COLOR_OFF="\033[0m"
 
   # regular colors
-  local COLOR_RED="\[\033[0;31m\]"
-  local COLOR_GREEN="\[\033[0;32m\]"
-  local COLOR_BLUE="\[\033[0;34m\]";
+  local COLOR_RED="\033[0;33m"
+  local COLOR_GREEN="\033[0;32m"
+  local COLOR_BLUE="\033[0;34m"
 
   # Dynamic info
   local LAST_STATUS="$?"
@@ -55,14 +55,15 @@ BREW_COMPLETION_FILE="/usr/local/Homebrew/completions/bash/brew"
 # ------------------------------------------------------------------------------
 # Setup environment variables
 # ------------------------------------------------------------------------------
+export BLOCKSIZE=1k
 export CLICOLOR=1
 export EDITOR=vim
 export GIT_EDITOR=vim
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GOPATH=~/.go
 export JAVA_HOME
-export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 export PROMPT_COMMAND=__prompt_command
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH=/usr/local/opt/python/libexec/bin:/usr/local/bin:~/.npm-packages/bin:$PATH
@@ -74,6 +75,8 @@ if [ -f /usr/libexec/java_home ]; then
 fi
 PATH=$GOPATH/bin:$PATH
 PATH=$(brew --prefix homebrew/php/php72)/bin:$PATH
+
+
 # ------------------------------------------------------------------------------
 # External scripts
 # ------------------------------------------------------------------------------

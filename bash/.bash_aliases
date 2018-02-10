@@ -1,23 +1,18 @@
-# collection of useful aliases
-alias tailf="tail -f"
+# -----------------------------------------------------------------------------
+# Collection of useful aliases
+# -----------------------------------------------------------------------------
+alias cp="cp -iv"
 alias grep="grep --color=always -n"
 alias ls="ls -AlhF"
+alias mkdir="mkdir -pv"
+alias mv="mv -iv"
+alias tailf="tail -f"
 
-search() {
-  grep --exclude-dir="vendor" \
-    --exclude-dir="node_modules" \
-    --exclude-dir=".git" \
-    -I -r -e "$1" "${2:-.}"
-}
 
-curl-post-json() {
-  local URL=$1
-  local CONTENT=$2
-
-  curl -i -H "Content-Type: application/json" -X POST -d "$CONTENT" "$URL"
-}
-
-new-sh() {
+# -----------------------------------------------------------------------------
+# Collection of useful helpers
+# -----------------------------------------------------------------------------
+create-script() {
   local FILENAME=$1
 
   if [ ! -f "$FILENAME" ]; then
@@ -37,10 +32,53 @@ EOF
   fi
 }
 
-docker-clean() {
-  # Delete all containers
-  docker rm -f $(docker ps -a -q)
+docker-clean-all() {
+  docker-clean-volumes
+  docker-clean-containers
+  docker-clean-images
+}
 
-  # Delete all Docker image
-  docker rmi -f $(docker images -q)
+docker-clean-containers() {
+  local containers=$(docker ps -a -q)
+
+  if [ "${containers}" != "" ]; then
+    docker rm -f $containers
+  else
+    echo "No containers to be removed"
+  fi
+}
+
+docker-clean-images() {
+  local images=$(docker images -q)
+
+  if [ "${images}" != "" ]; then
+    docker rmi -f $images
+  else
+    echo "No images to be removed"
+  fi
+}
+
+docker-clean-volumes() {
+  local volumes=$(docker volume ls -q)
+
+  if [ "${volumes}" != "" ]; then
+    docker volume rm $volumes
+  else
+    echo "No volumes to be removed"
+  fi
+}
+
+finder() {
+  open -a Finder $PWD
+}
+
+paths() {
+  echo -e ${PATH//:/\\n}
+}
+
+search() {
+  grep --exclude-dir="vendor" \
+    --exclude-dir="node_modules" \
+    --exclude-dir=".git" \
+    -I -r -e "$1" "${2:-.}"
 }

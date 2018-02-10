@@ -56,11 +56,14 @@ if !exists('g:syntax_on')
     syntax enable
 endif
 
+" Define the background color
+set background=dark
+
 " Enable solarized color scheme
 silent! colorscheme solarized
 
 " Define solarized to use 256 colors
-let g:solarized_termcolors = 256
+let g:solarized_termcolors=256
 " }}}
 " Editor layout {{{
 " Enable visual autocomplete for command menu
