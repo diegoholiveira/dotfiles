@@ -11,17 +11,14 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
-Plug 'cespare/vim-toml'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'fatih/vim-hclfmt'
 Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'posva/vim-vue'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-Plug 'rust-lang/rust.vim'
 Plug 'w0rp/ale'
 call plug#end()
 " }}}
@@ -61,9 +58,6 @@ set background=light
 
 " Enable solarized color scheme
 silent! colorscheme solarized
-
-" Define solarized to use 256 colors
-let g:solarized_termcolors=256
 " }}}
 " Editor layout {{{
 " Enable visual autocomplete for command menu
@@ -121,17 +115,6 @@ set backspace=indent,eol,start
 
 " Start scroll when I'm 3 lines from top/bottom
 set scrolloff=3
-" }}}
-" Navigation {{{
-" Create splits will be more easily
-set splitbelow
-set splitright
-
-" Navigate through windows will be more easily
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 " }}}
 " Backup and swap {{{
 " Disable auto backup and swap file
@@ -212,8 +195,4 @@ let g:ctrlp_custom_ignore = {
 " Plugin: Lightline {{{
 " Define solarized as default colorscheme
 let g:lightline = { 'colorscheme': 'solarized' }
-" }}}
-" Plugin: rust.vim {{{
-" Enable auto formatting
-let g:rustfmt_autosave = 1
 " }}}
