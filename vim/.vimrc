@@ -57,7 +57,7 @@ if !exists('g:syntax_on')
 endif
 
 " Define the background color
-set background=dark
+set background=light
 
 " Enable solarized color scheme
 silent! colorscheme solarized
