@@ -7,9 +7,6 @@ STOW_FILES=("bash" "git" "npm" "ssh" "tmux" "vim")
 TERMINAL_PREFERENCES="/Users/${USER}/Library/Preferences/com.apple.Terminal.plist"
 TMUX_PLUGIN_MANAGER_DIR=~/.tmux/plugins/tpm
 
-# Install my terminal preferences
-cp com.apple.Terminal.plist $TERMINAL_PREFERENCES
-
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -26,6 +23,9 @@ fi
 if [ ! -d $TMUX_PLUGIN_MANAGER ]; then
   git clone https://github.com/tmux-plugins/tpm $TMUX_PLUGIN_MANAGER
 fi
+
+# Install my terminal preferences
+cp $DOTFILES/com.apple.Terminal.plist $TERMINAL_PREFERENCES
 
 # Install all dependencies using the Brewfile
 (
