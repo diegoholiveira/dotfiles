@@ -7,6 +7,7 @@ alias ls="ls -AlhF"
 alias mkdir="mkdir -pv"
 alias mv="mv -iv"
 alias tailf="tail -f"
+alias save-terminal-preferences="cp /Users/${USER}/Library/Preferences/com.apple.Terminal.plist ~/dotfiles/com.apple.Terminal.plist"
 
 
 # -----------------------------------------------------------------------------
