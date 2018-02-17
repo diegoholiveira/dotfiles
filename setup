@@ -4,6 +4,11 @@ IFS=$'\n\t'
 
 DOTFILES_DIR=~/dotfiles
 STOW_FILES=("bash" "git" "npm" "ssh" "tmux" "vim")
+TERMINAL_PREFERENCES="/Users/${USER}/Library/Preferences/com.apple.Terminal.plist"
+TMUX_PLUGIN_MANAGER_DIR=~/.tmux/plugins/tpm
+
+# Install my terminal preferences
+cp com.apple.Terminal.plist $TERMINAL_PREFERENCES
 
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then
@@ -15,6 +20,11 @@ fi
 # Clone the repository into the dotfiles dir
 if [ ! -d $DOTFILES_DIR ]; then
   git clone https://github.com/diegoholiveira/dotfiles.git $DOTFILES_DIR
+fi
+
+# Configure tmux plugin manager
+if [ ! -d $TMUX_PLUGIN_MANAGER ]; then
+  git clone https://github.com/tmux-plugins/tpm $TMUX_PLUGIN_MANAGER
 fi
 
 # Install all dependencies using the Brewfile
@@ -47,10 +57,6 @@ fi
 if [ "$SHELL" == "/bin/bash" ]; then
   chsh -s /usr/local/bin/bash
 fi
-
-# Configure iTerm2 to load my preferences from my dotfiles folder
-defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES_DIR"
-defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
 # Disable Java in Safari
 defaults write com.apple.Safari \

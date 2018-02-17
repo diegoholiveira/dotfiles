@@ -9,8 +9,8 @@ if !filereadable(g:vimplug_exists)
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
+Plug 'arcticicestudio/nord-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
@@ -53,11 +53,8 @@ if !exists('g:syntax_on')
     syntax enable
 endif
 
-" Define the background color
-set background=light
-
-" Enable solarized color scheme
-silent! colorscheme solarized
+" Enable nord-vim color scheme
+silent! colorscheme nord
 " }}}
 " Editor layout {{{
 " Enable visual autocomplete for command menu
@@ -194,5 +191,5 @@ let g:ctrlp_custom_ignore = {
 " }}}
 " Plugin: Lightline {{{
 " Define solarized as default colorscheme
-let g:lightline = { 'colorscheme': 'solarized' }
+let g:lightline = { 'colorscheme': 'nord' }
 " }}}
