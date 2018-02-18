@@ -2,10 +2,11 @@
 # Collection of useful aliases
 # -----------------------------------------------------------------------------
 alias cp="cp -iv"
-alias grep="grep --color=always -n"
-alias ls="ls -AlhF"
+alias grep="grep --line-number --color=auto"
+alias ls="gls --color=auto -AlhF"
 alias mkdir="mkdir -pv"
 alias mv="mv -iv"
+alias rm="rm -iv"
 alias tailf="tail -f"
 alias save-terminal-preferences="cp /Users/${USER}/Library/Preferences/com.apple.Terminal.plist ~/dotfiles/com.apple.Terminal.plist"
 

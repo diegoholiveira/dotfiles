@@ -55,26 +55,32 @@ BREW_COMPLETION_FILE="/usr/local/Homebrew/completions/bash/brew"
 # ------------------------------------------------------------------------------
 # Setup environment variables
 # ------------------------------------------------------------------------------
+if [ -f /usr/libexec/java_home ]; then
+  JAVA_HOME=$(/usr/libexec/java_home)
+fi
+PATH=/usr/local/opt/python/libexec/bin:/usr/local/bin:~/.npm-packages/bin:$PATH
+PATH=$GOPATH/bin:$PATH
+PATH=$(brew --prefix homebrew/php/php72)/bin:$PATH
+
 export BLOCKSIZE=1k
-export CLICOLOR=1
+export CLICOLOR=true
 export EDITOR=vim
 export GIT_EDITOR=vim
-export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWSTASHSTATE=false
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+export GIT_PS1_SHOWUPSTREAM="auto verbose name"
+export GIT_PS1_DESCRIBE_STYLE="contains"
+export GIT_PS1_SHOWCOLORHINTS=true
 export GOPATH=~/.go
 export JAVA_HOME
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export PATH
 export PROMPT_COMMAND=__prompt_command
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PATH=/usr/local/opt/python/libexec/bin:/usr/local/bin:~/.npm-packages/bin:$PATH
 export PASSWORD_STORE_DIR=~/dotfiles/pass
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
-
-if [ -f /usr/libexec/java_home ]; then
-  JAVA_HOME=$(/usr/libexec/java_home)
-fi
-PATH=$GOPATH/bin:$PATH
-PATH=$(brew --prefix homebrew/php/php72)/bin:$PATH
 
 
 # ------------------------------------------------------------------------------
@@ -84,6 +90,10 @@ PATH=$(brew --prefix homebrew/php/php72)/bin:$PATH
 
 if [ -f ~/.bash_private ]; then
   . ~/.bash_private
+fi
+
+if [ -f "$HOME/.dir_colors" ] ; then
+  eval $(gdircolors -b $HOME/.dir_colors)
 fi
 
 . $BASH_COMPLETION_FILE

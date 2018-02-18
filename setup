@@ -19,9 +19,9 @@ if [ ! -d $DOTFILES_DIR ]; then
   git clone https://github.com/diegoholiveira/dotfiles.git $DOTFILES_DIR
 fi
 
-# Configure tmux plugin manager
-if [ ! -d $TMUX_PLUGIN_MANAGER ]; then
-  git clone https://github.com/tmux-plugins/tpm $TMUX_PLUGIN_MANAGER
+# Configure nord-dircolors
+if [ ! -f ~/.dir_colors ]; then
+  curl -sSkLo ~/.dir_colors https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors
 fi
 
 # Install my terminal preferences

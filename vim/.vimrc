@@ -60,9 +60,6 @@ silent! colorscheme nord
 " Enable visual autocomplete for command menu
 set wildmenu
 
-" Highlight the current line
-set cursorline
-
 " Show absolute line numbers
 set number
 
