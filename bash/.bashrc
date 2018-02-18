@@ -16,7 +16,6 @@ function __prompt_command() {
   local GIT_INFO
   local PYENV_VIRTUALENV
 
-  GIT_INFO=$(__git_ps1 "(%s)")
   PYENV_VIRTUALENV=$(pyenv_virtualenv)
 
   PS1="${COLOR_BLUE}\w${COLOR_OFF}"
@@ -25,9 +24,7 @@ function __prompt_command() {
     PS1="${PS1} working on ${COLOR_RED}${PYENV_VIRTUALENV}${COLOR_OFF}"
   fi
 
-  if [ "${GIT_INFO}" != "" ]; then
-    PS1="${PS1} ${GIT_INFO}"
-  fi
+  PS1="${PS1} $(__git_ps1 '(%s)')"
 
   if [ "${LAST_STATUS}" == "0" ]; then
     local COLOR_ON="${COLOR_GREEN}";
@@ -70,8 +67,6 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWSTASHSTATE=false
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM="auto verbose name"
-export GIT_PS1_DESCRIBE_STYLE="contains"
-export GIT_PS1_SHOWCOLORHINTS=true
 export GOPATH=~/.go
 export JAVA_HOME
 export LANG=en_US.UTF-8
