@@ -158,6 +158,9 @@ let g:ale_sign_error = '✗'
 " Configure ale to pass some args to flake8 (python linter)
 let g:ale_python_flake8_args = '--ignore=E501,E999'
 
+" Configure pylint to not show missing doctring
+let g:ale_python_pylint_options = '--disable=missing-docstring'
+
 " Add the linter name in the error message
 let g:ale_echo_msg_format = '[%linter%] %s'
 " }}}
