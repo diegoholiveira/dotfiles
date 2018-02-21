@@ -73,7 +73,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH
 export PROMPT_COMMAND=__prompt_command
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PYENV_VIRTUALENV_DISABLE_PROMPT=true
 export PASSWORD_STORE_DIR=~/dotfiles/pass
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
