@@ -11,3 +11,7 @@ set show-all-if-ambiguous On
 # when the completing word has more than one possible
 # completion but no partial completion can be made
 set show-all-if-unmodified On
+# change the behavior or up/down arrows to allow completion
+# of commands based on the history
+"\e[B": history-search-forward
+"\e[A": history-search-backward
