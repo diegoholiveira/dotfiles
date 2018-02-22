@@ -4,12 +4,12 @@
 # ------------------------------------------------------------------------------
 function __prompt_command() {
   # ANSI color code
-  local COLOR_OFF="\033[0m"
+  local COLOR_OFF="\[\e[m\]"
 
   # regular colors
-  local COLOR_RED="\033[0;33m"
-  local COLOR_GREEN="\033[0;32m"
-  local COLOR_BLUE="\033[0;34m"
+  local COLOR_RED="\[\e[33m\]"
+  local COLOR_GREEN="\[\e[32m\]"
+  local COLOR_BLUE="\[\e[34m\]"
 
   # Dynamic info
   local LAST_STATUS="$?"
