@@ -1,0 +1,13 @@
+# sets readline to display possible completions using
+# different colors to indicate their file types
+set colored-stats On
+# this line sets 3 to be the maximum number of characters
+# to be the common prefix to display for completions
+set completion-prefix-display-length 3
+# this line sets the completions to be listed immediately
+# when the completing word has more than one possible completion
+set show-all-if-ambiguous On
+# This line sets the completions to be listed immediately
+# when the completing word has more than one possible
+# completion but no partial completion can be made
+set show-all-if-unmodified On
