@@ -57,7 +57,7 @@ if [ -f /usr/libexec/java_home ]; then
 fi
 PATH=/usr/local/opt/python/libexec/bin:/usr/local/bin:~/.npm-packages/bin:$PATH
 PATH=$GOPATH/bin:$PATH
-PATH=$(brew --prefix homebrew/php/php72)/bin:$PATH
+PATH=$(brew --prefix php)/bin:$PATH
 
 export BLOCKSIZE=1k
 export CLICOLOR=true
