@@ -83,6 +83,7 @@ rm -f ~/.npmrc
 
 # install pip packages
 echo 'Installing python packages using pip...'
+pip install --upgrade pip setuptools wheel > /dev/null
 pip install \
   flake8 \
   pycodestyle \
