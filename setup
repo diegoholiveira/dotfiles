@@ -81,14 +81,16 @@ rm -f ~/.npmrc
 
 . ~/.bashrc
 
-# install pip packages
-echo 'Installing python packages using pip...'
+# Install pip packages
 pip install --upgrade pip setuptools wheel > /dev/null
 pip install \
   flake8 \
   pycodestyle \
   vim-vint \
   > /dev/null
+
+# Install go packages
+go get github.com/fatih/hclfmt > /dev/null
 
 # Generates a ssh key for my user
 if [ ! -f ~/.ssh/id_rsa ]; then
