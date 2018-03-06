@@ -3,9 +3,8 @@
 IFS=$'\n\t'
 
 DOTFILES_DIR=~/dotfiles
-STOW_FILES=("bash" "git" "npm" "ssh" "tmux" "vim")
+STOW_FILES=("bash" "git" "npm" "ssh" "tmux")
 TERMINAL_PREFERENCES="/Users/${USER}/Library/Preferences/com.apple.Terminal.plist"
-TMUX_PLUGIN_MANAGER_DIR=~/.tmux/plugins/tpm
 
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then
@@ -29,8 +28,10 @@ cp $DOTFILES_DIR/com.apple.Terminal.plist $TERMINAL_PREFERENCES
 
 # Install all dependencies using the Brewfile
 (
-  sudo mkdir -p /usr/local/sbin || true
-  sudo chown "$USER:admin" /usr/local/sbin || true
+  if [ ! -d /usr/local/sbin ]; then
+    sudo mkdir -p /usr/local/sbin || true
+    sudo chown "$USER:admin" /usr/local/sbin || true
+  fi
 
   cd $DOTFILES_DIR || exit 1
   echo 'Installing dependencies using brew...'
@@ -78,6 +79,11 @@ rm -f ~/.npmrc
     stow "${APP}"
   done
 )
+
+if [ -d ~/.vim ] || [ -L ~/.vim ]; then
+  rm -rf ~/.vim
+fi
+ln -s $DOTFILES_DIR/vim ~/.vim
 
 . ~/.bashrc
 
