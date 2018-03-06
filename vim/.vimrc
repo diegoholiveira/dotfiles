@@ -52,9 +52,7 @@ set autoread
 filetype plugin indent on
 " }}}
 " Colors {{{
-if !exists('g:syntax_on')
-    syntax enable
-endif
+syntax enable
 
 " Enable nord-vim color scheme
 silent! colorscheme nord
