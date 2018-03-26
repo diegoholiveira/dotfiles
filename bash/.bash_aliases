@@ -79,8 +79,5 @@ paths() {
 }
 
 search() {
-  grep --exclude-dir="vendor" \
-    --exclude-dir="node_modules" \
-    --exclude-dir=".git" \
-    -I -r -e "$1" "${2:-.}"
+  rg $1
 }

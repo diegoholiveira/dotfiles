@@ -169,6 +169,9 @@ let g:ale_echo_msg_format = '[%linter%] %s'
 " Make CtrlP order results top to bottom (first at top)
 let g:ctrlp_match_window = 'bottom,order:ttb'
 
+" Use ripgrep to performance fuzzy searchs
+let g:ctrlp_user_command = 'rg %s --hidden --files --color=never --glob ""'
+
 " Make CtrlP always open files in new buffers
 let g:ctrlp_switch_buffer = 0
 
@@ -183,12 +186,6 @@ let g:ctrlp_show_hidden = 1
 
 " Define multiple opens to open hidden buffers
 let g:ctrlp_open_multiple_files = 'i'
-
-" Define files and folders that must be ignored by ctrlp
-let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v[\/](\.(git|hg|svn)|vendor|venv|node_modules|dist|plugged|target)$',
-    \ 'file': '\v\.(exe|so|dll|pyc|DS_Store)$'
-\ }
 " }}}
 " Plugin: Lightline {{{
 " Define solarized as default colorscheme
