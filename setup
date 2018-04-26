@@ -4,7 +4,6 @@ IFS=$'\n\t'
 
 DOTFILES_DIR=~/dotfiles
 STOW_FILES=("bash" "git" "npm" "ssh" "tmux")
-TERMINAL_PREFERENCES="/Users/${USER}/Library/Preferences/com.apple.Terminal.plist"
 
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then
@@ -22,9 +21,6 @@ fi
 if [ ! -f ~/.dir_colors ]; then
   curl -sSkLo ~/.dir_colors https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors
 fi
-
-# Install my terminal preferences
-cp $DOTFILES_DIR/com.apple.Terminal.plist $TERMINAL_PREFERENCES
 
 # Install all dependencies using the Brewfile
 (
@@ -59,18 +55,6 @@ if [ "$SHELL" == "/bin/bash" ]; then
   chsh -s /usr/local/bin/bash
 fi
 
-# Disable Java in Safari
-defaults write com.apple.Safari \
-  com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled \
-  -bool false
-defaults write com.apple.Safari \
-  com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles \
-  -bool false
-
-# Lock the computer when init the screensaver
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
-
 # Link the profiles to my versions
 rm -f ~/.npmrc
 (
@@ -102,6 +86,8 @@ go get github.com/fatih/hclfmt > /dev/null
 if [ ! -f ~/.ssh/id_rsa ]; then
   ssh-keygen -t rsa -b 4096 -C "contato@diegoholiveira.com" -N "" -f ~/.ssh/id_rsa -q
 fi
+
+./defaults
 
 echo "------------------------------------------------------------------------------"
 echo "Final instructions"
