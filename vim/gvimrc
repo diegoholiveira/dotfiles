@@ -5,7 +5,7 @@ scriptencoding utf-8
 set antialias
 
 " Define the editor font based on the gui interface
-set guifont=IBMPlexMono:h14
+set guifont=Menlo:h14
 " }}}
 " Interface layout {{{
 " Hide toolbar
