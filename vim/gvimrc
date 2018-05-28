@@ -1,10 +1,7 @@
-" vim:foldmethod=marker:foldlevel=0
+" vim: foldmethod=marker:foldlevel=0
 scriptencoding utf-8
 " Fonts {{{
-" smooth fonts
 set antialias
-
-" Define the editor font based on the gui interface
 set guifont=Menlo:h14
 " }}}
 " Interface layout {{{
