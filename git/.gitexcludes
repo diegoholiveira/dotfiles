@@ -10,3 +10,4 @@ Thumbs.db
 vim/.netrwhist
 .phpstorm_helpers
 npm-debug.log
+.eggs
