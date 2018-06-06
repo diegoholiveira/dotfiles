@@ -1,2 +1,2 @@
 " disable char list
-set nolist
+setlocal nolist

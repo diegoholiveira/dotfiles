@@ -1,5 +1,5 @@
 " gofmt must use hard tabs
-set noexpandtab
+setlocal noexpandtab
 
 " Disable char list
-set nolist
+setlocal nolist
