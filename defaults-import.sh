@@ -2,6 +2,4 @@
 # vim: ft=sh
 IFS=$'\n\t'
 
-# Configure my terminal
 defaults import com.apple.Terminal ~/dotfiles/terminal.plist
-
