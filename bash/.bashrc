@@ -98,3 +98,5 @@ if [ -f $BREW_COMPLETION_FILE ]; then
 fi
 
 eval "$(pyenv init -)"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

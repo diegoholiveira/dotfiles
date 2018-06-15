@@ -3,7 +3,7 @@
 IFS=$'\n\t'
 
 DOTFILES_DIR=~/dotfiles
-STOW_FILES=("bash" "git" "npm" "ssh" "tmux")
+STOW_FILES=("bash" "fzf" "git" "npm" "ssh" "tmux")
 
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then
