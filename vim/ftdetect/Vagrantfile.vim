@@ -1,2 +1,2 @@
 " Let vim knows that Vagrant files are ruby!
-setfiletype ruby
+autocmd BufEnter Vagrantfile setlocal filetype=ruby

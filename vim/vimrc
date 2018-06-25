@@ -27,10 +27,15 @@ set autoread
 " filetype plugins and syntax highlighting
 filetype plugin indent on
 " }}}
+" Theme: Nord {{{
+let g:nord_comment_brightness = 20
+let g:nord_underline = 1
+" }}}
 " Colors {{{
+set termguicolors
+
 syntax enable
 
-" Enable nord-vim color scheme
 silent! colorscheme nord
 " }}}
 " Editor layout {{{
@@ -117,6 +122,19 @@ command! Portuguese setlocal spell! spelllang=pt_br
 
 " Enable English in the spell checker
 command! English setlocal spell! spelllang=en_us
+" }}}
+" Spell Checking {{{
+" Remove the previous underline
+highlight clear SpellBad
+highlight clear SpellCap
+highlight clear SpellLocal
+highlight clear SpellRare
+
+" Configure the underline to be the editor's default
+highlight SpellBad cterm=underline
+highlight SpellCap cterm=underline
+highlight SpellLocal cterm=underline
+highlight SpellRare cterm=underline
 " }}}
 " Plugin: Ale {{{
 " Define better error and warning icons
