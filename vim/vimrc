@@ -1,13 +1,6 @@
 " vim: foldmethod=marker:foldlevel=0
 scriptencoding utf-8
 " Plug {{{
-let g:vimplug_exists=expand('~/.vim/autoload/plug.vim')
-if !filereadable(g:vimplug_exists)
-    silent !\curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-    autocmd VimEnter * PlugInstall
-endif
-
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
@@ -22,21 +15,6 @@ Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'w0rp/ale'
 Plug '/usr/local/opt/fzf'
 call plug#end()
-" }}}
-" Spell languages files {{{
-let g:spell_en_exists=expand('~/.vim/spell/en.utf-8.spl')
-let g:spell_pt_exists=expand('~/.vim/spell/pt.utf-8.spl')
-if !filereadable(g:spell_en_exists)
-    silent !\curl -fLo ~/.vim/spell/en.utf-8.spl --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl
-endif
-if !filereadable(g:spell_pt_exists)
-    silent !\curl -fLo ~/.vim/spell/pt.utf-8.spl --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/pt.utf-8.spl
-endif
-
-" remove variables used to verify the installation
-unlet g:vimplug_exists
-unlet g:spell_en_exists
-unlet g:spell_pt_exists
 " }}}
 " General {{{
 " Define that we are using a fast terminal
@@ -81,9 +59,6 @@ set ignorecase
 
 " Defines the time to switch back to normal mode (ms)
 set updatetime=10000
-
-" Defines default spell language
-set spell spelllang=en_us
 
 " Disable line wrap
 set nowrap
@@ -136,7 +111,7 @@ augroup configgroup
 augroup END
 " }}}
 " Shortcuts {{{
-" Checks the spell with F7
+" Open the spell dialog with to fix a typo
 nnoremap <silent> <C-E> z=
 
 " Open fzf to search into the open buffers
@@ -147,10 +122,10 @@ nnoremap <silent> <C-P> :Files<CR>
 " }}}
 " Commands {{{
 " Enable Portuguese in the spell checker
-command! Pt setlocal spell spelllang=pt_br
+command! Portuguese setlocal spell! spelllang=pt_br
 
 " Enable English in the spell checker
-command! En setlocal spell spelllang=en_us
+command! English setlocal spell! spelllang=en_us
 " }}}
 " Plugin: Ale {{{
 " Define better error and warning icons
