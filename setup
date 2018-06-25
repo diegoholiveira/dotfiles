@@ -77,7 +77,8 @@ if [ ! -f ~/.ssh/id_rsa ]; then
   ssh-keygen -t rsa -b 4096 -C "contato@diegoholiveira.com" -N "" -f ~/.ssh/id_rsa -q
 fi
 
-bash defaults-import.sh
+./setup-defaults
+./setup-vim
 
 echo "------------------------------------------------------------------------------"
 echo "Final instructions"
