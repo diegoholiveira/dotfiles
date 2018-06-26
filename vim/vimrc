@@ -27,6 +27,9 @@ set autoread
 " filetype plugins and syntax highlighting
 filetype plugin indent on
 " }}}
+" Spell {{{
+set spell spelllang=en_us
+" }}}
 " Theme: Nord {{{
 let g:nord_comment_brightness = 20
 let g:nord_underline = 1
@@ -95,7 +98,7 @@ set nobackup
 set noswapfile
 " }}}
 " Autocmds {{{
-augroup configgroup
+augroup general
     " Remove previous autocmds from this group (avoid execute it twice)
     autocmd!
 
@@ -104,7 +107,7 @@ augroup configgroup
 
     " Switch back to normal mode when inactive
     autocmd CursorHoldI * stopinsert
-augroup END
+augroup end
 " }}}
 " Shortcuts {{{
 " Open the spell dialog with to fix a typo
@@ -117,24 +120,8 @@ nnoremap <silent> <C-O> :Buffers<CR>
 nnoremap <silent> <C-P> :Files<CR>
 " }}}
 " Commands {{{
-" Enable Portuguese in the spell checker
-command! Portuguese setlocal spell! spelllang=pt_br
-
-" Enable English in the spell checker
-command! English setlocal spell! spelllang=en_us
-" }}}
-" Spell Checking {{{
-" Remove the previous underline
-highlight clear SpellBad
-highlight clear SpellCap
-highlight clear SpellLocal
-highlight clear SpellRare
-
-" Configure the underline to be the editor's default
-highlight SpellBad cterm=underline
-highlight SpellCap cterm=underline
-highlight SpellLocal cterm=underline
-highlight SpellRare cterm=underline
+command! Pt setlocal spelllang=pt_br
+command! En setlocal spelllang=en_us
 " }}}
 " Plugin: Ale {{{
 " Define better error and warning icons
