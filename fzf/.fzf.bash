@@ -12,3 +12,6 @@ fi
 # ------------
 source "/usr/local/opt/fzf/shell/key-bindings.bash"
 
+# Custom search
+# -------------
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
