@@ -4,21 +4,20 @@
 # ------------------------------------------------------------------------------
 function __prompt_command() {
   # ANSI color code
-  local COLOR_OFF="\[\e[m\]"
+  local COLOR_OFF="\\[\\e[m\\]"
 
   # regular colors
-  local COLOR_RED="\[\e[33m\]"
-  local COLOR_GREEN="\[\e[32m\]"
-  local COLOR_BLUE="\[\e[34m\]"
+  local COLOR_RED="\\[\\e[33m\\]"
+  local COLOR_GREEN="\\[\\e[32m\\]"
+  local COLOR_BLUE="\\[\\e[34m\\]"
 
   # Dynamic info
   local LAST_STATUS="$?"
-  local GIT_INFO
   local PYENV_VIRTUALENV
 
   PYENV_VIRTUALENV=$(pyenv_virtualenv)
 
-  PS1="${COLOR_BLUE}\w${COLOR_OFF}"
+  PS1="${COLOR_BLUE}\\w${COLOR_OFF}"
 
   if [ "${PYENV_VIRTUALENV}" != "" ]; then
     PS1="${PS1} working on ${COLOR_RED}${PYENV_VIRTUALENV}${COLOR_OFF}"
@@ -32,7 +31,7 @@ function __prompt_command() {
     local COLOR_ON="${COLOR_RED}";
   fi
 
-  PS1="${PS1}\n${COLOR_ON}\$${COLOR_OFF} "
+  PS1="${PS1}\\n${COLOR_ON}\$${COLOR_OFF} "
 }
 
 function pyenv_virtualenv() {
@@ -55,9 +54,9 @@ BREW_COMPLETION_FILE="/usr/local/Homebrew/completions/bash/brew"
 if [ -f /usr/libexec/java_home ]; then
   JAVA_HOME=$(/usr/libexec/java_home)
 fi
-PATH=/usr/local/opt/python/libexec/bin:/usr/local/bin:~/.npm-packages/bin:$PATH
-PATH=$GOPATH/bin:$PATH
-PATH=$(brew --prefix php)/bin:$PATH
+PATH="/usr/local/bin:$PATH"
+PATH="$GOPATH/bin:$PATH"
+PATH=~/.npm-packages/bin:$PATH
 
 export BLOCKSIZE=1k
 export CLICOLOR=true
@@ -88,7 +87,7 @@ if [ -f ~/.bash_private ]; then
 fi
 
 if [ -f "$HOME/.dir_colors" ] ; then
-  eval $(gdircolors -b $HOME/.dir_colors)
+  eval "$(gdircolors -b "$HOME/.dir_colors")"
 fi
 
 . $BASH_COMPLETION_FILE
@@ -99,4 +98,4 @@ fi
 
 eval "$(pyenv init -)"
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.bash ] && . ~/.fzf.bash

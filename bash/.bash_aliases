@@ -8,7 +8,6 @@ alias mkdir="mkdir -pv"
 alias mv="mv -iv"
 alias rm="rm -iv"
 alias tailf="tail -f"
-alias save-terminal-preferences="cp /Users/${USER}/Library/Preferences/com.apple.Terminal.plist ~/dotfiles/com.apple.Terminal.plist"
 
 
 # -----------------------------------------------------------------------------
@@ -41,7 +40,8 @@ docker-clean-all() {
 }
 
 docker-clean-containers() {
-  local containers=$(docker ps -a -q)
+  local containers
+  containers=$(docker ps -a -q)
 
   if [ "${containers}" != "" ]; then
     docker rm -f $containers
@@ -51,7 +51,8 @@ docker-clean-containers() {
 }
 
 docker-clean-images() {
-  local images=$(docker images -q)
+  local images
+  images=$(docker images -q)
 
   if [ "${images}" != "" ]; then
     docker rmi -f $images
@@ -61,7 +62,8 @@ docker-clean-images() {
 }
 
 docker-clean-volumes() {
-  local volumes=$(docker volume ls -q)
+  local volumes
+  volumes=$(docker volume ls -q)
 
   if [ "${volumes}" != "" ]; then
     docker volume rm $volumes
@@ -79,5 +81,12 @@ paths() {
 }
 
 search() {
-  rg $1
+  local pattern=$1
+  local folder=$2
+
+  if [ "$folder" == "" ]; then
+    rg --hidden --ignore-case $pattern
+  else
+    rg --hidden --ignore-case $pattern $folder
+  fi
 }
