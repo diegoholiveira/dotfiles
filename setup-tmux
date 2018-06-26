@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# vim: ft=sh
+set -euo pipefail
+IFS=$'\n\t'
+TPM_DIR=~/.tmux/plugins/tpm
+
+if [ ! -d $TPM_DIR ]; then
+  git clone https://github.com/tmux-plugins/tpm $TPM_DIR
+fi
+
+$TPM_DIR/bin/install_plugins
