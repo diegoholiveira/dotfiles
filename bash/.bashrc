@@ -54,7 +54,6 @@ BREW_COMPLETION_FILE="/usr/local/Homebrew/completions/bash/brew"
 if [ -f /usr/libexec/java_home ]; then
   JAVA_HOME=$(/usr/libexec/java_home)
 fi
-PATH="/usr/local/bin:$PATH"
 PATH="$GOPATH/bin:$PATH"
 PATH=~/.npm-packages/bin:$PATH
 

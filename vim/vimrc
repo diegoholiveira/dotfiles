@@ -8,6 +8,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
+Plug 'dyng/ctrlsf.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'itchyny/lightline.vim'
@@ -122,6 +123,12 @@ nnoremap <silent> <C-O> :Buffers<CR>
 
 " Open fzf to search into the open buffers
 nnoremap <silent> <C-P> :Files<CR>
+
+" Configure a shortcut to start a search with CtrlSF
+nmap <C-F>f <Plug>CtrlSFPrompt
+
+" Configure an alias to the last search with CtrlSF
+nnoremap <silent> <C-F>o :CtrlSFOpen<CR>
 " }}}
 " Commands {{{
 command! Pt setlocal spelllang=pt_br
@@ -144,4 +151,10 @@ let g:ale_echo_msg_format = '[%linter%] %s'
 " Plugin: Lightline {{{
 " Define solarized as default colorscheme
 let g:lightline = { 'colorscheme': 'nord' }
+" }}}
+" Plugin: CtrlSF {{{
+let g:ctrlsf_ackprg = 'rg'
+let g:ctrlsf_extra_backend_args = {
+    \ 'rg': '--hidden'
+    \ }
 " }}}
