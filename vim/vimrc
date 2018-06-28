@@ -11,19 +11,14 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'itchyny/lightline.vim'
-Plug 'jelera/vim-javascript-syntax'
 Plug 'junegunn/fzf.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'posva/vim-vue'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'w0rp/ale'
 Plug '/usr/local/opt/fzf'
 call plug#end()
 " }}}
 " General {{{
-" Define that we are using a fast terminal
-set ttyfast
-
 " Enable autoread
 set autoread
 
@@ -69,9 +64,6 @@ set incsearch
 " Defines the search as case insensitive
 set ignorecase
 
-" Defines the time to switch back to normal mode (ms)
-set updatetime=10000
-
 " Disable line wrap
 set nowrap
 
@@ -95,11 +87,6 @@ set backspace=indent,eol,start
 
 " Start scroll when I'm 3 lines from top/bottom
 set scrolloff=3
-" }}}
-" Backup and swap {{{
-" Disable auto backup and swap file
-set nobackup
-set noswapfile
 " }}}
 " Autocmds {{{
 augroup general
