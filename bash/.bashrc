@@ -54,6 +54,7 @@ BREW_COMPLETION_FILE="/usr/local/Homebrew/completions/bash/brew"
 if [ -f /usr/libexec/java_home ]; then
   JAVA_HOME=$(/usr/libexec/java_home)
 fi
+PATH="/usr/local/opt/python/libexec/bin:$PATH"
 PATH="$GOPATH/bin:$PATH"
 PATH=~/.npm-packages/bin:$PATH
 
@@ -72,7 +73,6 @@ export LC_ALL=en_US.UTF-8
 export PATH
 export PROMPT_COMMAND=__prompt_command
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
-export PASSWORD_STORE_DIR=~/dotfiles/pass
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 
