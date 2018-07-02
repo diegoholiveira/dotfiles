@@ -95,9 +95,6 @@ augroup general
 
     " Remove white space before save
     autocmd BufEnter * EnableStripWhitespaceOnSave
-
-    " Switch back to normal mode when inactive
-    autocmd CursorHoldI * stopinsert
 augroup end
 " }}}
 " Shortcuts {{{
