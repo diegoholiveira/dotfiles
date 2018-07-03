@@ -1,55 +1,45 @@
 #!/usr/bin/env bash
+
+# ------------------------------------------------------------------------------
+# Colors
+# ------------------------------------------------------------------------------
+if [ -f ~/.dir_colors ] ; then
+  eval "$(gdircolors -b ~/.dir_colors)"
+fi
+COLOR_BLUE=$(tput setaf 4)
+COLOR_GREEN=$(tput setaf 2)
+COLOR_OFF=$(tput sgr0)
+COLOR_RED=$(tput setaf 1)
+
+
 # ------------------------------------------------------------------------------
 # Functions
 # ------------------------------------------------------------------------------
-function __prompt_command() {
-  # ANSI color code
-  local COLOR_OFF="\\[\\e[m\\]"
-
-  # regular colors
-  local COLOR_RED="\\[\\e[33m\\]"
-  local COLOR_GREEN="\\[\\e[32m\\]"
-  local COLOR_BLUE="\\[\\e[34m\\]"
-
-  # Dynamic info
-  local LAST_STATUS="$?"
-  local PYENV_VIRTUALENV
-
-  PYENV_VIRTUALENV=$(pyenv_virtualenv)
-
-  PS1="${COLOR_BLUE}\\w${COLOR_OFF}"
-
-  if [ "${PYENV_VIRTUALENV}" != "" ]; then
-    PS1="${PS1} working on ${COLOR_RED}${PYENV_VIRTUALENV}${COLOR_OFF}"
+__pyenv() {
+  if [ x"$PYENV_VERSION" != x ]; then
+    echo " working on ${COLOR_RED}${PYENV_VERSION}${COLOR_OFF}"
   fi
+}
 
-  PS1="${PS1} $(__git_ps1 '(%s)')"
+__last_status() {
+  local LAST_STATUS="$?"
 
   if [ "${LAST_STATUS}" == "0" ]; then
-    local COLOR_ON="${COLOR_GREEN}";
+    echo "${COLOR_GREEN}\$${COLOR_OFF}"
   else
-    local COLOR_ON="${COLOR_RED}";
-  fi
-
-  PS1="${PS1}\\n${COLOR_ON}\$${COLOR_OFF} "
-}
-
-function pyenv_virtualenv() {
-  if [ x"$PYENV_VERSION" != x ]; then
-    echo -n "$PYENV_VERSION"
+    echo "${COLOR_RED}\$${COLOR_OFF}"
   fi
 }
 
+set_prompt_vars() {
+  PROMPT_LAST_STATUS=$(__last_status)
+  PROMPT_GIT_INFO=$(__git_ps1 '(%s)')
+  PROMPT_PYENV=$(__pyenv)
+}
+
 
 # ------------------------------------------------------------------------------
-# Setup local variables
-# ------------------------------------------------------------------------------
-BASH_COMPLETION_FILE="/usr/local/share/bash-completion/bash_completion"
-BREW_COMPLETION_FILE="/usr/local/Homebrew/completions/bash/brew"
-
-
-# ------------------------------------------------------------------------------
-# Setup environment variables
+# Setup script variables
 # ------------------------------------------------------------------------------
 if [ -f /usr/libexec/java_home ]; then
   JAVA_HOME=$(/usr/libexec/java_home)
@@ -57,7 +47,15 @@ fi
 PATH="/usr/local/opt/python/libexec/bin:$PATH"
 PATH="$GOPATH/bin:$PATH"
 PATH=~/.npm-packages/bin:$PATH
+PS1="${COLOR_BLUE}\\w${COLOR_OFF}"     # print the current dir
+PS1="${PS1}\${PROMPT_PYENV}"           # print the current python environment
+PS1="${PS1} \${PROMPT_GIT_INFO}"       # print the current git status
+PS1="${PS1}\\n\${PROMPT_LAST_STATUS} " # print the prompt indicator
 
+
+# ------------------------------------------------------------------------------
+# Export configuration variables
+# ------------------------------------------------------------------------------
 export BLOCKSIZE=1k
 export CLICOLOR=true
 export EDITOR=vim
@@ -71,7 +69,8 @@ export JAVA_HOME
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH
-export PROMPT_COMMAND=__prompt_command
+export PROMPT_COMMAND=set_prompt_vars
+export PS1
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
@@ -79,22 +78,24 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 # ------------------------------------------------------------------------------
 # External scripts
 # ------------------------------------------------------------------------------
-. ~/.bash_aliases
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
 
 if [ -f ~/.bash_private ]; then
   . ~/.bash_private
 fi
 
-if [ -f "$HOME/.dir_colors" ] ; then
-  eval "$(gdircolors -b "$HOME/.dir_colors")"
+if [ -f /usr/local/share/bash-completion/bash_completion ]; then
+  . /usr/local/share/bash-completion/bash_completion
 fi
 
-. $BASH_COMPLETION_FILE
-
-if [ -f $BREW_COMPLETION_FILE ]; then
-  . $BREW_COMPLETION_FILE
+if [ -f /usr/local/Homebrew/completions/bash/brew ]; then
+  . /usr/local/Homebrew/completions/bash/brew
 fi
 
 eval "$(pyenv init -)"
 
-[ -f ~/.fzf.bash ] && . ~/.fzf.bash
+if [ -f ~/.fzf.bash ]; then
+  . ~/.fzf.bash
+fi
