@@ -6,10 +6,10 @@
 if [ -f ~/.dir_colors ] ; then
   eval "$(gdircolors -b ~/.dir_colors)"
 fi
-COLOR_BLUE=$(tput setaf 4)
-COLOR_GREEN=$(tput setaf 2)
-COLOR_OFF=$(tput sgr0)
-COLOR_RED=$(tput setaf 1)
+COLOR_BLUE="\\[$(tput setaf 4)\\]"
+COLOR_GREEN="\\[$(tput setaf 2)\\]"
+COLOR_OFF="\\[$(tput sgr0)\\]"
+COLOR_RED="\\[$(tput setaf 1)\\]"
 
 
 # ------------------------------------------------------------------------------
@@ -17,24 +17,28 @@ COLOR_RED=$(tput setaf 1)
 # ------------------------------------------------------------------------------
 __pyenv() {
   if [ x"$PYENV_VERSION" != x ]; then
-    echo " working on ${COLOR_RED}${PYENV_VERSION}${COLOR_OFF}"
+    PS1="${PS1} working on ${COLOR_RED}\${PYENV_VERSION}${COLOR_OFF}"
   fi
 }
 
 __last_status() {
-  local LAST_STATUS="$?"
-
   if [ "${LAST_STATUS}" == "0" ]; then
-    echo "${COLOR_GREEN}\$${COLOR_OFF}"
+    PS1="${PS1}\\n${COLOR_GREEN}\$${COLOR_OFF} "
   else
-    echo "${COLOR_RED}\$${COLOR_OFF}"
+    PS1="${PS1}\\n${COLOR_RED}\$${COLOR_OFF} "
   fi
 }
 
 set_prompt_vars() {
-  PROMPT_LAST_STATUS=$(__last_status)
-  PROMPT_GIT_INFO=$(__git_ps1 '(%s)')
-  PROMPT_PYENV=$(__pyenv)
+  LAST_STATUS="$?"
+  # print the current dir
+  PS1="${COLOR_BLUE}\\w${COLOR_OFF}"
+  # print the current python environment
+  __pyenv
+  # print the current git status
+  PS1="${PS1} \$(__git_ps1 '(%s)')"
+  # print the prompt indicator
+  __last_status
 }
 
 
@@ -47,10 +51,6 @@ fi
 PATH="/usr/local/opt/python/libexec/bin:$PATH"
 PATH="$GOPATH/bin:$PATH"
 PATH=~/.npm-packages/bin:$PATH
-PS1="${COLOR_BLUE}\\w${COLOR_OFF}"     # print the current dir
-PS1="${PS1}\${PROMPT_PYENV}"           # print the current python environment
-PS1="${PS1} \${PROMPT_GIT_INFO}"       # print the current git status
-PS1="${PS1}\\n\${PROMPT_LAST_STATUS} " # print the prompt indicator
 
 
 # ------------------------------------------------------------------------------
@@ -70,7 +70,6 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH
 export PROMPT_COMMAND=set_prompt_vars
-export PS1
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
