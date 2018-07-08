@@ -8,6 +8,7 @@ alias mkdir="mkdir -pv"
 alias mv="mv -iv"
 alias rm="rm -iv"
 alias tailf="tail -f"
+alias pip-upgrade="pip install --upgrade pip setuptools wheel"
 
 
 # -----------------------------------------------------------------------------
