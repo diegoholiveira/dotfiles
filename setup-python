@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# vim: ft=sh
+set -euo pipefail
+IFS=$'\n\t'
+
+# Install pip packages
+pip install --upgrade pip setuptools wheel > /dev/null
+pip install \
+  autopep8 \
+  isort \
+  pycodestyle \
+  pylint \
+  vim-vint

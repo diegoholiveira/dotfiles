@@ -61,14 +61,6 @@ ln -s $DOTFILES_DIR/vim ~/.vim
 
 . ~/.bashrc
 
-# Install pip packages
-pip install --upgrade pip setuptools wheel > /dev/null
-pip install \
-  flake8 \
-  pycodestyle \
-  vim-vint \
-  > /dev/null
-
 # Install go packages
 go get github.com/fatih/hclfmt > /dev/null
 
@@ -77,8 +69,9 @@ if [ ! -f ~/.ssh/id_rsa ]; then
   ssh-keygen -t rsa -b 4096 -C "contato@diegoholiveira.com" -N "" -f ~/.ssh/id_rsa -q
 fi
 
-./setup-vim
+./setup-python
 ./setup-tmux
+./setup-vim
 
 echo "------------------------------------------------------------------------------"
 echo "Final instructions"
