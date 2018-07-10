@@ -17,8 +17,13 @@ alias pip-upgrade="pip install --upgrade pip setuptools wheel"
 create-script() {
   local FILENAME=$1
 
-  if [ ! -f "$FILENAME" ]; then
-    cat > "$FILENAME" <<"EOF"
+  if [ -f "$FILENAME" ]; then
+    echo "File already exists"
+
+    return 1
+  fi
+
+  cat > "$FILENAME" <<"EOF"
 #!/usr/bin/env bash
 # vim: ft=sh
 set -euo pipefail
@@ -26,12 +31,9 @@ IFS=$'\n\t'
 
 EOF
 
-    chmod +x "$FILENAME"
-    return 0
-  else
-    echo "File already exists"
-    return 1
-  fi
+  chmod +x "$FILENAME"
+
+  return 0
 }
 
 docker-clean-all() {
