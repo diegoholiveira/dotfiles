@@ -24,6 +24,9 @@ set autoread
 " Turn on filetype detection, indent scripts
 " filetype plugins and syntax highlighting
 filetype plugin indent on
+
+" Disable swap files
+set noswapfile
 " }}}
 " Spell {{{
 set spell spelllang=en_us
