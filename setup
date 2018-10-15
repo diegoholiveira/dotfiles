@@ -3,7 +3,7 @@
 IFS=$'\n\t'
 
 DOTFILES_DIR=~/dotfiles
-STOW_FILES=("bash" "fzf" "git" "npm" "ssh" "tmux")
+STOW_FILES=("bash" "fzf" "git" "npm" "ssh" "tmux" "vim")
 
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then
@@ -54,15 +54,7 @@ rm -f ~/.npmrc
   done
 )
 
-if [ -d ~/.vim ] || [ -L ~/.vim ]; then
-  rm -rf ~/.vim
-fi
-ln -s $DOTFILES_DIR/vim ~/.vim
-
 . ~/.bashrc
-
-# Install go packages
-go get github.com/fatih/hclfmt > /dev/null
 
 # Generates a ssh key for my user
 if [ ! -f ~/.ssh/id_rsa ]; then
