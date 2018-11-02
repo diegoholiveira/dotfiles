@@ -46,9 +46,10 @@ set_prompt_vars() {
 # Setup script variables
 # ------------------------------------------------------------------------------
 if [ -f /usr/libexec/java_home ]; then
-  JAVA_HOME=$(/usr/libexec/java_home)
+  JAVA_HOME=$(/usr/libexec/java_home --version 1.8)
 fi
 PATH="/usr/local/opt/python/libexec/bin:$PATH"
+PATH="/usr/local/sbin:$PATH"
 PATH="$GOPATH/bin:$PATH"
 PATH=~/.npm-packages/bin:$PATH
 
