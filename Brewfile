@@ -34,7 +34,6 @@ brew "vim", args: ["with-override-system-vi"]
 cask "caffeine"
 cask "docker"
 cask "firefox"
-cask "flux"
 cask "google-chrome"
 cask "intellij-idea-ce"
 cask "iterm2"
