@@ -12,7 +12,6 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'w0rp/ale'
 Plug '/usr/local/opt/fzf'
 call plug#end()
@@ -112,6 +111,7 @@ nnoremap <silent> <C-P> :Files<CR>
 " Commands {{{
 command! Pt setlocal spelllang=pt_br
 command! En setlocal spelllang=en_us
+command! JsonPretty execute "%! jq '.'"
 " }}}
 " Plugin: Ale {{{
 " Configure Ale to fix code on save
