@@ -51,7 +51,7 @@ fi
 PATH="/usr/local/opt/python/libexec/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 PATH="$GOPATH/bin:$PATH"
-PATH=~/.npm-packages/bin:$PATH
+PATH=~/.npm/bin:$PATH
 
 
 # ------------------------------------------------------------------------------
