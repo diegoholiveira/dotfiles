@@ -4,92 +4,18 @@ if &term =~# '^screen'
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
-" Plug {{{
-call plug#begin('~/.vim/plugged')
-Plug 'airblade/vim-gitgutter'
-Plug 'arcticicestudio/nord-vim'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf.vim'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'w0rp/ale'
-Plug '/usr/local/opt/fzf'
-call plug#end()
-" }}}
-" General {{{
-" Enable autoread
-set autoread
 
-" Turn on filetype detection, indent scripts
-" filetype plugins and syntax highlighting
-filetype plugin indent on
+exe 'source' '~/.vim/plugins.vim'
+exe 'source' '~/.vim/settings.vim'
+exe 'source' '~/.vim/colors.vim'
 
-" Disable swap files
-set noswapfile
-" }}}
-" Spell {{{
-set spell spelllang=en_us
-" }}}
-" Theme: Nord {{{
-let g:nord_comment_brightness = 20
-let g:nord_underline = 1
-" }}}
-" Colors {{{
-set termguicolors
+for file in split(globpath('~/.vim', 'settings.*.vim'), '\n')
+    exe 'source' file
+endfor
 
-syntax enable
+exe 'source' '~/.vim/mappings.vim'
+exe 'source' '~/.vim/commands.vim'
 
-silent! colorscheme nord
-" }}}
-" Editor layout {{{
-" Enable visual autocomplete for command menu
-set wildmenu
-
-" Show absolute line numbers
-set number
-
-" Enable highlight the matching [{()}]
-set showmatch
-
-" Always display the status line
-set laststatus=2
-" }}}
-" Editor settings {{{
-" Show tab as chars
-set list
-set listchars=tab:>-
-
-" Defines the search as incremental
-set incsearch
-
-" Defines the search as case insensitive
-set ignorecase
-
-" Disable line wrap
-set nowrap
-
-" Show existing tab as 4 spaces
-set tabstop=4
-
-" Number of spaces when editing
-set softtabstop=4
-
-" Indents will have a width of 4
-set shiftwidth=4
-
-" On pressing tab, insert 4 spaces
-set expandtab
-
-" Make vim allow me to have more than one unsaved buffers
-set hidden
-
-" Configure the behavior of the backspace in insert mode
-set backspace=indent,eol,start
-
-" Start scroll when I'm 3 lines from top/bottom
-set scrolloff=3
-" }}}
-" Autocmds {{{
 augroup general
     " Remove previous autocmds from this group (avoid execute it twice)
     autocmd!
@@ -97,39 +23,3 @@ augroup general
     " Remove white space before save
     autocmd BufEnter * EnableStripWhitespaceOnSave
 augroup end
-" }}}
-" Shortcuts {{{
-" Open the spell dialog with to fix a typo
-nnoremap <silent> <C-E> z=
-
-" Open fzf to search into the open buffers
-nnoremap <silent> <C-O> :Buffers<CR>
-
-" Open fzf to search into the open buffers
-nnoremap <silent> <C-P> :Files<CR>
-" }}}
-" Commands {{{
-command! Pt setlocal spelllang=pt_br
-command! En setlocal spelllang=en_us
-command! JsonPretty execute "%! jq '.'"
-" }}}
-" Plugin: Ale {{{
-" Configure Ale to fix code on save
-let g:ale_fix_on_save = 1
-
-" Define better error and warning icons
-let g:ale_sign_warning = '▲'
-let g:ale_sign_error = '✗'
-
-" Configure pylint to not show missing doctring
-let g:ale_python_pylint_options = '--disable=missing-docstring'
-
-" Configure python isort
-let g:ale_fixers = {'python': ['autopep8', 'isort']}
-
-" Add the linter name in the error message
-let g:ale_echo_msg_format = '[%linter%] %s'
-" }}}
-" Plugin: Lightline {{{
-let g:lightline = { 'colorscheme': 'nord' }
-" }}}
