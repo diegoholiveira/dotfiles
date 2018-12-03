@@ -72,6 +72,7 @@ export LC_ALL=en_US.UTF-8
 export PATH
 export PROMPT_COMMAND=set_prompt_vars
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 

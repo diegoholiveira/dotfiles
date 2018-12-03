@@ -1,0 +1,2 @@
+# ignore vendor folder
+--glob=!vendor/*
