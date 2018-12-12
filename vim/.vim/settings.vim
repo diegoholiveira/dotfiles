@@ -56,3 +56,6 @@ set backspace=indent,eol,start
 
 " Start scroll when I'm 3 lines from top/bottom
 set scrolloff=3
+
+" Configure mapleader to be ,
+let mapleader = ','

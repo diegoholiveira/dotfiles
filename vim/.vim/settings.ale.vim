@@ -8,7 +8,7 @@ let g:ale_sign_error = '✗'
 " Configure pylint to not show missing doctring
 let g:ale_python_pylint_options = '--disable=missing-docstring'
 
-" Configure python isort
+" Configure ale linters
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
 \   'json': 'jq',
@@ -17,3 +17,6 @@ let g:ale_fixers = {
 
 " Add the linter name in the error message
 let g:ale_echo_msg_format = '[%linter%] %s'
+
+" Configure <leader>+f to call ALEFix
+nnoremap <silent> <leader>f :ALEFix<CR>
