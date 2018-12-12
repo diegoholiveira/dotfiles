@@ -7,5 +7,5 @@ Plug 'junegunn/fzf.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'w0rp/ale'
 Plug '/usr/local/opt/fzf'
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 call plug#end()
