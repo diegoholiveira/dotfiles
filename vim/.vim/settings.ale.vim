@@ -10,8 +10,9 @@ let g:ale_python_pylint_options = '--disable=missing-docstring'
 
 " Configure ale linters
 let g:ale_fixers = {
+\   'css': ['prettier'],
 \   'javascript': ['prettier'],
-\   'json': 'jq',
+\   'json': ['jq'],
 \   'python': ['autopep8', 'isort'],
 \}
 

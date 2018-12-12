@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
-# vim: ft=sh
-set -euo pipefail
-IFS=$'\n\t'
+PACKAGES=("autopep8" "flake8" "isort" "pylint" "vim-vint")
 
-# Install pip packages
 pip install --upgrade pip setuptools wheel
-pip install \
-  autopep8 \
-  isort \
-  pycodestyle \
-  pylint \
-  vim-vint
+for PACKAGE in "${PACKAGES[@]}"; do
+  pip install --upgrade "$PACKAGE"
+done

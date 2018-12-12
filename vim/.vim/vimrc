@@ -15,11 +15,3 @@ endfor
 
 exe 'source' '~/.vim/mappings.vim'
 exe 'source' '~/.vim/commands.vim'
-
-augroup general
-    " Remove previous autocmds from this group (avoid execute it twice)
-    autocmd!
-
-    " Remove white space before save
-    autocmd BufEnter * EnableStripWhitespaceOnSave
-augroup end
