@@ -8,9 +8,6 @@ let g:ale_sign_error = '✗'
 " Configure pylint to not show missing doctring
 let g:ale_python_pylint_options = '--disable=missing-docstring'
 
-" Configure prettier
-let g:ale_javascript_prettier_options = '--single-quote'
-
 " Configure ale linters
 let g:ale_fixers = {
 \   'css': ['prettier'],
