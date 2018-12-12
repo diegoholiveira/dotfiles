@@ -10,8 +10,9 @@ let g:ale_python_pylint_options = '--disable=missing-docstring'
 
 " Configure python isort
 let g:ale_fixers = {
-\   'python': ['autopep8', 'isort'],
+\   'javascript': ['prettier'],
 \   'json': 'jq',
+\   'python': ['autopep8', 'isort'],
 \}
 
 " Add the linter name in the error message
