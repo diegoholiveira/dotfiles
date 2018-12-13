@@ -5,13 +5,24 @@ if &term =~# '^screen'
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-exe 'source' '~/.vim/plugins.vim'
+call plug#begin('~/.vim/.pluggins')
+Plug 'airblade/vim-gitgutter'
+Plug 'arcticicestudio/nord-vim'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'w0rp/ale'
+Plug '/usr/local/opt/fzf'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+call plug#end()
+
 exe 'source' '~/.vim/settings.vim'
 exe 'source' '~/.vim/colors.vim'
-
-for file in split(globpath('~/.vim', 'settings.*.vim'), '\n')
-    exe 'source' file
-endfor
-
 exe 'source' '~/.vim/mappings.vim'
 exe 'source' '~/.vim/commands.vim'
+
+" Load additional settings (mostly plugins configuration)
+for file in split(globpath('~/.vim/settings', '*.vim'), '\n')
+    exe 'source' file
+endfor
