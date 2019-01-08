@@ -43,18 +43,6 @@ set_prompt_vars() {
 
 
 # ------------------------------------------------------------------------------
-# Setup script variables
-# ------------------------------------------------------------------------------
-if [ -f /usr/libexec/java_home ]; then
-  JAVA_HOME=$(/usr/libexec/java_home)
-fi
-PATH="/usr/local/opt/python/libexec/bin:$PATH"
-PATH="/usr/local/sbin:$PATH"
-PATH="$GOPATH/bin:$PATH"
-PATH=~/.npm/bin:$PATH
-
-
-# ------------------------------------------------------------------------------
 # Export configuration variables
 # ------------------------------------------------------------------------------
 export BLOCKSIZE=1k
@@ -66,14 +54,27 @@ export GIT_PS1_SHOWSTASHSTATE=false
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM="auto verbose name"
 export GOPATH=~/.go
-export JAVA_HOME
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export PATH
 export PROMPT_COMMAND=set_prompt_vars
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
+
+
+# ------------------------------------------------------------------------------
+# Setup script variables
+# ------------------------------------------------------------------------------
+if [ -f /usr/libexec/java_home ]; then
+  JAVA_HOME=$(/usr/libexec/java_home)
+fi
+PATH="/usr/local/opt/python/libexec/bin:$PATH"
+PATH="/usr/local/sbin:$PATH"
+PATH="$GOPATH/bin:$PATH"
+PATH="$HOME/.npm/bin:$PATH"
+
+export JAVA_HOME
+export PATH
 
 
 # ------------------------------------------------------------------------------
