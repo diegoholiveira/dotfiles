@@ -11,6 +11,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'w0rp/ale'
 Plug '/usr/local/opt/fzf'
