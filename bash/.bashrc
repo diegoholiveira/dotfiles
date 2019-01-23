@@ -53,13 +53,14 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWSTASHSTATE=false
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM="auto verbose name"
-export GOPATH=~/.go
+export GOPATH=~/go
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PROMPT_COMMAND=set_prompt_vars
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
+export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
 
 
 # ------------------------------------------------------------------------------
