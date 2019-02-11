@@ -6,3 +6,6 @@ let g:strip_whitespace_on_save=1
 
 " Only remove white space from modified lines
 let g:strip_only_modified_lines=1
+
+" Don't ask me if white space should be removed
+let g:strip_whitespace_confirm=0
