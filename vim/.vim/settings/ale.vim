@@ -13,7 +13,6 @@ let g:ale_fixers = {
 \   'css': ['prettier'],
 \   'javascript': ['prettier'],
 \   'json': ['jq'],
-\   'python': ['autopep8', 'isort'],
 \}
 
 " Add the linter name in the error message
