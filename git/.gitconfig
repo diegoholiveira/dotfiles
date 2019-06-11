@@ -19,3 +19,5 @@
 [user]
     name = Diego Oliveira
     email = contato@diegoholiveira.com
+[fetch]
+    prune = true
