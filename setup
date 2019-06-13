@@ -32,7 +32,7 @@ fi
   cd $DOTFILES_DIR || exit 1
   echo 'Installing dependencies using brew...'
 
-  brew bundle > /dev/null
+  brew bundle >/dev/null
 )
 
 # Add the new shell to the list of allowed shells
