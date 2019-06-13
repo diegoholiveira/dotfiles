@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-PACKAGES=("autopep8" "flake8" "isort" "pylint" "vim-vint")
+PACKAGES=("black" "pylint" "vim-vint")
 
 pip install --upgrade pip setuptools wheel
 for PACKAGE in "${PACKAGES[@]}"; do

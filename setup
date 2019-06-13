@@ -65,7 +65,6 @@ $DOTFILES_DIR/setup-npm
 $DOTFILES_DIR/setup-python
 $DOTFILES_DIR/setup-tmux
 $DOTFILES_DIR/setup-vim
-$DOTFILES_DIR/setup-rust
 
 echo "------------------------------------------------------------------------------"
 echo "Final instructions"
