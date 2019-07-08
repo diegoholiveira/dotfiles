@@ -3,14 +3,13 @@
 # ------------------------------------------------------------------------------
 # Colors
 # ------------------------------------------------------------------------------
-if [ -f ~/.dir_colors ] ; then
+if [ -f ~/.dir_colors ]; then
   eval "$(gdircolors -b ~/.dir_colors)"
 fi
 COLOR_BLUE="\\[$(tput setaf 4)\\]"
 COLOR_GREEN="\\[$(tput setaf 2)\\]"
 COLOR_OFF="\\[$(tput sgr0)\\]"
 COLOR_RED="\\[$(tput setaf 1)\\]"
-
 
 # ------------------------------------------------------------------------------
 # Functions
@@ -41,7 +40,6 @@ set_prompt_vars() {
   __last_status
 }
 
-
 # ------------------------------------------------------------------------------
 # Export configuration variables
 # ------------------------------------------------------------------------------
@@ -62,7 +60,6 @@ export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
 
-
 # ------------------------------------------------------------------------------
 # Setup script variables
 # ------------------------------------------------------------------------------
@@ -73,10 +70,10 @@ PATH="/usr/local/opt/python/libexec/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 PATH="$GOPATH/bin:$PATH"
 PATH="$HOME/.npm/bin:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
 
 export JAVA_HOME
 export PATH
-
 
 # ------------------------------------------------------------------------------
 # External scripts
