@@ -1,7 +1,7 @@
 " Check Python files with pylint
 let b:ale_linters = ['pylint']
 
-" " Fix Python files with black
+" Fix Python files with black
 let b:ale_fixers = ['isort', 'black']
 
 " Configure pylint to not show missing doctring
