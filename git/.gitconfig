@@ -21,3 +21,5 @@
     email = contato@diegoholiveira.com
 [fetch]
     prune = true
+[merge]
+    tool = vimdiff

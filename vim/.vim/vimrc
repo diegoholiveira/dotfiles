@@ -100,3 +100,5 @@ nnoremap <silent> <C-P> :Files<CR>
 " Easy switch between document languages
 command! Pt setlocal spelllang=pt_br
 command! En setlocal spelllang=en_us
+
+set diffopt=filler,internal,algorithm:histogram,indent-heuristic

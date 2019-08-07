@@ -11,3 +11,4 @@ vim/.netrwhist
 .phpstorm_helpers
 npm-debug.log
 .eggs
+*.orig
