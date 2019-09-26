@@ -9,7 +9,6 @@ alias mv="mv -iv"
 alias rm="rm -iv"
 alias tailf="tail -f"
 
-
 # -----------------------------------------------------------------------------
 # Collection of useful helpers
 # -----------------------------------------------------------------------------
@@ -22,7 +21,7 @@ create-script() {
     return 1
   fi
 
-  cat > "$FILENAME" <<"EOF"
+  cat >"$FILENAME" <<"EOF"
 #!/usr/bin/env bash
 # vim: ft=sh
 set -euo pipefail
@@ -83,12 +82,12 @@ paths() {
 }
 
 search() {
-  local pattern=$1
-  local folder=$2
+  local pattern="$1"
+  local folder="$2"
 
   if [ "$folder" == "" ]; then
-    rg --hidden --ignore-case $pattern
+    rg --hidden --ignore-case "$pattern"
   else
-    rg --hidden --ignore-case $pattern $folder
+    rg --hidden --ignore-case "$pattern" "$folder"
   fi
 }
