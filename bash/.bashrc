@@ -71,6 +71,7 @@ PATH="/usr/local/sbin:$PATH"
 PATH="$GOPATH/bin:$PATH"
 PATH="$HOME/.npm/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
+PATH="/usr/local/opt/go@1.12/bin:$PATH"
 
 export JAVA_HOME
 export PATH
