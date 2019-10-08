@@ -1,0 +1,18 @@
+SCREENSHOTS_DIR=~/Screenshots
+
+mkdir -p $SCREENSHOTS_DIR
+
+# CTRL + Shift + F5 > Options > Other Location...
+defaults write com.apple.screencapture location $SCREENSHOTS_DIR
+
+# System Preferences > Dock > Minimize windows into application icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+# System Preferences > Dock > Automatically hide and show the Dock:
+defaults write com.apple.dock autohide -bool true
+
+# System Preferences > Dock > Position on screen
+defaults write com.apple.dock orientation -string "left"
+
+# System Preferences > Dock > Size (magnified):
+defaults write com.apple.dock largesize -int 101
