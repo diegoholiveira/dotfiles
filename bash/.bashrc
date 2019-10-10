@@ -87,12 +87,9 @@ if [ -f ~/.bash_private ]; then
   . ~/.bash_private
 fi
 
-if [ -f /usr/local/share/bash-completion/bash_completion ]; then
-  . /usr/local/share/bash-completion/bash_completion
-fi
-
-if [ -f /usr/local/Homebrew/completions/bash/brew ]; then
-  . /usr/local/Homebrew/completions/bash/brew
+HOMEBREW_PREFIX=$(brew --prefix)
+if [ -f "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]; then
+  . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 fi
 
 eval "$(pyenv init -)"
