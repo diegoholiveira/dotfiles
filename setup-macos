@@ -16,3 +16,26 @@ defaults write com.apple.dock orientation -string "left"
 
 # System Preferences > Dock > Size (magnified):
 defaults write com.apple.dock largesize -int 101
+
+
+# -----------------------------------------------------------------------------
+# Safari
+# -----------------------------------------------------------------------------
+
+# Disable auto fill for credit card
+defaults write com.apple.Safari AutoFillCreditCardData -bool false
+
+# Disable auto fill for addresses
+defaults write com.apple.Safari AutoFillFromAddressBook -bool false
+
+# Disable auto fill for everything else
+defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
+
+# Disable auto fill for passwords
+defaults write com.apple.Safari AutoFillPasswords -bool false
+
+# Disable the auto opening of downloaded files
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+
+# Enable the previous session to be restored when opening Safari
+defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool true
