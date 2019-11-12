@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-# vim: ft=sh
-set -euo pipefail
-IFS=$'\n\t'
 
 PLUG_FILE=~/.vim/autoload/plug.vim
 SPELL_PT_FILE=~/.vim/spell/pt.utf-8.spl

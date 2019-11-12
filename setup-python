@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 PACKAGES=("black" "flake8" "isort" "vim-vint")
 
 for PACKAGE in "${PACKAGES[@]}"; do
