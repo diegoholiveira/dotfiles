@@ -91,3 +91,7 @@ search() {
     rg --hidden --ignore-case "$pattern" "$folder"
   fi
 }
+
+tmux-session() {
+  tmux new -A -s "$1"
+}
