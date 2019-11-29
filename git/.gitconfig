@@ -14,12 +14,14 @@
     ui = auto
 [core]
     excludesfile = ~/.gitexcludes
+[fetch]
+    prune = true
+[merge]
+    tool = vimdiff
+[pull]
+    rebase = true
 [push]
     default = tracking
 [user]
     name = Diego Oliveira
     email = contato@diegoholiveira.com
-[fetch]
-    prune = true
-[merge]
-    tool = vimdiff
