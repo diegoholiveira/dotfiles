@@ -1,0 +1,7 @@
+volumes=$(docker volume ls -q)
+
+if [ "${volumes}" != "" ]; then
+  docker volume rm $volumes
+else
+  echo "No volumes to be removed"
+fi

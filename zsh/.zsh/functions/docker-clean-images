@@ -1,0 +1,7 @@
+images=$(docker images -q)
+
+if [ "${images}" != "" ]; then
+  docker rmi -f $images
+else
+  echo "No images to be removed"
+fi

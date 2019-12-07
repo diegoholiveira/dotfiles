@@ -1,0 +1,7 @@
+containers=$(docker ps -a -q)
+
+if [ "${containers}" != "" ]; then
+  docker rm -f $containers
+else
+  echo "No containers to be removed"
+fi
