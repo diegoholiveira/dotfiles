@@ -97,4 +97,8 @@ alias tailf="tail -f"
 # ------------------------------------------------------------------------------
 . ~/.fzf
 
+if [ -f ~/.zsh_private ]; then
+  . ~/.zsh_private
+fi
+
 eval "$(pyenv init - zsh)"
