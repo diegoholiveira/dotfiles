@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DOTFILES_DIR=~/dotfiles
-STOW_FILES=("bash" "fzf" "git" "npm" "ripgrep" "ssh" "tmux" "vim")
+STOW_FILES=("fzf" "git" "npm" "ripgrep" "ssh" "tmux" "vim" "zsh")
 
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then
@@ -34,13 +34,13 @@ fi
 )
 
 # Add the new shell to the list of allowed shells
-if ! grep -q "/usr/local/bin/bash" /etc/shells; then
-  sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
+if ! grep -q "/usr/local/bin/zsh" /etc/shells; then
+  sudo zsh -c 'echo /usr/local/bin/zsh >> /etc/shells'
 fi
 
 # change to the new shell
-if [ "$SHELL" == "/bin/bash" ]; then
-  chsh -s /usr/local/bin/bash
+if [ "$SHELL" != "/usr/local/bin/zsh" ]; then
+  chsh -s /usr/local/bin/zsh
 fi
 
 # Link the profiles to my versions
@@ -51,8 +51,6 @@ rm -f ~/.npmrc
     stow "${APP}"
   done
 )
-
-. ~/.bashrc
 
 # Generates a ssh key for my user
 if [ ! -f ~/.ssh/id_rsa ]; then
