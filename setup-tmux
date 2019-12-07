@@ -5,5 +5,5 @@ if [ ! -d $TPM_DIR ]; then
   git clone https://github.com/tmux-plugins/tpm $TPM_DIR
   $TPM_DIR/bin/install_plugins
 else
-  $TPM_DIR/bin/update_plugins
+  $TPM_DIR/bin/update_plugins all
 fi
