@@ -1,7 +1,9 @@
+setopt shwordsplit
+
 images=$(docker images -q)
 
-if [ "${images}" != "" ]; then
-  docker rmi -f $images
-else
-  echo "No images to be removed"
-fi
+for image in $images; do
+  docker rmi -f $image
+done
+
+unsetopt shwordsplit

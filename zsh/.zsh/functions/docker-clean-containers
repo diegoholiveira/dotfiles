@@ -1,7 +1,9 @@
+setopt shwordsplit
+
 containers=$(docker ps -a -q)
 
-if [ "${containers}" != "" ]; then
-  docker rm -f $containers
-else
-  echo "No containers to be removed"
-fi
+for container in $containers; do
+  docker rm -f $container
+done
+
+unsetopt shwordsplit

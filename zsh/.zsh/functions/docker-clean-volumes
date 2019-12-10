@@ -1,7 +1,9 @@
+setopt shwordsplit
+
 volumes=$(docker volume ls -q)
 
-if [ "${volumes}" != "" ]; then
-  docker volume rm $volumes
-else
-  echo "No volumes to be removed"
-fi
+for volume in $volumes; do
+  docker volume rm $volume
+done
+
+unsetopt shwordsplit
