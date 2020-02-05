@@ -17,28 +17,6 @@ autoload -U colors
 
 
 # ------------------------------------------------------------------------------
-# Configure the environment
-# ------------------------------------------------------------------------------
-if [ -f /usr/libexec/java_home ]; then
-  JAVA_HOME=$(/usr/libexec/java_home)
-fi
-export BLOCKSIZE=1k
-export CLICOLOR=true
-export EDITOR=vim
-export GIT_EDITOR=vim
-export GIT_PS1_SHOWDIRTYSTATE=true
-export GIT_PS1_SHOWSTASHSTATE=false
-export GIT_PS1_SHOWUNTRACKEDFILES=true
-export GIT_PS1_SHOWUPSTREAM="auto verbose name"
-export GOPATH=~/go
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export PYENV_VIRTUALENV_DISABLE_PROMPT=true
-export RIPGREP_CONFIG_PATH=~/.ripgreprc
-export JAVA_HOME
-
-
-# ------------------------------------------------------------------------------
 # Configure the path of the binaries
 # ------------------------------------------------------------------------------
 path=("/usr/local/opt/python/libexec/bin" $path)
@@ -47,7 +25,8 @@ path=("$GOPATH/bin" $path)
 path=("$HOME/.npm/bin" $path)
 path=("$HOME/.cargo/bin" $path)
 path=("/usr/local/opt/go@1.12/bin" $path)
-path=('/usr/local/opt/fzf/bin' $path)
+path=("/usr/local/opt/fzf/bin" $path)
+path=("$HOME/.cargo/bin" $path)
 
 
 # ------------------------------------------------------------------------------
