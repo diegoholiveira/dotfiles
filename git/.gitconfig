@@ -25,3 +25,5 @@
 [user]
     name = Diego Oliveira
     email = contato@diegoholiveira.com
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
