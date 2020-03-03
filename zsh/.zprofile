@@ -13,7 +13,6 @@ export GIT_PS1_SHOWSTASHSTATE=false
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM="auto verbose name"
 export GOPATH=~/go
-export GOPRIVATE="github.com/mercadolibre"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
