@@ -5,7 +5,7 @@ setlocal noexpandtab
 setlocal nolist
 
 " Check source code with go vet
-let b:ale_linters = ['govet']
+let b:ale_linters = ['golangci-lint']
 
 " Fix files with gofmt
 let b:ale_fixers = ['goimports']

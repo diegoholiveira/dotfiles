@@ -24,7 +24,7 @@ path=("/usr/local/sbin" $path)
 path=("$GOPATH/bin" $path)
 path=("$HOME/.npm/bin" $path)
 path=("$HOME/.cargo/bin" $path)
-path=("/usr/local/opt/go@1.12/bin" $path)
+path=("/usr/local/opt/go@1.14/bin" $path)
 path=("/usr/local/opt/fzf/bin" $path)
 path=("$HOME/.cargo/bin" $path)
 
