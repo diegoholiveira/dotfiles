@@ -89,6 +89,9 @@ set termguicolors
 syntax enable
 silent! colorscheme nord
 
+" Set comments as italic to all files
+highlight Comment cterm=italic
+
 " Open the spell dialog with to fix a typo
 nnoremap <silent> <C-E> z=
 
