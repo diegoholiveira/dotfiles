@@ -4,6 +4,7 @@
 if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
+export BAT_CONFIG_PATH=~/.bat.conf
 export BLOCKSIZE=1k
 export CLICOLOR=true
 export EDITOR=vim
