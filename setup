@@ -63,12 +63,7 @@ if [ ! -f ~/.ssh/id_rsa ]; then
   ssh-keygen -t rsa -b 4096 -C "contato@diegoholiveira.com" -N "" -f ~/.ssh/id_rsa -q
 fi
 
-$DOTFILES_DIR/setup-go
 $DOTFILES_DIR/setup-macos
-$DOTFILES_DIR/setup-npm
-$DOTFILES_DIR/setup-python
-$DOTFILES_DIR/setup-tmux
-$DOTFILES_DIR/setup-vim
 
 echo "------------------------------------------------------------------------------"
 echo "Final instructions"
@@ -77,3 +72,5 @@ echo
 echo "Before start using the computer, please restart the SO to reload all changes"
 echo "made by this script!"
 echo
+echo "After configure the git client properly, please run the file:"
+echo "    $ ~/dotfiles/setup-after-git"
