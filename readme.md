@@ -6,5 +6,5 @@ Also, I have a script that install and configure my machine from scratch.
 Feel free to take a look :)
 
 ```
-curl -sS https://raw.githubusercontent.com/diegoholiveira/dotfiles/master/setup | bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/diegoholiveira/dotfiles/master/setup)"
 ```

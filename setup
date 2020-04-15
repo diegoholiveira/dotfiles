@@ -5,7 +5,7 @@ STOW_FILES=("bat" "fzf" "git" "gnupg" "npm" "ripgrep" "ssh" "tmux" "vim" "zsh")
 
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
   brew tap homebrew/bundle
 fi
@@ -30,7 +30,7 @@ fi
   cd $DOTFILES_DIR || exit 1
   echo 'Installing dependencies using brew...'
 
-  brew bundle >/dev/null
+  brew bundle
 )
 
 # Add the new shell to the list of allowed shells

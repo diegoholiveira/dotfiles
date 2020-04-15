@@ -80,4 +80,9 @@ if [ -f ~/.zsh_private ]; then
   . ~/.zsh_private
 fi
 
+if [ -f ~/.zsh_aliases ]; then
+  . ~/.zsh_aliases
+fi
+
+
 eval "$(pyenv init - zsh)"
