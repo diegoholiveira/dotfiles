@@ -3,6 +3,14 @@ SCREENSHOTS_DIR=~/Screenshots
 mkdir -p $SCREENSHOTS_DIR
 
 # -----------------------------------------------------------------------------
+# General
+# -----------------------------------------------------------------------------
+
+# Always display the percentage of battery
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+
+# -----------------------------------------------------------------------------
 # Screen capture
 # -----------------------------------------------------------------------------
 
