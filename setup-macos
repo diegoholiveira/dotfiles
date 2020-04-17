@@ -2,8 +2,17 @@ SCREENSHOTS_DIR=~/Screenshots
 
 mkdir -p $SCREENSHOTS_DIR
 
+# -----------------------------------------------------------------------------
+# Screen capture
+# -----------------------------------------------------------------------------
+
 # CTRL + Shift + F5 > Options > Other Location...
 defaults write com.apple.screencapture location $SCREENSHOTS_DIR
+
+
+# -----------------------------------------------------------------------------
+# Dock
+# -----------------------------------------------------------------------------
 
 # System Preferences > Dock > Minimize windows into application icon
 defaults write com.apple.dock minimize-to-application -bool true
@@ -16,6 +25,12 @@ defaults write com.apple.dock orientation -string "left"
 
 # System Preferences > Dock > Size (magnified):
 defaults write com.apple.dock largesize -int 101
+
+# Configure the hot corners
+defaults write com.apple.dock wvous-bl-corner -int 2
+defaults write com.apple.dock wvous-bl-modifier -int 0
+defaults write com.apple.dock wvous-tl-corner -int 13
+defaults write com.apple.dock wvous-tl-modifier -int 0
 
 
 # -----------------------------------------------------------------------------
