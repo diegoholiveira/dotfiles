@@ -32,7 +32,10 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock orientation -string "left"
 
 # System Preferences > Dock > Size (magnified):
-defaults write com.apple.dock largesize -int 101
+defaults write com.apple.dock largesize -int 92
+
+# System Preferences > Dock > Show recent applications in Dock
+defaults write com.apple.dock show-recents -bool FALSE
 
 # Configure the hot corners
 defaults write com.apple.dock wvous-bl-corner -int 2
