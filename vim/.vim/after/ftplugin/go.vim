@@ -4,8 +4,8 @@ setlocal noexpandtab
 " Disable char list
 setlocal nolist
 
-" Check source code with go vet
+" Check source code
 let b:ale_linters = ['golangci-lint']
 
-" Fix files with gofmt
+" Format files
 let b:ale_fixers = ['goimports']
