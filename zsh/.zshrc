@@ -17,6 +17,17 @@ autoload -U colors
 
 
 # ------------------------------------------------------------------------------
+# Configure up and down to search the history
+# ------------------------------------------------------------------------------
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
+
+# ------------------------------------------------------------------------------
 # Configure the path of the binaries
 # ------------------------------------------------------------------------------
 path=("/usr/local/opt/python/libexec/bin" $path)
