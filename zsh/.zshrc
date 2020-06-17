@@ -1,11 +1,3 @@
-# Lines configured by zsh-newuser-install
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/Users/dhenrique/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
 # ------------------------------------------------------------------------------
 # Auto Complete
 # ------------------------------------------------------------------------------
@@ -14,7 +6,6 @@ fpath=(~/.zsh/functions $fpath)
 
 autoload -Uz $(ls ~/.zsh/functions)
 autoload -U colors
-
 
 # ------------------------------------------------------------------------------
 # Configure up and down to search the history
@@ -97,3 +88,12 @@ fi
 
 
 eval "$(pyenv init - zsh)"
+
+# Lines configured by zsh-newuser-install
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/Users/dhenrique/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
