@@ -46,7 +46,7 @@ fi
 # Configure a shell profile with italic support
 (
   cd $DOTFILES_DIR || exit 1
-  tic xterm-256color-italic.terminfo
+  tic terminfo.scr
 )
 
 # Link the profiles to my versions

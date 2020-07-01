@@ -1,11 +1,11 @@
 scriptencoding utf-8
-if &term =~# '^screen'
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
 
 call plug#begin('~/.vim/.pluggins')
 Plug 'airblade/vim-gitgutter'
+Plug 'aklt/plantuml-syntax'
 Plug 'arcticicestudio/nord-vim'
 Plug 'cespare/vim-toml'
 Plug 'dense-analysis/ale'
@@ -83,9 +83,10 @@ let mapleader = ','
 " Configure Nord Theme
 let g:nord_comment_brightness = 20
 let g:nord_underline = 1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
 
 " Configure colors
-set termguicolors
 syntax enable
 silent! colorscheme nord
 

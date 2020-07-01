@@ -18,4 +18,3 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
-export TERM=xterm-256color-italic
