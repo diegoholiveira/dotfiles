@@ -103,5 +103,6 @@ nnoremap <silent> <C-O> :Buffers<CR>
 nnoremap <silent> <C-P> :Files<CR>
 
 " Easy switch between document languages
-command! Pt setlocal spelllang=pt_br
-command! En setlocal spelllang=en_us
+command! LangPt setlocal spelllang=pt_br
+command! LangEn setlocal spelllang=en_us
+command! LangEs setlocal spelllang=es_AR
