@@ -1,0 +1,4 @@
+*.go    diff=golang
+*.py    diff=python
+*.md    diff=markdown
+*.java  diff=java

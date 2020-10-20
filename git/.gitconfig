@@ -15,6 +15,7 @@
 	ui = auto
 [core]
 	excludesfile = ~/.gitexcludes
+	attributesfile = ~/.gitattributes
 [fetch]
 	prune = true
 [merge]
