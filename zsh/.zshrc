@@ -21,14 +21,15 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # ------------------------------------------------------------------------------
 # Configure the path of the binaries
 # ------------------------------------------------------------------------------
-path=("/usr/local/opt/python@3.9/libexec/bin" $path)
 path=("/usr/local/sbin" $path)
 path=("$GOPATH/bin" $path)
 path=("$HOME/.npm/bin" $path)
 path=("$HOME/.cargo/bin" $path)
-path=("/usr/local/opt/go@1.14/bin" $path)
 path=("/usr/local/opt/fzf/bin" $path)
 path=("$HOME/.cargo/bin" $path)
+path=("/usr/local/opt/go@1.14/bin" $path)
+path=("/usr/local/opt/node@10/bin" $path)
+path=("/usr/local/opt/python@3.9/libexec/bin" $path)
 
 
 # ------------------------------------------------------------------------------
