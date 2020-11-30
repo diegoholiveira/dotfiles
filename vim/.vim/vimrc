@@ -103,7 +103,7 @@ nnoremap <silent> <C-E> z=
 nnoremap <silent> <C-O> :Buffers<CR>
 
 " Open fzf to search into the open buffers
-nnoremap <silent> <C-P> :GFiles<CR>
+nnoremap <silent> <C-P> :Files<CR>
 
 " Easy switch between document languages
 command! LangPt setlocal spelllang=pt_br
