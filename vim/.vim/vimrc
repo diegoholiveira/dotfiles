@@ -5,7 +5,6 @@ set termguicolors
 
 call plug#begin('~/.vim/.pluggins')
 Plug 'airblade/vim-gitgutter'
-Plug 'aklt/plantuml-syntax'
 Plug 'arcticicestudio/nord-vim'
 Plug 'cespare/vim-toml'
 Plug 'dense-analysis/ale'
