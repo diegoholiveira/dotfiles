@@ -44,22 +44,13 @@ colors
 # ------------------------------------------------------------------------------
 # Prompt
 # ------------------------------------------------------------------------------
-pyenv_info () {
-  env=$(pyenv version-name)
-  if [ "${env}" != "system" ];then
-    echo "working on ${env} "
-  else
-    echo ""
-  fi
-}
-
 if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
   . /usr/local/etc/bash_completion.d/git-prompt.sh
 fi
 
 setopt prompt_subst
 
-PROMPT='%{$fg[blue]%}%~%{$reset_color%} %{$fg[red]%}$(pyenv_info)%{$reset_color%}$(__git_ps1 "(%s)")
+PROMPT='%{$fg[blue]%}%~%{$reset_color%} %{$fg[red]%}$(prompt-pyenv)%{$reset_color%}$(__git_ps1 "(%s)")
 %(?.%{$fg[green]%}%#%{$reset_color%}.%{$fg[red]%}%#%{$reset_color%}) '
 
 
@@ -72,6 +63,7 @@ alias mkdir="mkdir -pv"
 alias mv="mv -iv"
 alias rm="rm -iv"
 alias tailf="tail -f"
+alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
 
 
 # ------------------------------------------------------------------------------
