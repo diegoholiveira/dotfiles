@@ -1,0 +1,6 @@
+env=$(pyenv version-name)
+if [ "${env}" != "system" ];then
+  echo "working on ${env} "
+else
+  echo ""
+fi
