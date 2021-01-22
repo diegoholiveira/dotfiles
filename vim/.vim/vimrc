@@ -14,6 +14,10 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug '/usr/local/opt/fzf'
 call plug#end()
 
+" Configure colors
+syntax enable
+silent! colorscheme nord
+
 " Disable modeline
 set nomodeline
 
@@ -78,19 +82,6 @@ set scrolloff=3
 
 " Configure mapleader to be ,
 let mapleader = ','
-
-" Configure Nord Theme
-let g:nord_comment_brightness = 20
-let g:nord_underline = 1
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-
-" Configure colors
-syntax enable
-silent! colorscheme nord
-
-" Set comments as italic to all files
-highlight Comment cterm=italic
 
 " Open the string search dialog
 nnoremap <silent> <C-F> :Rg<CR>
