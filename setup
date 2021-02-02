@@ -43,12 +43,6 @@ if [ "$SHELL" != "/usr/local/bin/zsh" ]; then
   chsh -s /usr/local/bin/zsh
 fi
 
-# Configure a shell profile with italic support
-(
-  cd $DOTFILES_DIR || exit 1
-  tic terminfo.scr
-)
-
 # Link the profiles to my versions
 rm -f ~/.npmrc
 (
