@@ -16,7 +16,6 @@ brew "bat"
 brew "composer"
 brew "coreutils"
 brew "go"
-brew "dep"
 brew "docker", link: false
 brew "docker-compose", link: false
 brew "fzf"
