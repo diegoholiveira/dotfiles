@@ -27,9 +27,8 @@ path=("$HOME/.npm/bin" $path)
 path=("$HOME/.cargo/bin" $path)
 path=("/usr/local/opt/fzf/bin" $path)
 path=("$HOME/.cargo/bin" $path)
-path=("/usr/local/opt/go@1.14/bin" $path)
-path=("/usr/local/opt/node@10/bin" $path)
-path=("/usr/local/opt/python@3.9/libexec/bin" $path)
+#path=("/usr/local/opt/node@10/bin" $path)
+path=("$PYENV_ROOT/bin" $path)
 
 
 # ------------------------------------------------------------------------------
@@ -79,8 +78,7 @@ if [ -f ~/.zsh_aliases ]; then
   . ~/.zsh_aliases
 fi
 
-
-eval "$(pyenv init - zsh)"
+eval "$(pyenv init --path)"
 
 # Lines configured by zsh-newuser-install
 # End of lines configured by zsh-newuser-install

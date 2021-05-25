@@ -16,5 +16,6 @@ export GIT_PS1_SHOWUPSTREAM="auto verbose name"
 export GOPATH=~/go
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
