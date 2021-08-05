@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PACKAGES=("aglio" "prettier" "@vue/cli")
+PACKAGES=("prettier" "@vue/cli")
 
 for PACKAGE in "${PACKAGES[@]}"; do
   npm install --global "$PACKAGE"
