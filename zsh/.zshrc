@@ -27,6 +27,7 @@ path=("$HOME/.npm/bin" $path)
 path=("$HOME/.cargo/bin" $path)
 path=("/usr/local/opt/fzf/bin" $path)
 path=("$HOME/.cargo/bin" $path)
+path=("/usr/local/opt/python/libexec/bin" $path)
 #path=("/usr/local/opt/node@10/bin" $path)
 path=("$PYENV_ROOT/bin" $path)
 
@@ -79,6 +80,7 @@ if [ -f ~/.zsh_aliases ]; then
 fi
 
 eval "$(pyenv init --path)"
+eval "$(/usr/local/bin/brew shellenv)"
 
 # Lines configured by zsh-newuser-install
 # End of lines configured by zsh-newuser-install
