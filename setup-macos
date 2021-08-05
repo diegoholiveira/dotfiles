@@ -28,9 +28,6 @@ defaults write com.apple.dock minimize-to-application -bool true
 # System Preferences > Dock > Automatically hide and show the Dock:
 defaults write com.apple.dock autohide -bool true
 
-# System Preferences > Dock > Position on screen
-defaults write com.apple.dock orientation -string "left"
-
 # System Preferences > Dock > Size (magnified):
 defaults write com.apple.dock largesize -int 92
 
