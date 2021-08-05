@@ -8,8 +8,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'cespare/vim-toml'
 Plug 'dense-analysis/ale'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
+Plug 'Shougo/context_filetype.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug '/usr/local/opt/fzf'
 call plug#end()
