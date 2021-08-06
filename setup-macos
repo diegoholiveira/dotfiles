@@ -35,7 +35,4 @@ defaults write com.apple.dock largesize -int 92
 defaults write com.apple.dock show-recents -bool FALSE
 
 # Configure the hot corners
-defaults write com.apple.dock wvous-bl-corner -int 2
-defaults write com.apple.dock wvous-bl-modifier -int 0
-defaults write com.apple.dock wvous-tl-corner -int 13
-defaults write com.apple.dock wvous-tl-modifier -int 0
+defaults write com.apple.dock wvous-tr-corner -int 13
