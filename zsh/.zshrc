@@ -28,7 +28,6 @@ path=("$HOME/.cargo/bin" $path)
 path=("/usr/local/opt/fzf/bin" $path)
 path=("$HOME/.cargo/bin" $path)
 path=("/usr/local/opt/python/libexec/bin" $path)
-#path=("/usr/local/opt/node@10/bin" $path)
 path=("$PYENV_ROOT/bin" $path)
 
 
