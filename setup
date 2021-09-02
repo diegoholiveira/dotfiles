@@ -56,8 +56,9 @@ rm -f ~/.npmrc
 )
 
 # Generates a ssh key for my user
-if [ ! -f ~/.ssh/id_rsa ]; then
-  ssh-keygen -t rsa -b 4096 -C "contato@diegoholiveira.com" -N "" -f ~/.ssh/id_rsa -q
+if [ ! -f ~/.ssh/id_ed25519 ]; then
+  ssh-keygen -t ed25519 -C "contato@diegoholiveira.com" -N "" -f ~/.ssh/id_ed25519 -q
+  ssh-add -K ~/.ssh/id_ed25519
 fi
 
 $DOTFILES_DIR/setup-macos
