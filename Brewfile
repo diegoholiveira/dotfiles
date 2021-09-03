@@ -22,6 +22,7 @@ brew "docker-compose", link: false
 brew "fzf"
 brew "gist"
 brew "git"
+brew "git-lfs"
 brew "git-flow"
 brew "gnupg"
 brew "go"
