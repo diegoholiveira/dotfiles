@@ -5,3 +5,5 @@ PACKAGES=("black" "flake8" "isort" "vim-vint")
 for PACKAGE in "${PACKAGES[@]}"; do
   pip install --upgrade "$PACKAGE"
 done
+
+poetry config virtualenvs.in-project true
