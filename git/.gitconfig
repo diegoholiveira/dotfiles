@@ -32,10 +32,6 @@
 	name = Diego Henrique Oliveira
 	email = contato@diegoholiveira.com
 	signingkey = DC38884EFC6C93E4
-[user "corp"]
-	name = Diego Henrique Oliveira
-	email = diego.henrique@mercadolivre.com
-	signingkey = 0E427120AE75CA63
 [commit]
 	gpgsign = true
 [init]
