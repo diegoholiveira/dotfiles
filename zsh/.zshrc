@@ -79,6 +79,7 @@ if [ -f ~/.zsh_aliases ]; then
 fi
 
 eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
 eval "$(/usr/local/bin/brew shellenv)"
 
 # Lines configured by zsh-newuser-install
