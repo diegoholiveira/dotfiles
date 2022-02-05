@@ -6,7 +6,6 @@
 	update = pull origin master
 	undo = reset --soft HEAD~1
 	unstage = reset HEAD --
-	identity = "! git config user.name \"$(git config user.$1.name)\"; git config user.email \"$(git config user.$1.email)\"; git config user.signingkey \"$(git config user.$1.signingkey)\"; :"
 [color]
 	diff = auto
 	status = auto
@@ -27,8 +26,6 @@
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 [user]
-	useConfigOnly = true
-[user "personal"]
 	name = Diego Henrique Oliveira
 	email = contato@diegoholiveira.com
 	signingkey = DC38884EFC6C93E4
