@@ -6,7 +6,6 @@ set termguicolors
 call plug#begin('~/.vim/.pluggins')
 Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
-Plug 'cespare/vim-toml'
 Plug 'dense-analysis/ale'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'itchyny/lightline.vim'
