@@ -20,8 +20,8 @@ if [ ! -f ~/.dir_colors ]; then
   curl -sSkLo ~/.dir_colors https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors
 fi
 
-sudo chmod -R 755 /usr/local
-sudo chown -R $(whoami):admin /usr/local
+sudo chmod -R 755 /usr/local/*
+sudo chown -R $(whoami):admin /usr/local/*
 
 # Install all dependencies using the Brewfile
 (
@@ -58,7 +58,7 @@ rm -f ~/.npmrc
 # Generates a ssh key for my user
 if [ ! -f ~/.ssh/id_ed25519 ]; then
   ssh-keygen -t ed25519 -C "contato@diegoholiveira.com" -N "" -f ~/.ssh/id_ed25519 -q
-  ssh-add -K ~/.ssh/id_ed25519
+  ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 fi
 
 $DOTFILES_DIR/setup-macos

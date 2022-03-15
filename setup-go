@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-go get golang.org/x/tools/cmd/goimports
-go get github.com/vektra/mockery/.../
+go install golang.org/x/tools/cmd/goimports@latest
