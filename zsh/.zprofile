@@ -20,3 +20,4 @@ export LC_ALL=en_US.UTF-8
 export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
+export STARSHIP_CONFIG=~/.starship.toml

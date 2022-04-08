@@ -41,19 +41,6 @@ colors
 
 
 # ------------------------------------------------------------------------------
-# Prompt
-# ------------------------------------------------------------------------------
-if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
-  . /usr/local/etc/bash_completion.d/git-prompt.sh
-fi
-
-setopt prompt_subst
-
-PROMPT='%{$fg[blue]%}%~%{$reset_color%} %{$fg[red]%}$(prompt-pyenv)%{$reset_color%}$(__git_ps1 "(%s)")
-%(?.%{$fg[green]%}%#%{$reset_color%}.%{$fg[red]%}%#%{$reset_color%}) '
-
-
-# ------------------------------------------------------------------------------
 # Aliases
 # ------------------------------------------------------------------------------
 alias cp="cp -iv"
@@ -81,6 +68,7 @@ fi
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(/usr/local/bin/brew shellenv)"
+eval "$(starship init zsh)"
 
 # Lines configured by zsh-newuser-install
 # End of lines configured by zsh-newuser-install
