@@ -65,6 +65,8 @@ if [ -f ~/.zsh_aliases ]; then
   . ~/.zsh_aliases
 fi
 
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(/usr/local/bin/brew shellenv)"
