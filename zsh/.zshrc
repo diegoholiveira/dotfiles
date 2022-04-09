@@ -66,11 +66,11 @@ if [ -f ~/.zsh_aliases ]; then
 fi
 
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source <(/usr/local/bin/starship init zsh --print-full-init)
 
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(/usr/local/bin/brew shellenv)"
-eval "$(starship init zsh)"
 
 # Lines configured by zsh-newuser-install
 # End of lines configured by zsh-newuser-install
