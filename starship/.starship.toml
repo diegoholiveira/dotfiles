@@ -1,8 +1,8 @@
 add_newline = true
 format = "$directory$git_branch$git_status\n$character"
 [character]
-success_symbol = "[\\$](bold green) "
-error_symbol = "[\\$](bold red) "
+success_symbol = "[%%](bold green) "
+error_symbol = "[%%](bold red) "
 [directory]
 truncation_length = 12
 truncate_to_repo = false
