@@ -69,7 +69,7 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source <(/usr/local/bin/starship init zsh --print-full-init)
 
 eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init -)"
 eval "$(/usr/local/bin/brew shellenv)"
 
 # Lines configured by zsh-newuser-install
