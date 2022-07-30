@@ -3,7 +3,7 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
-call plug#begin('~/.vim/pluggins')
+call plug#begin('~/.vim-pluggins')
 Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'dense-analysis/ale'
@@ -84,19 +84,5 @@ set scrolloff=3
 " Configure mapleader to be ,
 let mapleader = ','
 
-" Open the string search dialog
-nnoremap <silent> <C-F> :Rg<CR>
-
 " Open the spell dialog with to fix a typo
 nnoremap <silent> <C-E> z=
-
-" Open fzf to search into the open buffers
-nnoremap <silent> <C-O> :Buffers<CR>
-
-" Open fzf to search into the open buffers
-nnoremap <silent> <C-P> :Files<CR>
-
-" Easy switch between document languages
-command! LangPt setlocal spelllang=pt_br
-command! LangEn setlocal spelllang=en_us
-command! LangEs setlocal spelllang=es_AR

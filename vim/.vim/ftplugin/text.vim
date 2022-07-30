@@ -1,2 +1,1 @@
-" Wrap text
 setlocal wrap

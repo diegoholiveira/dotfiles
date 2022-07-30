@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
 
 PLUG_FILE=~/.vim/autoload/plug.vim
-VIM_LANGUAGES=("en" "es" "pt")
 
-for LANGUAGE in "${VIM_LANGUAGES[@]}"; do
-  echo "Downloading the ${LANGUAGE} spell file"
-  curl -fSsLo ~/.vim/spell/$LANGUAGE.utf-8.spl --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/$LANGUAGE.utf-8.spl
-  curl -fSsLo ~/.vim/spell/$LANGUAGE.utf-8.sug --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/$LANGUAGE.utf-8.sug
-done
+curl -fSsLo ~/.vim/spell/en.utf-8.spl --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl
+curl -fSsLo ~/.vim/spell/en.utf-8.sug --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.sug
 
 if [ ! -f $PLUG_FILE ]; then
-  echo "Download Plug (plugin manager for vim)"
-
-  curl -fSsLo $PLUG_FILE --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	(
+		echo "Download Plug (plugin manager for vim)"
+		curl -fSsLo $PLUG_FILE --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	)
 fi
 
 vim +PlugInstall +qall
