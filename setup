@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DOTFILES_DIR=~/dotfiles
-STOW_FILES=("bat" "fzf" "git" "gnupg" "npm" "ripgrep" "starship" "ssh" "tmux" "vim" "zsh")
+STOW_FILES=("bat" "fzf" "git" "gnupg" "npm" "ripgrep" "starship" "tmux" "vim" "zsh")
 
 # Install Homebrew
 if [ ! -f /usr/local/bin/brew ]; then
