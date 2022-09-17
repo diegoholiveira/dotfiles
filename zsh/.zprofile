@@ -21,4 +21,5 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=true
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export STARSHIP_CONFIG=~/.starship.toml
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
