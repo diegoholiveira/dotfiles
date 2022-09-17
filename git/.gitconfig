@@ -28,7 +28,7 @@
 [user]
 	name = Diego Henrique Oliveira
 	email = contato@diegoholiveira.com
-	signingkey = DC38884EFC6C93E4
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFfbDXZyCJFJNfyxQ202ck7uYm1zeCe8NSKPOYoYWExT
 [commit]
 	gpgsign = true
 [init]
@@ -38,3 +38,7 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
