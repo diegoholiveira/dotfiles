@@ -1,5 +1,11 @@
-npm-update() {
-  for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f2); do
-    npm -g install "$package"
-  done
-}
+# ------------------------------------------------------------------------------
+# Aliases
+# ------------------------------------------------------------------------------
+alias cp="cp -iv"
+alias exa="exa --oneline --long --git"
+alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
+alias ls="echo \"use exa\"!!!"
+alias mkdir="mkdir -pv"
+alias mv="mv -iv"
+alias rm="rm -iv"
+alias tailf="tail -f"

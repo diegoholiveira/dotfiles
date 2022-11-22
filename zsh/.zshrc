@@ -41,18 +41,6 @@ colors
 
 
 # ------------------------------------------------------------------------------
-# Aliases
-# ------------------------------------------------------------------------------
-alias cp="cp -iv"
-alias ls="gls --color=auto -AlhF"
-alias mkdir="mkdir -pv"
-alias mv="mv -iv"
-alias rm="rm -iv"
-alias tailf="tail -f"
-alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
-
-
-# ------------------------------------------------------------------------------
 # Source other configurations
 # ------------------------------------------------------------------------------
 . ~/.fzf
@@ -75,7 +63,7 @@ eval "$(/usr/local/bin/brew shellenv)"
 # Lines configured by zsh-newuser-install
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/Users/dhenrique/.zshrc'
+zstyle :compinstall filename '/Users/diegoholiveira/.zshrc'
 
 autoload -Uz compinit
 compinit
