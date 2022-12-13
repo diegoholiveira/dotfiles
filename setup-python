@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-PACKAGES=("black" "flake8" "invoke" "isort" "vim-vint")
+PACKAGES=("flake8" "invoke" "isort" "vim-vint")
 
 for PACKAGE in "${PACKAGES[@]}"; do
-  pip install --upgrade "$PACKAGE"
+	pip install --upgrade "$PACKAGE"
 done
 
 poetry config virtualenvs.in-project true
