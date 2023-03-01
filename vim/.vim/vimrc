@@ -10,6 +10,8 @@ Plug 'dense-analysis/ale'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
+Plug 'jvirtanen/vim-hcl'
+Plug 'lervag/vimtex'
 Plug 'Shougo/context_filetype.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug '/usr/local/opt/fzf'
