@@ -53,11 +53,15 @@ if [ -f ~/.zsh_aliases ]; then
   . ~/.zsh_aliases
 fi
 
+
+source ~/.cargo/env
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source <(/usr/local/bin/starship init zsh --print-full-init)
 source <(pyenv init -)
 source <(/usr/local/bin/brew shellenv)
 source <(aws configure export-credentials --format env)
+
+eval "$(direnv hook zsh)"
 
 # Lines configured by zsh-newuser-install
 # End of lines configured by zsh-newuser-install

@@ -2,12 +2,10 @@
 # Aliases
 # ------------------------------------------------------------------------------
 alias cp="cp -iv"
-alias exa="exa --oneline --long --git --all"
 alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
-alias ls="exa --oneline --long --git --all"
+alias ls="gls -lhF --group-directories-first --color=auto"
 alias mkdir="mkdir -pv"
 alias mv="mv -iv"
 alias rm="rm -iv"
 alias tailf="tail -f"
-alias tree="exa --tree --ignore-glob=\".git\""
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
