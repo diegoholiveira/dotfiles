@@ -1,9 +1,0 @@
-setopt shwordsplit
-
-containers=$(docker ps -a -q)
-
-for container in $containers; do
-  docker rm -f $container
-done
-
-unsetopt shwordsplit

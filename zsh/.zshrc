@@ -29,6 +29,7 @@ path=("/usr/local/opt/fzf/bin" $path)
 path=("$HOME/.cargo/bin" $path)
 path=("/usr/local/opt/python/libexec/bin" $path)
 path=("$PYENV_ROOT/bin" $path)
+path=("/usr/local/opt/ruby@3.1/bin" $path)
 
 
 # ------------------------------------------------------------------------------

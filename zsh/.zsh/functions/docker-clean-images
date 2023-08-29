@@ -1,9 +1,0 @@
-setopt shwordsplit
-
-images=$(docker images -q)
-
-for image in $images; do
-  docker rmi -f $image
-done
-
-unsetopt shwordsplit

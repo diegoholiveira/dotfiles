@@ -1,9 +1,0 @@
-setopt shwordsplit
-
-volumes=$(docker volume ls -q)
-
-for volume in $volumes; do
-  docker volume rm $volume
-done
-
-unsetopt shwordsplit
