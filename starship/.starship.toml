@@ -1,5 +1,5 @@
 add_newline = true
-format = "$directory$git_branch$git_status\n$character"
+format = "$directory$git_branch$git_status$python\n$character"
 [character]
 success_symbol = "[%](bold green)"
 error_symbol = "[%](bold red)"
