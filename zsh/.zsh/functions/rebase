@@ -1,6 +1,0 @@
-#!/bin/bash
-current_branch=$(git rev-parse --abbrev-ref HEAD)
-git checkout main
-git pull origin main
-git switch "$current_branch"
-git rebase main
