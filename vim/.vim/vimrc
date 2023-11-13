@@ -15,7 +15,7 @@ Plug 'jvirtanen/vim-hcl'
 Plug 'lervag/vimtex'
 Plug 'Shougo/context_filetype.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug '/usr/local/opt/fzf'
+Plug '/opt/homebrew/opt/fzf'
 call plug#end()
 
 " Configure colors
