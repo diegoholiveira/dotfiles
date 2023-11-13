@@ -12,3 +12,7 @@ vim/.netrwhist
 npm-debug.log
 .eggs
 *.orig
+.envrc
+.aliases
+.node-version
+.pkgx.yaml

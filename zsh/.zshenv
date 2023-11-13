@@ -1,6 +1,7 @@
 # ------------------------------------------------------------------------------
 # Aliases
 # ------------------------------------------------------------------------------
+alias assume=". assume"
 alias cp="cp -iv"
 alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
 alias ls="gls -lhF --group-directories-first --color=auto"
