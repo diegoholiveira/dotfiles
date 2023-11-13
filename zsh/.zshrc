@@ -36,6 +36,7 @@ path=("$HOME/.npm/bin" $path)
 path=("$PYENV_ROOT/bin" $path)
 path=("/opt/homebrew/opt/python@3.11/libexec/bin" $path)
 path=("/opt/homebrew/opt/python@3.11/bin" $path)
+path=("/opt/homebrew/opt/node@18/bin" $path)
 
 
 # ------------------------------------------------------------------------------
