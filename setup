@@ -4,7 +4,7 @@ DOTFILES_DIR=~/dotfiles
 STOW_FILES=("bat" "fzf" "git" "gnupg" "npm" "ripgrep" "starship" "tmux" "vim" "zsh")
 
 # Install Homebrew
-if [ ! -f /usr/local/bin/brew ]; then
+if [ ! -f /opt/homebrew/bin/brew ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
   brew tap homebrew/bundle
@@ -37,13 +37,13 @@ sudo chown -R $(whoami):admin /usr/local/*
 )
 
 # Add the new shell to the list of allowed shells
-if ! grep -q "/usr/local/bin/zsh" /etc/shells; then
-  sudo zsh -c 'echo /usr/local/bin/zsh >> /etc/shells'
+if ! grep -q "/opt/homebrew/bin/zsh" /etc/shells; then
+  sudo zsh -c 'echo /opt/homebrew/bin/zsh >> /etc/shells'
 fi
 
 # change to the new shell
-if [ "$SHELL" != "/usr/local/bin/zsh" ]; then
-  chsh -s /usr/local/bin/zsh
+if [ "$SHELL" != "/opt/homebrew/bin/zsh" ]; then
+  chsh -s /opt/homebrew/bin/zsh
 fi
 
 # Link the profiles to my versions

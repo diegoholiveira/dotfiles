@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # Auto Complete
 # ------------------------------------------------------------------------------
-fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(/opt/homebrew/share/zsh-completions $fpath)
 
 
 # ------------------------------------------------------------------------------
@@ -28,13 +28,11 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # ------------------------------------------------------------------------------
 # Configure the path of the binaries
 # ------------------------------------------------------------------------------
+path=("/opt/homebrew/sbin" $path)
+path=("/opt/homebrew/bin" $path)
 path=("$HOME/dotfiles/bin" $path)
-path=("/usr/local/sbin" $path)
 path=("$GOPATH/bin" $path)
 path=("$HOME/.npm/bin" $path)
-path=("$HOME/.cargo/bin" $path)
-path=("/usr/local/opt/fzf/bin" $path)
-path=("$HOME/.cargo/bin" $path)
 
 
 # ------------------------------------------------------------------------------
@@ -49,7 +47,7 @@ colors
 # ------------------------------------------------------------------------------
 # Source other configurations
 # ------------------------------------------------------------------------------
-. ~/.fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ -f ~/.zsh_private ]; then
   . ~/.zsh_private
@@ -59,7 +57,6 @@ if [ -f ~/.zsh_aliases ]; then
   . ~/.zsh_aliases
 fi
 
-source ~/.cargo/env
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source <(/usr/local/bin/starship init zsh --print-full-init)
 source <(aws configure export-credentials --format env)
