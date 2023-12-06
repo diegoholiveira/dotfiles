@@ -7,13 +7,9 @@ call plug#begin('~/.vim-pluggins')
 Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'dense-analysis/ale'
-Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'github/copilot.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
-Plug 'jvirtanen/vim-hcl'
-Plug 'lervag/vimtex'
-Plug 'Shougo/context_filetype.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug '/opt/homebrew/opt/fzf'
 call plug#end()
