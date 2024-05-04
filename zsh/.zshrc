@@ -35,11 +35,6 @@ path=("$HOME/.npm/bin" $path)
 path=("$HOME/.cargo/bin" $path)
 path=("/usr/local/opt/fzf/bin" $path)
 path=("$HOME/.cargo/bin" $path)
-path=("$PYENV_ROOT/bin" $path)
-path=("/usr/local/opt/python@3.11/libexec/bin" $path)
-path=("/usr/local/opt/python@3.11/bin" $path)
-path=("/usr/local/opt/ruby@3.1/bin" $path)
-path=("/usr/local/opt/postgresql@15/bin" $path)
 
 
 # ------------------------------------------------------------------------------
@@ -67,10 +62,7 @@ fi
 source ~/.cargo/env
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source <(/usr/local/bin/starship init zsh --print-full-init)
-source <(pyenv init -)
 source <(aws configure export-credentials --format env)
-source <(pkgx --shellcode)
+source ~/.rye/env
 
 eval "$(direnv hook zsh)"
-
-

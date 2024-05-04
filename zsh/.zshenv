@@ -8,4 +8,3 @@ alias mkdir="mkdir -pv"
 alias mv="mv -iv"
 alias rm="rm -iv"
 alias tailf="tail -f"
-alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
