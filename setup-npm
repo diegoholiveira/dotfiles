@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-PACKAGES=("prettier" "@vue/cli")
-
-for PACKAGE in "${PACKAGES[@]}"; do
-  npm install --global "$PACKAGE"
-done

@@ -33,6 +33,8 @@ path=("/opt/homebrew/bin" $path)
 path=("$HOME/dotfiles/bin" $path)
 path=("$GOPATH/bin" $path)
 path=("$HOME/.npm/bin" $path)
+path=("/opt/homebrew/opt/node@20/bin" $path)
+path=("/opt/homebrew/opt/python@3.12/libexec/bin" $path)
 
 
 # ------------------------------------------------------------------------------
@@ -57,9 +59,10 @@ if [ -f ~/.zsh_aliases ]; then
   . ~/.zsh_aliases
 fi
 
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source <(/usr/local/bin/starship init zsh --print-full-init)
-source <(aws configure export-credentials --format env)
-source ~/.rye/env
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source <(starship init zsh --print-full-init)
+if [ -f ~/.rye/env ]; then
+  source ~/.rye/env
+fi
 
 eval "$(direnv hook zsh)"

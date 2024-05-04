@@ -20,8 +20,8 @@ if [ ! -f ~/.dir_colors ]; then
   curl -sSkLo ~/.dir_colors https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors
 fi
 
-sudo chmod -R 755 /usr/local/*
-sudo chown -R $(whoami):admin /usr/local/*
+sudo chmod -R 755 /opt/homebrew/share
+sudo chown -R $(whoami):admin /opt/homebrew/share
 
 # Install all dependencies using the Brewfile
 (

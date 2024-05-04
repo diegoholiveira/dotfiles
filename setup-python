@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-PACKAGES=("flake8" "invoke" "isort" "jedi-language-server" "vim-vint")
-
-for PACKAGE in "${PACKAGES[@]}"; do
-	pip install --upgrade "$PACKAGE"
-done
-
-poetry config virtualenvs.in-project true
