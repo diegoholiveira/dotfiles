@@ -11,6 +11,7 @@ Plug 'github/copilot.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'pasky/claude.vim'
 Plug '/opt/homebrew/opt/fzf'
 call plug#end()
 
