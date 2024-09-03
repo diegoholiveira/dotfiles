@@ -35,6 +35,10 @@ path=("$GOPATH/bin" $path)
 path=("$HOME/.npm/bin" $path)
 path=("/opt/homebrew/opt/node@20/bin" $path)
 path=("/opt/homebrew/opt/python@3.12/libexec/bin" $path)
+path=("/opt/homebrew/opt/ruby/bin" $path)
+path=("$HOME/.gem/bin" $path)
+path=("$HOME/.bun/bin" $path)
+path=("$HOME/.cargo/bin" $path)
 
 
 # ------------------------------------------------------------------------------
@@ -66,3 +70,12 @@ if [ -f ~/.rye/env ]; then
 fi
 
 eval "$(direnv hook zsh)"
+
+# bun completions
+[ -s "/Users/diegoholiveira/.bun/_bun" ] && source "/Users/diegoholiveira/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+. "$HOME/.cargo/env"
