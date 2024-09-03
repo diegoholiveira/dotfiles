@@ -36,3 +36,6 @@ defaults write com.apple.dock show-recents -bool FALSE
 
 # Configure the hot corners
 defaults write com.apple.dock wvous-tr-corner -int 13
+
+# disable keychain
+defaults write org.gpgtools.common DisableKeychain -bool yes
