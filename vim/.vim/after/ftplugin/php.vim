@@ -1,3 +1,2 @@
-let b:ale_fix_on_save = 1
-let b:ale_linters = ['phan', 'phpcs']
-let b:ale_fixers = ['phpcbf']
+let b:ale_linters = ['intelephense', 'phpstan']
+let b:ale_fixers = ['pint', 'php_cs_fixer']
