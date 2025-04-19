@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 DOTFILES_DIR=~/dotfiles
-STOW_FILES_HOME=("bat" "fzf" "git" "gnupg" "npm" "ripgrep" "starship" "tmux" "vim" "zsh")
-STOW_FILES_XDG=("ghostty" "zed")
+STOW_FILES_HOME=("bat" "fzf" "git" "ripgrep" "starship" "tmux" "zsh")
+STOW_FILES_XDG=("ghostty" "gnupg" "vim")
 
 # Install Homebrew
 if [ ! -f /opt/homebrew/bin/brew ]; then
@@ -22,7 +22,7 @@ if [ ! -f ~/.dir_colors ]; then
 fi
 
 sudo chmod -R 755 /opt/homebrew/share
-sudo chown -R $(whoami):admin /opt/homebrew/share
+sudo chown -R "$(whoami):admin" /opt/homebrew/share
 
 # Install all dependencies using the Brewfile
 (
@@ -51,13 +51,14 @@ fi
 (
 	cd $DOTFILES_DIR || exit 1
 	for APP in "${STOW_FILES_HOME[@]}"; do
-		stow "${APP}"
+		stow --dotfiles "${APP}"
 	done
 
 	export XDG_CONFIG_HOME=~/.config
 
 	for APP in "${STOW_FILES_XDG[@]}"; do
-		stow -t "$XDG_CONFIG_HOME" "${APP}"
+		mkdir -p "${XDG_CONFIG_HOME}/${APP}" || true
+		stow -t "${XDG_CONFIG_HOME}/${APP}" "${APP}"
 	done
 )
 

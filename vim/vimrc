@@ -1,0 +1,68 @@
+" ------------------------------------------------------------------------------------------
+" Plugin Manager and Plugins
+" ------------------------------------------------------------------------------------------
+
+call plug#begin('~/.config/vim-plug')
+Plug 'airblade/vim-gitgutter'
+Plug 'arcticicestudio/nord-vim'
+Plug 'dense-analysis/ale'
+Plug 'itchyny/lightline.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'pasky/claude.vim'
+Plug 'jvirtanen/vim-hcl'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+call plug#end()
+
+" ------------------------------------------------------------------------------------------
+" Colors
+" ------------------------------------------------------------------------------------------
+
+set termguicolors                     " Enable true color support (24-bit RGB)
+silent! colorscheme nord              " Load the Nord colorscheme, suppress errors if missing
+
+" ------------------------------------------------------------------------------------------
+" Filetype, Syntax, Modeline
+" ------------------------------------------------------------------------------------------
+
+set nomodeline                        " Disable modelines (avoid config injection from file content)
+filetype plugin indent on             " Enable filetype detection, plugins, and indentation rules
+
+" ------------------------------------------------------------------------------------------
+" General Editor Behavior
+" ------------------------------------------------------------------------------------------
+
+set noswapfile                        " Disable creation of swap files
+set spell spelllang=en_us             " Enable spell check using US English dictionary
+set number                            " Show absolute line numbers
+set showmatch                         " Highlight matching brackets, parentheses, etc.
+set laststatus=2                      " Always display the status line (one per window)
+set list                              " Show invisible characters like tabs and trailing spaces
+set listchars=tab:>-,trail:·          " Display tabs as ">-" and trailing spaces as dots
+set incsearch                         " Show matches while typing a search (incremental search)
+set ignorecase                        " Make search case-insensitive
+set nowrap                            " Prevent line wrapping (keep lines on a single row)
+set scrolloff=3                       " Keep 3 lines visible above/below the cursor when scrolling
+
+" ------------------------------------------------------------------------------------------
+" Tabs and Indentation
+" ------------------------------------------------------------------------------------------
+
+set tabstop=4                         " A tab character appears as 4 spaces
+set softtabstop=4                     " Number of spaces inserted/deleted with <Tab>/<BS>
+set shiftwidth=4                      " Number of spaces used for each indentation step
+set expandtab                         " Insert spaces instead of tab characters
+
+" ------------------------------------------------------------------------------------------
+" Key Mappings
+" ------------------------------------------------------------------------------------------
+
+let mapleader = ','                  " Set the leader key to comma
+nnoremap <silent> <C-E> z=           " Use Ctrl+E to open spelling suggestions for the word under cursor
+
+" ------------------------------------------------------------------------------------------
+" Filetype Overrides
+" ------------------------------------------------------------------------------------------
+
+" Treat dot-zshrc, zprofile and zshenv files as zsh scripts
+autocmd BufRead,BufNewFile dot-zshrc,dot-zprofile,dot-zshenv set filetype=zsh

@@ -1,15 +1,36 @@
 #!/usr/bin/env bash
 
-PLUG_FILE=~/.vim/autoload/plug.vim
+# ------------------------------------------------------------------------------
+# Environment Setup
+# ------------------------------------------------------------------------------
 
-curl -fSsLo ~/.vim/spell/en.utf-8.spl --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl
-curl -fSsLo ~/.vim/spell/en.utf-8.sug --create-dirs http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.sug
+VIM_CONFIG_DIR="$XDG_CONFIG_HOME/vim"
+VIM_AUTOLOAD_DIR="$VIM_CONFIG_DIR/autoload"
+VIM_SPELL_DIR="$VIM_CONFIG_DIR/spell"
+PLUG_FILE="$VIM_AUTOLOAD_DIR/plug.vim"
+SPELL_URL="https://ftp.nluug.nl/pub/vim/runtime/spell"
 
-if [ ! -f $PLUG_FILE ]; then
-	(
-		echo "Download Plug (plugin manager for vim)"
-		curl -fSsLo $PLUG_FILE --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	)
+# ------------------------------------------------------------------------------
+# Install English spell files
+# ------------------------------------------------------------------------------
+
+mkdir -p "$VIM_SPELL_DIR"
+curl -fSsLo "$VIM_SPELL_DIR/en.utf-8.spl" "$SPELL_URL/en.utf-8.spl"
+curl -fSsLo "$VIM_SPELL_DIR/en.utf-8.sug" "$SPELL_URL/en.utf-8.sug"
+
+# ------------------------------------------------------------------------------
+# Install vim-plug if not already installed
+# ------------------------------------------------------------------------------
+
+if [ ! -f "$PLUG_FILE" ]; then
+	echo "Downloading vim-plug..."
+	curl -fSsLo "$PLUG_FILE" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
+# ------------------------------------------------------------------------------
+# Install plugins with vim-plug
+# ------------------------------------------------------------------------------
+
+echo "Installing Vim plugins..."
 vim +PlugInstall +qall
+echo "Done."
