@@ -65,4 +65,7 @@ nnoremap <silent> <C-E> z=           " Use Ctrl+E to open spelling suggestions f
 " ------------------------------------------------------------------------------------------
 
 " Treat dot-zshrc, zprofile and zshenv files as zsh scripts
-autocmd BufRead,BufNewFile dot-zshrc,dot-zprofile,dot-zshenv set filetype=zsh
+augroup zsh
+    autocmd!
+    autocmd BufRead,BufNewFile dot-zshrc,dot-zprofile,dot-zshenv set filetype=zsh
+augroup end
