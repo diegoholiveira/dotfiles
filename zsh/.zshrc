@@ -31,11 +31,15 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 path=("/opt/homebrew/sbin" $path)
 path=("/opt/homebrew/bin" $path)
 path=("$HOME/dotfiles/bin" $path)
-path=("$GOPATH/bin" $path)
 path=("$HOME/.npm/bin" $path)
+path=("$GOPATH/bin" $path)
 path=("/opt/homebrew/opt/node@20/bin" $path)
 path=("/opt/homebrew/opt/python@3.12/libexec/bin" $path)
-path=("/opt/homebrew/opt/ruby/bin" $path)
+path=("/opt/homebrew/opt/ruby@3.4/bin" $path)
+path=("/opt/homebrew/lib/ruby/gems/3.4.0/bin" $path)
+path=("/opt/homebrew/opt/postgresql@17/bin" $path)
+path=("/Users/diegoholiveira/.local/bin" $path)
+path=("$BUN_INSTALL/bin" $path)
 
 
 # ------------------------------------------------------------------------------
@@ -65,5 +69,10 @@ source <(starship init zsh --print-full-init)
 if [ -f ~/.rye/env ]; then
   source ~/.rye/env
 fi
+if [ -f "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+fi
 
 eval "$(direnv hook zsh)"
+
+[ -s "/Users/diegoholiveira/.bun/_bun" ] && source "/Users/diegoholiveira/.bun/_bun"

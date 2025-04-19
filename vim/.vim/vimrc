@@ -8,11 +8,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'pasky/claude.vim'
-Plug '/opt/homebrew/opt/fzf'
 Plug 'jvirtanen/vim-hcl'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Configure colors

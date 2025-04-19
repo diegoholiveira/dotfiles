@@ -1,6 +1,3 @@
-title = "Ghostty 👻"
-
 working-directory = home
-
-window-height = 45
-window-width = 160
+window-height = 50
+window-width = 180
