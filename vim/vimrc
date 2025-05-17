@@ -43,6 +43,8 @@ set incsearch                         " Show matches while typing a search (incr
 set ignorecase                        " Make search case-insensitive
 set nowrap                            " Prevent line wrapping (keep lines on a single row)
 set scrolloff=3                       " Keep 3 lines visible above/below the cursor when scrolling
+set hidden                            " Allow switch between buffers without saving the current buffer.
+set autoread                          " Automatically reload a file if it's changed outside of Vim and not modified in the buffer
 
 " ------------------------------------------------------------------------------------------
 " Tabs and Indentation
