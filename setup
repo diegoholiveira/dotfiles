@@ -21,6 +21,12 @@ if [ ! -f ~/.dir_colors ]; then
 	curl -sSkLo ~/.dir_colors https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors
 fi
 
+if [ ! -f /usr/local/bin/run ]; then
+	curl -sSL -o /tmp/run https://raw.githubusercontent.com/jotaen/run.sh/main/run
+	chmod +x /tmp/run
+	sudo mv /tmp/run /usr/local/bin/run
+fi
+
 sudo chmod -R 755 /opt/homebrew/share
 sudo chown -R "$(whoami):admin" /opt/homebrew/share
 
