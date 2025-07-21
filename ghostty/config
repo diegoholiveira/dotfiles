@@ -1,3 +1,4 @@
 working-directory = home
 window-height = 50
 window-width = 180
+keybind = shift+enter=text:\n
