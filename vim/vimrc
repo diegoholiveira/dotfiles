@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " ------------------------------------------------------------------------------------------
 " Plugin Manager and Plugins
 " ------------------------------------------------------------------------------------------
@@ -8,7 +10,6 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'pasky/claude.vim'
 Plug 'jvirtanen/vim-hcl'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
