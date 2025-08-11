@@ -45,6 +45,7 @@ path=("/opt/homebrew/opt/ruby@3.4/bin" $path)
 path=("/opt/homebrew/lib/ruby/gems/3.4.0/bin" $path)
 path=("/opt/homebrew/opt/postgresql@17/bin" $path)
 path=("${HOME}/.bun/bin" $path)
+path=("/Applications/Gnucash.app/Contents/MacOS" $path)
 
 # ------------------------------------------------------------------------------
 # Colors: Nord Theme
@@ -53,6 +54,18 @@ if [ -f ~/.dir_colors ]; then
 	eval "$(gdircolors -b ~/.dir_colors)"
 fi
 colors
+
+# ------------------------------------------------------------------------------
+# Aliases
+# ------------------------------------------------------------------------------
+alias assume=". assume"
+alias cp="cp -iv"
+alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
+alias ls="gls -lahF --group-directories-first --color=auto"
+alias mkdir="mkdir -pv"
+alias mv="mv -iv"
+alias rm="rm -iv"
+alias tailf="tail -f"
 
 # ------------------------------------------------------------------------------
 # Source other configurations
