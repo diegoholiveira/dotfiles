@@ -22,30 +22,6 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search   # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
-# ------------------------------------------------------------------------------
-# Configure the path of the binaries
-# ------------------------------------------------------------------------------
-# 1. My own scripts always come first
-# ------------------------------------------------------------------------------
-path=("$HOME/dotfiles/bin" $path)
-
-# ------------------------------------------------------------------------------
-# 2. General Homebrew bins (fallbacks)
-# ------------------------------------------------------------------------------
-path=("/opt/homebrew/sbin" $path)
-path=("/opt/homebrew/bin" $path)
-
-# ------------------------------------------------------------------------------
-# 3. Language-specific versioned bins (priority tools)
-# ------------------------------------------------------------------------------
-path=("$GOPATH/bin" $path)
-path=("/opt/homebrew/opt/node@22/bin" $path)
-path=("/opt/homebrew/opt/python@3.12/libexec/bin" $path)
-path=("/opt/homebrew/opt/ruby@3.4/bin" $path)
-path=("/opt/homebrew/lib/ruby/gems/3.4.0/bin" $path)
-path=("/opt/homebrew/opt/postgresql@17/bin" $path)
-path=("${HOME}/.bun/bin" $path)
-path=("/Applications/Gnucash.app/Contents/MacOS" $path)
 
 # ------------------------------------------------------------------------------
 # Colors: Nord Theme
