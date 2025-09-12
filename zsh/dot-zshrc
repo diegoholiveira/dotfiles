@@ -34,7 +34,6 @@ colors
 # ------------------------------------------------------------------------------
 # Aliases
 # ------------------------------------------------------------------------------
-alias assume=". assume"
 alias cp="cp -iv"
 alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
 alias ls="gls -lahF --group-directories-first --color=auto"
@@ -42,6 +41,16 @@ alias mkdir="mkdir -pv"
 alias mv="mv -iv"
 alias rm="rm -iv"
 alias tailf="tail -f"
+alias uuidgen="uuidgen | tr A-F a-f"
+
+# ------------------------------------------------------------------------------
+# Custom commands
+# ------------------------------------------------------------------------------
+search() {
+  local pattern="$1"
+  local folder="${2:-.}"   # default to current directory if not provided
+  rg --hidden --ignore-case "$pattern" "$folder"
+}
 
 # ------------------------------------------------------------------------------
 # Source other configurations

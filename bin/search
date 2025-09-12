@@ -1,8 +1,0 @@
-pattern="$1"
-folder="$2"
-
-if [ "$folder" = "" ]; then
-	rg --hidden --ignore-case "$pattern"
-else
-	rg --hidden --ignore-case "$pattern" "$folder"
-fi

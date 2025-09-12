@@ -21,13 +21,6 @@ if [ ! -f ~/.dir_colors ]; then
 	curl -sSkLo ~/.dir_colors https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors
 fi
 
-# Install run.sh
-if [ ! -f "$DOTFILES_DIR/bin/run" ]; then
-	curl -sSL -o /tmp/run https://raw.githubusercontent.com/jotaen/run.sh/main/run
-	chmod +x /tmp/run
-	mv /tmp/run "$DOTFILES_DIR/bin/run"
-fi
-
 sudo chmod -R 755 /opt/homebrew/share
 sudo chown -R "$(whoami):admin" /opt/homebrew/share
 
@@ -44,7 +37,6 @@ sudo chown -R "$(whoami):admin" /opt/homebrew/share
 	brew bundle
 )
 
-# Add the new shell to the list of allowed shells
 if ! grep -q "/opt/homebrew/bin/zsh" /etc/shells; then
 	sudo zsh -c 'echo /opt/homebrew/bin/zsh >> /etc/shells'
 fi
