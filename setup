@@ -61,6 +61,13 @@ fi
 	done
 )
 
+# Stow Claude files
+(
+	cd ~ || exit 1
+	mkdir -p .claude || exit 1
+	stow -d ~/dotfiles -t ~/.claude claude
+)
+
 $DOTFILES_DIR/setup-macos
 
 echo "------------------------------------------------------------------------------"
