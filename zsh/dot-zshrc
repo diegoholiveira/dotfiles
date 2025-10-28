@@ -75,5 +75,3 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 eval "$(direnv hook zsh)"
-
-[ -s "/Users/diegoholiveira/.bun/_bun" ] && source "/Users/diegoholiveira/.bun/_bun"

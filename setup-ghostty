@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
+rm "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
+ln -sf "$HOME/dotfiles/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"

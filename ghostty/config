@@ -1,4 +1,5 @@
 working-directory = home
 window-height = 50
 window-width = 180
+theme = Nord
 keybind = shift+enter=text:\n

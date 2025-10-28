@@ -2,7 +2,7 @@
 
 DOTFILES_DIR=~/dotfiles
 STOW_FILES_HOME=("bat" "fzf" "git" "ripgrep" "starship" "tmux" "zsh")
-STOW_FILES_XDG=("ghostty" "gnupg" "vim")
+STOW_FILES_XDG=("gnupg" "vim")
 
 # Install Homebrew
 if [ ! -f /opt/homebrew/bin/brew ]; then
