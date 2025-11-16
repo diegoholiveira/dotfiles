@@ -39,3 +39,6 @@ defaults write com.apple.dock wvous-tr-corner -int 13
 
 # disable keychain
 defaults write org.gpgtools.common DisableKeychain -bool yes
+
+# allow moving a window by clicking anywhere on it
+defaults write -g NSWindowShouldDragOnGesture -bool true

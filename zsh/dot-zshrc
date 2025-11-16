@@ -42,6 +42,7 @@ alias mv="mv -iv"
 alias rm="rm -iv"
 alias tailf="tail -f"
 alias uuidgen="uuidgen | tr A-F a-f"
+alias vim="nvim"
 
 # ------------------------------------------------------------------------------
 # Custom commands

@@ -9,7 +9,7 @@ path=("/opt/homebrew/bin" $path)
 # ------------------------------------------------------------------------------
 # 2. Language-specific versioned bin
 # ------------------------------------------------------------------------------
-path=("$GOPATH/bin" $path)
+path=("$GOBIN" $path)
 path=("/opt/homebrew/opt/node@22/bin" $path)
 path=("/opt/homebrew/opt/python@3.12/libexec/bin" $path)
 path=("/opt/homebrew/opt/ruby@3.4/bin" $path)
