@@ -16,6 +16,12 @@ vim.opt.modeline = false                         -- Disable modelines (avoid con
 
 -- Files
 vim.opt.swapfile = false                         -- Disable creation of swap files
+vim.filetype.add({                               -- Configure tf and tfvars extensions as hcl files
+  extension = {
+    tf     = "hcl",
+    tfvars = "hcl",
+  },
+})
 
 -- Tabs and Indentation
 vim.opt.tabstop = 4                              -- A tab character appears as 4 spaces
