@@ -1,5 +1,20 @@
-working-directory = home
+# Initial window height
 window-height = 50
+
+# Initial window width
 window-width = 180
+
+# Set Nord as color theme
 theme = Nord
+
+# Set the starting directory for new terminal windows to home directory
+working-directory = home
+
+# New tabs always use working-directory instead of inheriting from current tab
+window-inherit-working-directory = false
+
+# Make Shift+Enter insert a newline character
 keybind = shift+enter=text:\n
+
+# Keep Option key producing Unicode characters instead of acting as Alt key
+macos-option-as-alt = false
