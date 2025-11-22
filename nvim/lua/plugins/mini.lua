@@ -28,6 +28,12 @@ return {
 							filename = vim.fn.fnamemodify(filepath, ':~')
 						end
 
+						-- Add treesitter context if available
+						local ts_context = vim.fn['nvim_treesitter#statusline'](90)
+						if ts_context and ts_context ~= '' then
+							filename = filename .. ' | ' .. ts_context
+						end
+
 						-- Custom fileinfo: format | encoding | filetype
 						local format = vim.bo.fileformat
 						local encoding = vim.bo.fileencoding ~= '' and vim.bo.fileencoding or vim.o.encoding
