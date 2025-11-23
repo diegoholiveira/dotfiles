@@ -29,8 +29,8 @@ return {
 						end
 
 						-- Add treesitter context if available
-						local ts_context = vim.fn['nvim_treesitter#statusline'](90)
-						if ts_context and ts_context ~= '' then
+						local ok, ts_context = pcall(vim.fn['nvim_treesitter#statusline'], 90)
+						if ok and ts_context and type(ts_context) == 'string' and ts_context ~= '' then
 							filename = filename .. ' | ' .. ts_context
 						end
 
