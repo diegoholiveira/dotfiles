@@ -1,4 +1,9 @@
 -- General Editor Settings
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 vim.opt.termguicolors = true                     -- Enable true color support (24-bit RGB)
 vim.opt.number = true                            -- Show absolute line numbers
 vim.opt.spell = true                             -- Enable spell check
@@ -10,6 +15,7 @@ vim.opt.ignorecase = true                        -- Make search case-insensitive
 vim.opt.wrap = false                             -- Prevent line wrapping
 vim.opt.scrolloff = 3                            -- Keep 3 lines visible above/below cursor when scrolling
 vim.opt.mouse = ""                               -- Completely disable the mouse
+vim.opt.hlsearch = false                         -- Disable search highlight
 
 -- Security
 vim.opt.modeline = false                         -- Disable modelines (avoid config injection)

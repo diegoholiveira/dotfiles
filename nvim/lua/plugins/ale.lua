@@ -50,15 +50,15 @@ return {
 				go = {'gofumpt', 'goimports'},
 				hcl = {'terraform'},
 				html = {'prettier'},
-				javascript = {'prettier', 'eslint'},
+				javascript = {'prettier'},
 				json = {'jq'},
 				markdown = {},
 				python = {'ruff', 'ruff_format', 'isort'},
 				ruby = {'rubocop'},
 				rust = {'rustfmt'},
 				sh = {'shfmt'},
-				typescript = {'prettier', 'eslint'},
-				typescriptreact = {'prettier', 'eslint'},
+				typescript = {'prettier'},
+				typescriptreact = {'prettier'},
 			}
 		end
 	}
