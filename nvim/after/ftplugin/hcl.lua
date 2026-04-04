@@ -1,2 +1,1 @@
-vim.wo.wrap = true
 vim.treesitter.start()
