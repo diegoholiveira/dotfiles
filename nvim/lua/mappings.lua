@@ -1,6 +1,9 @@
 -- Set leader key
 vim.g.mapleader = ","
 
+-- Clear search highlight with Escape
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { silent = true, desc = "Clear search highlight" })
+
 -- Spelling suggestions with Ctrl-E
 vim.keymap.set("n", "<C-E>", "z=", { silent = true, desc = "Open spelling suggestions" })
 

@@ -15,7 +15,8 @@ return {
 				'zig',
 				'markdown',
 				'markdown_inline',
-				'python'
+				'python',
+				'bash'
 			}
 			require('nvim-treesitter.install').ensure_installed(langs)
 		end,
