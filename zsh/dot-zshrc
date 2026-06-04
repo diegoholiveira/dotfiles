@@ -1,39 +1,66 @@
 # ------------------------------------------------------------------------------
+# Interactive shell guard
+# ------------------------------------------------------------------------------
+
+[[ -o interactive ]] || return
+
+# ------------------------------------------------------------------------------
 # Auto Complete
 # ------------------------------------------------------------------------------
+
 fpath=(/opt/homebrew/share/zsh-completions $fpath)
 
-# ------------------------------------------------------------------------------
-# Configure zsh
-# ------------------------------------------------------------------------------
-zstyle :compinstall filename '/Users/diegoholiveira/.zshrc'
+zstyle ':compinstall' filename "$HOME/.zshrc"
 
 autoload -Uz compinit
-autoload -U colors
+autoload -Uz colors
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+
 compinit
+colors
 
 # ------------------------------------------------------------------------------
-# Configure up and down to search the history
+# Up/down history search
 # ------------------------------------------------------------------------------
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
+
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search   # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
 
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
 
 # ------------------------------------------------------------------------------
 # Colors: Nord Theme
 # ------------------------------------------------------------------------------
-if [ -f ~/.dir_colors ]; then
-	eval "$(gdircolors -b ~/.dir_colors)"
+
+if [[ -f "$HOME/.dir_colors" ]]; then
+  eval "$(gdircolors -b "$HOME/.dir_colors")"
 fi
-colors
+
+# ------------------------------------------------------------------------------
+# Git prompt
+# ------------------------------------------------------------------------------
+
+GIT_PS1_SHOWDIRTYSTATE="true"
+GIT_PS1_SHOWSTASHSTATE="false"
+GIT_PS1_SHOWUNTRACKEDFILES="true"
+GIT_PS1_SHOWUPSTREAM="auto verbose name"
+
+# ------------------------------------------------------------------------------
+# Zsh autosuggestions
+# ------------------------------------------------------------------------------
+
+ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
+
+if [[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 
 # ------------------------------------------------------------------------------
 # Aliases
 # ------------------------------------------------------------------------------
+
 alias cp="cp -iv"
 alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
 alias ls="gls -lahF --group-directories-first --color=auto"
@@ -43,36 +70,51 @@ alias rm="rm -iv"
 alias tailf="tail -f"
 alias uuidgen="uuidgen | tr A-F a-f"
 alias vim="nvim"
+alias cc="claude --dangerously-skip-permissions"
 
 # ------------------------------------------------------------------------------
 # Custom commands
 # ------------------------------------------------------------------------------
+
 search() {
   local pattern="$1"
-  local folder="${2:-.}"   # default to current directory if not provided
+  local folder="${2:-.}"
+
+  if [[ -z "$pattern" ]]; then
+    echo "usage: search <pattern> [folder]" >&2
+    return 1
+  fi
+
   rg --hidden --ignore-case "$pattern" "$folder"
 }
 
 # ------------------------------------------------------------------------------
-# Source other configurations
+# Local configurations
 # ------------------------------------------------------------------------------
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [ -f ~/.zsh_private ]; then
-	. ~/.zsh_private
+[[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
+[[ -f "$HOME/.zsh_private" ]] && source "$HOME/.zsh_private"
+
+# ------------------------------------------------------------------------------
+# Language/toolchain environments
+# ------------------------------------------------------------------------------
+
+[[ -f "$HOME/.rye/env" ]] && source "$HOME/.rye/env"
+[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+[[ -f "$HOME/.vite-plus/env" ]] && source "$HOME/.vite-plus/env"
+
+# ------------------------------------------------------------------------------
+# Shell integrations
+# ------------------------------------------------------------------------------
+
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
 fi
 
-if [ -f ~/.zsh_aliases ]; then
-	. ~/.zsh_aliases
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
 fi
 
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source <(starship init zsh --print-full-init)
-if [ -f ~/.rye/env ]; then
-	source ~/.rye/env
+if command -v starship >/dev/null 2>&1; then
+  source <(starship init zsh --print-full-init)
 fi
-if [ -f "$HOME/.cargo/env" ]; then
-	source "$HOME/.cargo/env"
-fi
-
-eval "$(direnv hook zsh)"
