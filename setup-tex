@@ -1,0 +1,132 @@
+#!/bin/sh
+
+set -e
+
+download_from_ctan() {
+	package="$1"
+
+	if [ ! -d ~/Library/texmf/tex/latex/"${package}" ]; then
+		TMPDIR="$(mktemp -d)"
+		ZIPFILE="$TMPDIR/${package}.tds.zip"
+
+		curl -sSL -o "$ZIPFILE" "https://mirrors.ctan.org/install/macros/latex/contrib/${package}.tds.zip"
+		unzip -q "$ZIPFILE" -d "$TMPDIR"
+		TDSROOT="$TMPDIR/tex"
+
+		if [ ! -d "$TDSROOT" ]; then
+			echo "Error: expected tex/ directory inside TDS zip for ${package}, but not found."
+			rm -rf "$TMPDIR"
+			exit 1
+		fi
+
+		cp -R "$TDSROOT/latex" ~/Library/texmf/tex/
+
+		rm -rf "$TMPDIR"
+	fi
+}
+
+fonts_from_ctan() {
+	pkg="$1"
+	TMPDIR="$(mktemp -d)"
+
+	URL="https://mirrors.ctan.org/fonts/${pkg}.zip"
+	ZIPFILE="$TMPDIR/${pkg}.zip"
+
+	curl -fsSL -o "$ZIPFILE" "$URL"
+
+	unzip -q "$ZIPFILE" -d "$TMPDIR"
+
+	find "$TMPDIR" -type f -name "*.otf" -exec cp {} ~/Library/Fonts/ \;
+
+	rm -rf "$TMPDIR"
+	echo "Installed fonts for $pkg."
+}
+
+# Create required TeX directories
+mkdir -p ~/texmf
+mkdir -p ~/Library/texlive/2025basic/texmf-var
+mkdir -p ~/Library/texlive/2025basic/texmf-config
+mkdir -p ~/Library/texlive/texmf-local
+mkdir -p ~/Library/texmf/tlpkg/backups
+mkdir -p ~/Library/texmf/tex/latex/minted
+
+# Initialize tlmgr user tree (only if not already initialized)
+if [ ! -f ~/Library/texmf/tlpkg/texlive.tlpdb ]; then
+	tlmgr init-usertree
+fi
+
+# Download minted package
+(
+	cd ~/Library/texmf/tex/latex/minted || exit
+
+	if [ ! -f ~/Library/texmf/tex/latex/minted/minted.sty ]; then
+		curl -sSL -O https://raw.githubusercontent.com/gpoore/minted/refs/heads/main/latex/minted/minted.sty
+		curl -sSL -O https://raw.githubusercontent.com/gpoore/minted/refs/heads/main/latex/minted/minted.pdf
+	fi
+)
+
+# Download CTAN TDS packages
+download_from_ctan glossaries
+download_from_ctan datatool
+
+# Install fonts directly into macOS font system
+fonts_from_ctan tex-gyre
+fonts_from_ctan newcomputermodern
+fonts_from_ctan inconsolata
+
+# Install required TeX packages
+tlmgr --usermode install \
+	silence \
+	paralist \
+	biblatex \
+	logreq \
+	biblatex-abnt \
+	enumitem \
+	catchfile \
+	xstring \
+	morewrites \
+	comment \
+	ltablex \
+	lettrine \
+	wrapfig \
+	multirow mathcomp \
+	lastpage \
+	anyfontsize \
+	nomencl \
+	siunitx \
+	mdframed \
+	zref \
+	tablefootnote \
+	xifthen \
+	makecell \
+	pbox \
+	hyphenat \
+	verbatimbox \
+	readarray \
+	forloop \
+	listofitems \
+	capt-of \
+	cleveref \
+	fvextra \
+	latex2pydata \
+	pgfopts \
+	datetime \
+	fmtcount \
+	adjustbox \
+	collectbox \
+	mfirstuc \
+	xfor \
+	tracklang \
+	glossaries-english \
+	csquotes \
+	bigfoot \
+	ncctools \
+	framed \
+	tcolorbox \
+	environ \
+	trimspaces \
+	tikzfill \
+	pdfcol \
+	listingsutf8 \
+	psnfss \
+	helvetic

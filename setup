@@ -68,6 +68,7 @@ fi
 	stow -d ~/dotfiles -t ~/.claude claude
 )
 
+$DOTFILES_DIR/setup-tex
 $DOTFILES_DIR/setup-macos
 
 echo "------------------------------------------------------------------------------"
