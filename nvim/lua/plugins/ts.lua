@@ -8,6 +8,7 @@ return {
 				'go',
 				'typescript',
 				'javascript',
+				'json',
 				'hcl',
 				'html',
 				'css',
