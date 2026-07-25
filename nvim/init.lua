@@ -14,7 +14,6 @@ vim.opt.listchars = { tab = ">-", trail = "·" }  -- Display tabs as ">-" and tr
 vim.opt.ignorecase = true                        -- Make search case-insensitive
 vim.opt.wrap = false                             -- Prevent line wrapping
 vim.opt.scrolloff = 3                            -- Keep 3 lines visible above/below cursor when scrolling
-vim.opt.clipboard = "unnamedplus"                -- Use the system clipboard for default yank/paste
 vim.opt.mouse = ""                               -- Completely disable the mouse
 vim.opt.hlsearch = true                          -- Disable search highlight
 
