@@ -2,6 +2,15 @@
 
 DOTFILES_DIR=~/dotfiles
 
-$DOTFILES_DIR/setup-go
 $DOTFILES_DIR/setup-tmux
-$DOTFILES_DIR/setup-vim
+$DOTFILES_DIR/setup-nvim
+
+# Language tooling used by Neovim (ALE)
+$DOTFILES_DIR/setup-go
+$DOTFILES_DIR/setup-rust
+$DOTFILES_DIR/setup-typescript
+$DOTFILES_DIR/setup-zig
+$DOTFILES_DIR/setup-lua
+
+# Claude Code skills
+$DOTFILES_DIR/setup-claude

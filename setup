@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
 DOTFILES_DIR=~/dotfiles
-STOW_FILES_HOME=("bat" "fzf" "git" "ripgrep" "starship" "tmux" "zsh")
-STOW_FILES_XDG=("gnupg" "nvim" "vim")
+STOW_FILES_HOME=("zsh")
+STOW_FILES_XDG=("bat" "ghostty" "git" "hunk" "nvim" "ripgrep" "starship" "tmux")
 
 # Install Homebrew
 if [ ! -f /opt/homebrew/bin/brew ]; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-	brew tap homebrew/bundle
 fi
 
 # Clone the repository into the dotfiles dir
@@ -59,17 +57,15 @@ fi
 		mkdir -p "${XDG_CONFIG_HOME}/${APP}" || true
 		stow -t "${XDG_CONFIG_HOME}/${APP}" "${APP}"
 	done
+
+	# ssh keys live in 1Password, only the config and public keys are tracked
+	mkdir -p ~/.ssh
+	chmod 700 ~/.ssh
+	stow -t ~/.ssh ssh
 )
 
-# Stow Claude files
-(
-	cd ~ || exit 1
-	mkdir -p .claude || exit 1
-	stow -d ~/dotfiles -t ~/.claude claude
-)
-
-$DOTFILES_DIR/setup-tex
 $DOTFILES_DIR/setup-macos
+$DOTFILES_DIR/setup-chrome
 
 echo "------------------------------------------------------------------------------"
 echo "Final instructions"

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ------------------------------------------------------------------------------
+# TypeScript tooling used by Neovim (ALE)
+#
+#   Brewfile: node, typescript (7+, provides `tsc --lsp`), prettier
+#   eslint is expected to come from each project's node_modules
+# ------------------------------------------------------------------------------
+
+for TOOL in node tsc prettier; do
+	if ! command -v "$TOOL" >/dev/null 2>&1; then
+		echo "Missing $TOOL. Run 'brew bundle' in ~/dotfiles first." >&2
+		exit 1
+	fi
+done
+
+# ------------------------------------------------------------------------------
+# The language server needs TypeScript 7 or later
+# ------------------------------------------------------------------------------
+
+TSC_VERSION="$(tsc --version | awk '{print $2}')"
+if [ "${TSC_VERSION%%.*}" -lt 7 ]; then
+	echo "tsc $TSC_VERSION has no --lsp mode. Run 'brew upgrade typescript'." >&2
+	exit 1
+fi
+
+echo "tsc $TSC_VERSION and prettier $(prettier --version) are ready."

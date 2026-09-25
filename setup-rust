@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ------------------------------------------------------------------------------
+# Rust tooling used by Neovim (ALE)
+#
+#   rustup: stable toolchain with rustfmt, clippy, rust-analyzer and rust-src
+# ------------------------------------------------------------------------------
+
+RUSTUP="$HOME/.cargo/bin/rustup"
+
+# ------------------------------------------------------------------------------
+# Install rustup (PATH is already handled by ~/.cargo/env in .zshrc)
+# ------------------------------------------------------------------------------
+
+if [ ! -x "$RUSTUP" ]; then
+	echo "Installing rustup..."
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+fi
+
+# ------------------------------------------------------------------------------
+# Install the stable toolchain and the components ALE needs
+# ------------------------------------------------------------------------------
+
+echo "Installing the stable toolchain..."
+"$RUSTUP" toolchain install stable --component rustfmt,clippy,rust-analyzer,rust-src
+echo "Done."

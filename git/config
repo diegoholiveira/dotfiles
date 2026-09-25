@@ -1,0 +1,41 @@
+[advice]
+	statusHints = false
+[alias]
+	amend = commit --amend -C HEAD
+	undo = reset --soft HEAD~1
+	unstage = reset HEAD --
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = auto
+[fetch]
+	prune = true
+[merge]
+	tool = nvimdiff
+[pull]
+	rebase = true
+[push]
+	default = tracking
+	autoSetupRemote = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[user]
+	name = Diego Henrique Oliveira
+	email = contato@diegoholiveira.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFfbDXZyCJFJNfyxQ202ck7uYm1zeCe8NSKPOYoYWExT
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+	allowedSignersFile = ~/.config/git/allowed_signers

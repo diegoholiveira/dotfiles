@@ -1,7 +1,7 @@
 return {
 	{
 		'airblade/vim-gitgutter',
-		version = "*",
+		version = '*',
 		config = function()
 			vim.g.gitgutter_map_keys = 0
 			-- Git hunk navigation
@@ -11,6 +11,6 @@ return {
 			vim.keymap.set('n', '<leader>gs', '<Plug>(GitGutterStageHunk)', { desc = 'Git stage hunk' })
 			vim.keymap.set('n', '<leader>gu', '<Plug>(GitGutterUndoHunk)', { desc = 'Git undo hunk' })
 			vim.keymap.set('n', '<leader>gv', '<Plug>(GitGutterPreviewHunk)', { desc = 'Git preview hunk' })
-		end
-	}
+		end,
+	},
 }

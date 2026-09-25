@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ------------------------------------------------------------------------------
+# Zig tooling used by Neovim (ALE)
+#
+#   Brewfile: zig, zls
+# ------------------------------------------------------------------------------
+
+for TOOL in zig zls; do
+	if ! command -v "$TOOL" >/dev/null 2>&1; then
+		echo "Missing $TOOL. Run 'brew bundle' in ~/dotfiles first." >&2
+		exit 1
+	fi
+done
+
+# ------------------------------------------------------------------------------
+# zls only works with the zig release it was built for
+# ------------------------------------------------------------------------------
+
+ZIG_VERSION="$(zig version)"
+ZLS_VERSION="$(zls --version)"
+if [ "${ZIG_VERSION%.*}" != "${ZLS_VERSION%.*}" ]; then
+	echo "zig $ZIG_VERSION and zls $ZLS_VERSION do not match. Run 'brew upgrade zig zls'." >&2
+	exit 1
+fi
+
+echo "zig $ZIG_VERSION and zls $ZLS_VERSION are ready."

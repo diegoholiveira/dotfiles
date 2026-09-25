@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ------------------------------------------------------------------------------
+# Lua tooling used by Neovim (ALE)
+#
+#   Brewfile: lua-language-server, stylua
+# ------------------------------------------------------------------------------
+
+for TOOL in lua-language-server stylua; do
+	if ! command -v "$TOOL" >/dev/null 2>&1; then
+		echo "Missing $TOOL. Run 'brew bundle' in ~/dotfiles first." >&2
+		exit 1
+	fi
+done
+
+echo "lua-language-server $(lua-language-server --version) and $(stylua --version) are ready."

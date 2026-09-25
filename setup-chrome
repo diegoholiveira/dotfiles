@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ------------------------------------------------------------------------------
+# Google Chrome + 1Password integration
+#
+#   Brewfile: google-chrome, 1password, jq
+# ------------------------------------------------------------------------------
+
+DOTFILES_DIR=~/dotfiles
+CHROME_DIR="$HOME/Library/Application Support/Google/Chrome"
+ONEPASSWORD_EXTENSION_ID="aeblfdkhhhdcdjpifhhbdiojplfjncoa"
+
+for APP in "Google Chrome" "1Password"; do
+	if [ ! -d "/Applications/$APP.app" ]; then
+		echo "Missing $APP. Run 'brew bundle' in ~/dotfiles first." >&2
+		exit 1
+	fi
+done
+
+# ------------------------------------------------------------------------------
+# Install the 1Password extension from the Chrome Web Store (Chrome asks to
+# enable it in each profile on the next launch)
+# ------------------------------------------------------------------------------
+
+mkdir -p "$CHROME_DIR/External Extensions"
+echo '{ "external_update_url": "https://clients2.google.com/service/update2/crx" }' \
+	>"$CHROME_DIR/External Extensions/$ONEPASSWORD_EXTENSION_ID.json"
+
+# ------------------------------------------------------------------------------
+# Chrome policies (see chrome-profile.mobileconfig) live in a configuration
+# profile, since `defaults write` only sets them as recommendations.
+# macOS can't install profiles from a script, so it asks for approval in:
+#   System Settings > General > Device Management
+# ------------------------------------------------------------------------------
+
+CHROME_PROFILE="$DOTFILES_DIR/chrome-profile.mobileconfig"
+CHROME_POLICIES="/Library/Managed Preferences/com.google.Chrome.plist"
+
+# The payload UUID changes on every edit, so a different one means outdated
+WANTED_UUID="$(plutil -extract PayloadContent.0.PayloadUUID raw "$CHROME_PROFILE")"
+INSTALLED_UUID="$(plutil -extract PayloadUUID raw "$CHROME_POLICIES" 2>/dev/null || true)"
+
+if [ "$WANTED_UUID" != "$INSTALLED_UUID" ]; then
+	open "$CHROME_PROFILE"
+	echo "Approve the Google Chrome profile in System Settings > General > Device Management."
+	echo
+fi
+
+# ------------------------------------------------------------------------------
+# 1Password has no way to script its settings, so finish them by hand
+# ------------------------------------------------------------------------------
+
+ONEPASSWORD_SETTINGS="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/Library/Application Support/1Password/Data/settings/settings.json"
+if [ -f "$ONEPASSWORD_SETTINGS" ] && [ "$(jq '."browsers.extension.enabled"' "$ONEPASSWORD_SETTINGS")" != "true" ]; then
+	echo "WARNING: the 1Password app is not connected to the browser extension yet."
+	echo
+fi
+
+cat <<'EOF'
+Chrome is ready. Restart it, check chrome://policy and enable the 1Password
+extension in each profile.
+
+Then finish the setup by hand:
+    1Password > Settings > Security  > Touch ID
+    1Password > Settings > Browser   > Connect with 1Password in the browser
+    1Password > Settings > Developer > Use the SSH agent
+    1Password > Settings > Developer > Integrate with 1Password CLI
+    System Settings > General > AutoFill & Passwords > enable 1Password, disable Passwords
+EOF

@@ -1,8 +1,5 @@
-tap "bazelbuild/tap", trusted: true
-tap "diegoholiveira/localports", trusted: true
+tap "diegoholiveira/localports", "https://github.com/diegoholiveira/localports.git"
 tap "hashicorp/tap", trusted: true
-tap "homebrew/bundle"
-tap "modem-dev/tap"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # YAML Parser
@@ -31,20 +28,16 @@ brew "awscli"
 brew "bat"
 # Software library to render fonts
 brew "freetype"
-# Google's own build tool
-brew "bazel"
 # Parser generator
 brew "bison"
 # Python code formatter
 brew "black"
-# Ruby environment tool
-brew "chruby"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 brew "clang-format"
 # Cross-platform make
 brew "cmake"
 # Powerful, clean, object-oriented scripting language
-brew "ruby", link: false
+brew "ruby"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
 # Dependency Manager for PHP
@@ -61,26 +54,20 @@ brew "flyctl"
 brew "fzf"
 # GNU database manager
 brew "gdbm"
+# GitHub command-line tool
+brew "gh"
 # Command-line utility for uploading Gists
 brew "gist"
 # Distributed revision control system
 brew "git"
-# Extensions to follow Vincent Driessen's branching model
-brew "git-flow"
 # Git extension for versioning large files
 brew "git-lfs"
-# GNU Privacy Guard (OpenPGP)
-brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Stricter gofmt
 brew "gofumpt"
 # Fast linters runner for Go
 brew "golangci-lint"
-# Development kit for the Java programming language
-brew "openjdk"
-# Open-source build automation tool based on the Groovy and Kotlin DSL
-brew "gradle"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
 # Graph visualization software from AT&T and Bell Labs
@@ -93,10 +80,10 @@ brew "grpc"
 brew "highlight"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
-# Add GitHub support to git on the command-line
-brew "hub"
 # Configurable static site generator
 brew "hugo"
+# Review-first terminal diff viewer for agent-authored changesets
+brew "hunk"
 # Run and Test HTTP Requests with plain text and curl
 brew "hurl"
 # Tools and libraries to manipulate images in select formats
@@ -107,38 +94,38 @@ brew "img2pdf"
 brew "jj"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Java-based project management
-brew "maven"
+# Language Server for the Lua language
+brew "lua-language-server"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node@22"
+# Small build system for use with gyp or CMake
+brew "ninja"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # AI coding agent, built for the terminal
 brew "opencode"
-# Pinentry for GPG on Mac
-brew "pinentry-mac"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
-# Draw UML diagrams
-brew "plantuml"
 # Python package management tool
 brew "poetry"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 # Object-relational database system
 brew "postgresql@17"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
+# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
+brew "prettier"
 # Go support for Google's protocol buffers
 brew "protoc-gen-go"
 # Protoc plugin that generates code for gRPC-Go clients
 brew "protoc-gen-go-grpc"
 # Generic syntax highlighter
 brew "pygments"
-# Install Ruby, JRuby, Rubinius, TruffleRuby, or mruby
-brew "ruby-install"
 # Extremely fast Python linter, written in Rust
 brew "ruff"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -151,6 +138,8 @@ brew "ssh-copy-id"
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Opinionated Lua code formatter
+brew "stylua"
 # Subdomain discovery tool
 brew "subfinder"
 # Text interface for Git repositories
@@ -165,10 +154,6 @@ brew "typescript"
 brew "typst"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
-# Vi 'workalike' with many additional features
-brew "vim"
-# Vim script Language Lint
-brew "vint"
 # Watch files and take action when they change
 brew "watchman"
 # Programming language designed for robustness, optimality, and clarity
@@ -187,14 +172,14 @@ brew "zsh-completions"
 brew "diegoholiveira/localports/localports"
 # Terraform
 brew "hashicorp/tap/terraform"
-# Desktop-inspired terminal diff viewer for agent-authored changesets
-brew "modem-dev/tap/hunk", trusted: true
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
 # Compact TeX distribution as alternative to the full TeX Live / MacTeX
 cask "basictex"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
 # OpenAI's coding agent that runs in your terminal
@@ -211,8 +196,6 @@ cask "gnucash"
 cask "google-chrome"
 # Vector graphics editor
 cask "inkscape"
-# Open-source Markdown editor
-cask "macdown"
 # Collaboration platform for API development
 cask "postman"
 # Team communication and collaboration software
@@ -225,10 +208,6 @@ cask "spotify"
 cask "sublime-text"
 # Messaging app with a focus on speed and security
 cask "telegram"
-# JDK from the Eclipse Foundation (Adoptium)
-cask "temurin"
-# JDK from the Eclipse Foundation (Adoptium)
-cask "temurin@17"
 # Unpacks archive files
 cask "the-unarchiver"
 # Open-source BitTorrent client
@@ -237,6 +216,8 @@ cask "transmission"
 cask "vagrant"
 # Multimedia player
 cask "vlc"
+# Video communication and virtual meeting platform
+cask "webex"
 # Native desktop client for WhatsApp
 cask "whatsapp"
 # Video communication and virtual meeting platform

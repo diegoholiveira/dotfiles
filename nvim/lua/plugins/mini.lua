@@ -1,14 +1,14 @@
 return {
 	{
 		'nvim-mini/mini.trailspace',
-		version = "*",
+		version = '*',
 		config = function()
 			require('mini.trailspace').setup()
-		end
+		end,
 	},
 	{
 		'nvim-mini/mini.statusline',
-		version = "*",
+		version = '*',
 		config = function()
 			local statusline = require('mini.statusline')
 			statusline.setup({
@@ -43,9 +43,9 @@ return {
 							{ hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
 							{ hl = mode_hl, strings = { location } },
 						})
-					end
-				}
+					end,
+				},
 			})
-		end
-	}
+		end,
+	},
 }

@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
 SCREENSHOTS_DIR=~/Screenshots
 
 mkdir -p $SCREENSHOTS_DIR
@@ -6,8 +9,8 @@ mkdir -p $SCREENSHOTS_DIR
 # General
 # -----------------------------------------------------------------------------
 
-# Always display the percentage of battery
-defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+# System Settings > Control Center > Battery > Show Percentage
+defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
 
 
 # -----------------------------------------------------------------------------
@@ -28,17 +31,11 @@ defaults write com.apple.dock minimize-to-application -bool true
 # System Preferences > Dock > Automatically hide and show the Dock:
 defaults write com.apple.dock autohide -bool true
 
-# System Preferences > Dock > Size (magnified):
-defaults write com.apple.dock largesize -int 92
-
 # System Preferences > Dock > Show recent applications in Dock
 defaults write com.apple.dock show-recents -bool FALSE
 
 # Configure the hot corners
 defaults write com.apple.dock wvous-tr-corner -int 13
-
-# disable keychain
-defaults write org.gpgtools.common DisableKeychain -bool yes
 
 # allow moving a window by clicking anywhere on it
 defaults write -g NSWindowShouldDragOnGesture -bool true

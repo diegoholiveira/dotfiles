@@ -5,30 +5,18 @@
 [[ -o interactive ]] || return
 
 # ------------------------------------------------------------------------------
-# Auto Complete
+# History
 # ------------------------------------------------------------------------------
 
-fpath=(/opt/homebrew/share/zsh-completions $fpath)
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
 
-zstyle ':compinstall' filename "$HOME/.zshrc"
-
-autoload -Uz compinit
-autoload -Uz colors
-autoload -Uz up-line-or-beginning-search
-autoload -Uz down-line-or-beginning-search
-
-compinit
-colors
-
-# ------------------------------------------------------------------------------
-# Up/down history search
-# ------------------------------------------------------------------------------
-
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-
-bindkey "^[[A" up-line-or-beginning-search
-bindkey "^[[B" down-line-or-beginning-search
+setopt EXTENDED_HISTORY       # Save timestamp and duration of each command
+setopt HIST_IGNORE_ALL_DUPS   # Drop older duplicates of a command
+setopt HIST_IGNORE_SPACE      # Do not save commands starting with a space
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before saving
+setopt SHARE_HISTORY          # Share history across all open shells
 
 # ------------------------------------------------------------------------------
 # Colors: Nord Theme
@@ -39,13 +27,34 @@ if [[ -f "$HOME/.dir_colors" ]]; then
 fi
 
 # ------------------------------------------------------------------------------
-# Git prompt
+# Auto Complete
 # ------------------------------------------------------------------------------
 
-GIT_PS1_SHOWDIRTYSTATE="true"
-GIT_PS1_SHOWSTASHSTATE="false"
-GIT_PS1_SHOWUNTRACKEDFILES="true"
-GIT_PS1_SHOWUPSTREAM="auto verbose name"
+fpath=(/opt/homebrew/share/zsh-completions $fpath)
+
+autoload -Uz compinit
+compinit
+
+zmodload zsh/complist
+zstyle ':completion:*' menu select                              # Navigate matches with arrow keys
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case-insensitive matching
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Color matches like ls
+
+# ------------------------------------------------------------------------------
+# Up/down history search
+# ------------------------------------------------------------------------------
+
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+# Bind both the normal and the application mode sequences of the arrow keys
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+[[ -n "${terminfo[kcuu1]}" ]] && bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
+[[ -n "${terminfo[kcud1]}" ]] && bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 
 # ------------------------------------------------------------------------------
 # Zsh autosuggestions
@@ -70,7 +79,6 @@ alias rm="rm -iv"
 alias tailf="tail -f"
 alias uuidgen="uuidgen | tr A-F a-f"
 alias vim="nvim"
-alias cc="claude --dangerously-skip-permissions"
 
 # ------------------------------------------------------------------------------
 # Custom commands
@@ -88,24 +96,42 @@ search() {
   rg --hidden --ignore-case "$pattern" "$folder"
 }
 
+download-media() {
+  local url="$1"
+  local dest="${2:-$HOME/Downloads}"
+
+  if [[ -z "$url" ]]; then
+    echo "usage: download-media <url> [dest-folder]" >&2
+    return 1
+  fi
+
+  local name="${url##*/}"
+  name="${name%%\?*}"
+  [[ -z "$name" ]] && name="download-$(date +%s)"
+
+  curl -fL --progress-bar -o "$dest/$name" "$url" && echo "saved to $dest/$name"
+}
+
 # ------------------------------------------------------------------------------
 # Local configurations
 # ------------------------------------------------------------------------------
 
-[[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
 [[ -f "$HOME/.zsh_private" ]] && source "$HOME/.zsh_private"
-
-# ------------------------------------------------------------------------------
-# Language/toolchain environments
-# ------------------------------------------------------------------------------
-
-[[ -f "$HOME/.rye/env" ]] && source "$HOME/.rye/env"
-[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
-[[ -f "$HOME/.vite-plus/env" ]] && source "$HOME/.vite-plus/env"
 
 # ------------------------------------------------------------------------------
 # Shell integrations
 # ------------------------------------------------------------------------------
+
+if command -v fzf >/dev/null 2>&1; then
+  export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+  export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+
+  _fzf_compgen_path() {
+    rg --files --hidden --follow --glob "!.git/*"
+  }
+
+  source <(fzf --zsh)
+fi
 
 if command -v direnv >/dev/null 2>&1; then
   eval "$(direnv hook zsh)"

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-TPM_DIR=~/.tmux/plugins/tpm
+TPM_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/plugins/tpm"
 
-if [ ! -d $TPM_DIR ]; then
-  git clone https://github.com/tmux-plugins/tpm $TPM_DIR
-  $TPM_DIR/bin/install_plugins
+if [ ! -d "$TPM_DIR" ]; then
+  git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+  "$TPM_DIR"/bin/install_plugins
 else
-  $TPM_DIR/bin/update_plugins all
+  "$TPM_DIR"/bin/update_plugins all
 fi

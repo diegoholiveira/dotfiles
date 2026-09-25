@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadDisplayName</key>
+	<string>Google Chrome</string>
+	<key>PayloadDescription</key>
+	<string>Chrome policies from ~/dotfiles (see setup-chrome)</string>
+	<key>PayloadIdentifier</key>
+	<string>com.diegoholiveira.dotfiles.chrome</string>
+	<key>PayloadOrganization</key>
+	<string>dotfiles</string>
+	<key>PayloadScope</key>
+	<string>System</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>0D1F31F9-EEA4-4F91-A0B2-465A1B489ED5</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadDisplayName</key>
+			<string>Google Chrome policies</string>
+			<key>PayloadIdentifier</key>
+			<string>com.diegoholiveira.dotfiles.chrome.policies</string>
+			<key>PayloadType</key>
+			<string>com.google.Chrome</string>
+			<!-- Change this UUID on every edit, so setup-chrome installs it again -->
+			<key>PayloadUUID</key>
+			<string>62C3E6A6-3B1B-4CA7-AD59-B0EEA0A08459</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+
+			<!-- Leave passwords, cards, addresses and payments to 1Password -->
+			<key>PasswordManagerEnabled</key>
+			<false/>
+			<key>PasswordLeakDetectionEnabled</key>
+			<false/>
+			<key>AutofillCreditCardEnabled</key>
+			<false/>
+			<key>AutofillAddressEnabled</key>
+			<false/>
+			<key>PaymentMethodQueryEnabled</key>
+			<false/>
+
+			<!-- On startup > Continue where you left off -->
+			<key>RestoreOnStartup</key>
+			<integer>1</integer>
+
+			<!-- Downloads -->
+			<key>DownloadDirectory</key>
+			<string>${user_home}/Downloads</string>
+
+			<!-- Languages, no translation and no spell check -->
+			<key>ForcedLanguages</key>
+			<array>
+				<string>pt-BR</string>
+				<string>pt</string>
+				<string>en-US</string>
+				<string>en</string>
+			</array>
+			<key>TranslateEnabled</key>
+			<false/>
+			<key>SpellcheckEnabled</key>
+			<false/>
+			<key>SpellCheckServiceEnabled</key>
+			<false/>
+
+			<!-- Block notifications -->
+			<key>DefaultNotificationsSetting</key>
+			<integer>2</integer>
+
+			<!-- No crash and usage reports to Google -->
+			<key>MetricsReportingEnabled</key>
+			<false/>
+		</dict>
+	</array>
+</dict>
+</plist>

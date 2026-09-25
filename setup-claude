@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ------------------------------------------------------------------------------
+# Claude Code skills shipped by other tools
+#
+#   Brewfile: hunk
+# ------------------------------------------------------------------------------
+
+SKILLS_DIR=~/.claude/skills
+
+if ! command -v hunk >/dev/null 2>&1; then
+	echo "Missing hunk. Run 'brew bundle' in ~/dotfiles first." >&2
+	exit 1
+fi
+
+mkdir -p "$SKILLS_DIR"
+
+# ------------------------------------------------------------------------------
+# hunk-review: `hunk skill path` points inside the versioned Cellar dir, so link
+# through /opt/homebrew/opt/hunk instead to survive `brew upgrade`
+# ------------------------------------------------------------------------------
+
+SKILL_DIR="$(dirname "$(hunk skill path)")"
+SKILL_DIR="$(echo "$SKILL_DIR" | sed -E 's#/Cellar/hunk/[^/]+/#/opt/hunk/#')"
+SKILL_LINK="$SKILLS_DIR/$(basename "$SKILL_DIR")"
+
+# -e is false for a dangling link, so an outdated link gets replaced too
+if [ ! -e "$SKILL_LINK" ]; then
+	ln -sfn "$SKILL_DIR" "$SKILL_LINK"
+	echo "Linked $SKILL_LINK -> $SKILL_DIR"
+else
+	echo "$SKILL_LINK is ready."
+fi

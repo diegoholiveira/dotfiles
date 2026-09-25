@@ -2,7 +2,6 @@
 # Environment
 # ------------------------------------------------------------------------------
 
-export BAT_CONFIG_PATH="$HOME/.bat.conf"
 export BLOCKSIZE="1k"
 export CLICOLOR="true"
 export GOPATH="$HOME/.go"
@@ -18,11 +17,8 @@ export HOMEBREW_BUNDLE_DUMP_NO_UV="true"
 export HOMEBREW_BUNDLE_DUMP_NO_VSCODE="true"
 export HOMEBREW_BUNDLE_DUMP_NO_WINGET="true"
 export JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION="true"
-export LDFLAGS="-L/opt/homebrew/opt/postgresql@17/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/postgresql@17/include"
-export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
-export STARSHIP_CONFIG="$HOME/.starship.toml"
-export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 # ------------------------------------------------------------------------------
 # PATH
@@ -36,6 +32,14 @@ path=(
   /opt/homebrew/sbin
   "$GOBIN"
   $path
+  "$HOME/.docker/bin"
 )
 
 export PATH
+
+# ------------------------------------------------------------------------------
+# Language/toolchain environments
+# ------------------------------------------------------------------------------
+
+[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+[[ -f "$HOME/.vite-plus/env" ]] && source "$HOME/.vite-plus/env"

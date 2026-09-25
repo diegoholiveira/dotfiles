@@ -1,65 +1,110 @@
+-- TypeScript 7 (native) ships a real LSP server behind `tsc --lsp --stdio`,
+-- which ALE does not know about yet
+local function define_tsgo_linter()
+	local function project_root(buffer)
+		return vim.fs.root(buffer, { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' }) or ''
+	end
+
+	for _, filetype in ipairs({ 'typescript', 'typescriptreact', 'javascript' }) do
+		vim.fn['ale#linter#Define'](filetype, {
+			name = 'tsgo',
+			lsp = 'stdio',
+			executable = 'tsc',
+			command = '%e --lsp --stdio',
+			project_root = project_root,
+			language = filetype,
+		})
+	end
+end
+
 return {
 	{
 		'dense-analysis/ale',
-		version = "*",
-		-- Settings that must be configured BEFORE ALE loads
-		init = function()
-			-- Disable Neovim's LSP API integration to avoid gopls configuration errors
-			-- This makes ALE use its own LSP implementation (same as Vim)
-			vim.g.ale_use_neovim_lsp_api = false
-
-			-- Enable ALE completion
-			vim.g.ale_completion_enabled = 1
-		end,
-		-- Settings that can be configured AFTER ALE loads
+		branch = 'master',
 		config = function()
-			-- ALE global settings
-			vim.g.ale_linters_explicit = 1
-			vim.g.ale_fix_on_save = 1
+			require('ale').setup({
+				linters_explicit = true,
+				fix_on_save = true,
 
-			-- C settings
-			vim.b.ale_c_clangformat_options = '-style="{BasedOnStyle: mozilla, IndentWidth: 4, ColumnLimit: 120}"'
+				-- C settings
+				c_clangformat_options = '-style="{BasedOnStyle: mozilla, IndentWidth: 4, ColumnLimit: 120}"',
 
-			-- Go settings
-			vim.b.ale_go_golangci_lint_package = 1
-			vim.b.go_gopls_use_global = 1
+				-- Go settings
+				go_golangci_lint_package = true,
+				go_gopls_init_options = {
+					gofumpt = true,
+					staticcheck = true,
+					hints = {
+						assignVariableTypes = true,
+						compositeLiteralFields = true,
+						constantValues = true,
+						parameterNames = true,
+						rangeVariableTypes = true,
+					},
+				},
 
-			-- Python settings
-			vim.b.ale_python_auto_uv = 1
+				-- Rust settings
+				rust_analyzer_config = { check = { command = 'clippy' } },
+				rust_rustfmt_options = '--edition 2024',
 
-			-- Linters by filetype
-			vim.g.ale_linters = {
-				c = {'cc', 'clang-format'},
-				go = {'golangci-lint', 'gopls'},
-				hcl = {'terraform'},
-				javascript = {'eslint'},
-				markdown = {},
-				python = {'ruff', 'jedi_language_server'},
-				ruby = {'rails_best_practices', 'ruby', 'rubocop'},
-				rust = {'analyzer'},
-				sh = {'shellcheck'},
-				typescript = {'eslint', 'tsserver'},
-				typescriptreact = {'eslint', 'tsserver'},
-				vim = {'vint'},
-			}
+				-- Zig settings
+				zig_zls_config = { zls = { enable_build_on_save = true } },
 
-			-- Fixers by filetype
-			vim.g.ale_fixers = {
-				c = {'clang-format'},
-				css = {'prettier'},
-				go = {'gofumpt', 'goimports'},
-				hcl = {'terraform'},
-				html = {'prettier'},
-				javascript = {'prettier'},
-				json = {'jq'},
-				markdown = {},
-				python = {'ruff', 'ruff_format', 'isort'},
-				ruby = {'rubocop'},
-				rust = {'rustfmt'},
-				sh = {'shfmt'},
-				typescript = {'prettier'},
-				typescriptreact = {'prettier'},
-			}
-		end
-	}
+				-- Linters by filetype
+				linters = {
+					c = { 'cc', 'clang-format' },
+					go = { 'golangci-lint', 'gopls' },
+					hcl = { 'terraform' },
+					javascript = { 'eslint', 'tsgo' },
+					lua = { 'lua_language_server' },
+					rust = { 'analyzer' },
+					sh = { 'shellcheck' },
+					typescript = { 'eslint', 'tsgo' },
+					typescriptreact = { 'eslint', 'tsgo' },
+					zig = { 'zls' },
+				},
+
+				-- Fixers by filetype
+				fixers = {
+					c = { 'clang-format' },
+					css = { 'prettier' },
+					go = { 'goimports', 'gofumpt' },
+					hcl = { 'terraform' },
+					html = { 'prettier' },
+					javascript = { 'prettier' },
+					json = { 'jq' },
+					lua = { 'stylua' },
+					rust = { 'rustfmt' },
+					sh = { 'shfmt' },
+					typescript = { 'prettier' },
+					typescriptreact = { 'prettier' },
+					zig = { 'zigfmt' },
+				},
+			})
+
+			define_tsgo_linter()
+
+			-- ALE reports through vim.diagnostic: show the message of the current line
+			vim.diagnostic.config({ virtual_text = { current_line = true } })
+
+			-- ALE starts language servers with Neovim's LSP client, so the built-in
+			-- LSP features (K, grn, gra, grr, gri, completion, inlay hints) work
+			vim.api.nvim_create_autocmd('LspAttach', {
+				callback = function(args)
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					if not client then
+						return
+					end
+
+					if client:supports_method('textDocument/completion') then
+						vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+					end
+
+					if client:supports_method('textDocument/inlayHint') then
+						vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+					end
+				end,
+			})
+		end,
+	},
 }

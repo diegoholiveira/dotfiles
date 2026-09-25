@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ------------------------------------------------------------------------------
+# Go tooling used by Neovim (ALE)
+#
+#   Brewfile:   go, gofumpt, golangci-lint
+#   go install: gopls, goimports
+# ------------------------------------------------------------------------------
+
+export GOPATH="${GOPATH:-$HOME/.go}"
+export GOBIN="${GOBIN:-$GOPATH/bin}"
+
+# ------------------------------------------------------------------------------
+# Check tools installed by the Brewfile
+# ------------------------------------------------------------------------------
+
+for TOOL in go gofumpt golangci-lint; do
+	if ! command -v "$TOOL" >/dev/null 2>&1; then
+		echo "Missing $TOOL. Run 'brew bundle' in ~/dotfiles first." >&2
+		exit 1
+	fi
+done
+
+# ------------------------------------------------------------------------------
+# Install tools that are not in Homebrew
+# ------------------------------------------------------------------------------
+
+echo "Installing gopls and goimports into $GOBIN..."
+go install golang.org/x/tools/gopls@latest
+go install golang.org/x/tools/cmd/goimports@latest
+echo "Done."

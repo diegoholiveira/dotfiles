@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ------------------------------------------------------------------------------
+# Neovim plugins and treesitter parsers
+#
+#   Brewfile:        neovim, tree-sitter-cli
+#   lazy.nvim:       plugins pinned in nvim/lazy-lock.json
+#   nvim-treesitter: parsers listed in nvim/lua/config/treesitter.lua
+# ------------------------------------------------------------------------------
+
+for TOOL in nvim tree-sitter cc; do
+	if ! command -v "$TOOL" >/dev/null 2>&1; then
+		echo "Missing $TOOL. Run 'brew bundle' in ~/dotfiles first." >&2
+		exit 1
+	fi
+done
+
+# ------------------------------------------------------------------------------
+# Install plugins at the versions pinned in lazy-lock.json
+# ------------------------------------------------------------------------------
+
+echo "Installing Neovim plugins..."
+nvim --headless "+Lazy! restore" +qa
+
+# ------------------------------------------------------------------------------
+# Install missing parsers and update the installed ones (wait up to 15 minutes)
+# ------------------------------------------------------------------------------
+
+echo "Installing treesitter parsers..."
+nvim --headless \
+	-c "lua require('nvim-treesitter').install(require('config.treesitter')):wait(900000)" \
+	-c "lua require('nvim-treesitter').update():wait(900000)" \
+	+qa
+echo "Done."

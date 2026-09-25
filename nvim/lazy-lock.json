@@ -1,0 +1,10 @@
+{
+  "ale": { "branch": "master", "commit": "e1789bc54483d76ac9ddb40b633d1645c8281914" },
+  "fzf-lua": { "branch": "main", "commit": "47b85a25c0c0b2c20b4e75199ed01bb71e7814f5" },
+  "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
+  "mini.statusline": { "branch": "main", "commit": "b5547f44560dae3ccd81f914256fa6f705837022" },
+  "mini.trailspace": { "branch": "main", "commit": "22653218f1aedc9bf306c8b4e8ec2c8a575f6fae" },
+  "nord.nvim": { "branch": "master", "commit": "80c1e5321505aeb22b7a9f23eb82f1e193c12470" },
+  "nvim-treesitter": { "branch": "main", "commit": "f603a2f4da48728f80257fb5fbb90145fd1dc173" },
+  "vim-gitgutter": { "branch": "main", "commit": "90b75207bd9b55d8ac4af15f72b4e935462014d0" }
+}
