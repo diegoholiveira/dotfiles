@@ -30,18 +30,12 @@ brew "bat"
 brew "freetype"
 # Parser generator
 brew "bison"
-# Python code formatter
-brew "black"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 brew "clang-format"
 # Cross-platform make
 brew "cmake"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
-# Dependency Manager for PHP
-brew "composer"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # File comparison utilities
@@ -68,8 +62,6 @@ brew "go"
 brew "gofumpt"
 # Fast linters runner for Go
 brew "golangci-lint"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
 # Protocol buffers (Google's data interchange format)
@@ -110,8 +102,6 @@ brew "opencode"
 brew "pandoc"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
-# Python package management tool
-brew "poetry"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Object-relational database system
@@ -126,8 +116,6 @@ brew "protoc-gen-go"
 brew "protoc-gen-go-grpc"
 # Generic syntax highlighter
 brew "pygments"
-# Extremely fast Python linter, written in Rust
-brew "ruff"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
@@ -152,8 +140,6 @@ brew "tree-sitter-cli"
 brew "typescript"
 # Markup-based typesetting system
 brew "typst"
-# Extremely fast Python package installer and resolver, written in Rust
-brew "uv"
 # Watch files and take action when they change
 brew "watchman"
 # Programming language designed for robustness, optimality, and clarity
